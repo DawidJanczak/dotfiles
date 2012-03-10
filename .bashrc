@@ -10,6 +10,7 @@ alias l='ls -al'
 export TERM=xterm-256color
 export EDITOR=vim
 export GIT_PS1_SHOWDIRTYSTATE="OK"
+export PATH="$HOME/.rbenv/bin:$PATH"
 
 # Command prompt in git shows branch name and working copy status
 PS1='[\u@\h \W$(__git_ps1 " (%s)")]# '
@@ -23,3 +24,5 @@ alias expack='export | ack $1'
 
 # Sourcing git completion file
 source /usr/share/git/completion/git-completion.bash
+
+eval "$(rbenv init -)"
