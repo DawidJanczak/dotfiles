@@ -110,6 +110,21 @@ up_icon = widget({ type = "imagebox" })
 dn_icon.image = image(beautiful.widget_net_down)
 up_icon.image = image(beautiful.widget_net_up)
 
+-- Separator
+separator = widget({ type = "textbox" })
+separator.text = " ::"
+
+-- Memory usage progressbar widget
+mem_widget = awful.widget.progressbar()
+mem_widget:set_width(8)
+mem_widget:set_height(10)
+mem_widget:set_vertical(true)
+mem_widget:set_background_color("#494B4F")
+mem_widget:set_border_color(nil)
+mem_widget:set_color("#AECF96")
+mem_widget:set_gradient_colors({ "#AECF96", "#88A175", "#FF5656" })
+vicious.register(mem_widget, vicious.widgets.mem, "$1", 5)
+
 -- Create a textclock widget
 mytextclock = awful.widget.textclock({ align = "right" })
 
@@ -192,7 +207,8 @@ for s = 1, screen.count() do
         },
         mylayoutbox[s],
         mytextclock,
-        up_icon, netwidget, dn_icon,
+        separator, up_icon, netwidget, dn_icon,
+        separator, mem_widget,
         s == 1 and mysystray or nil,
         mytasklist[s],
         layout = awful.widget.layout.horizontal.rightleft
