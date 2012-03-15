@@ -21,6 +21,7 @@ alias vi=vim
 alias gitcom='git commit -am $1'
 alias psack='ps aux | ack $1'
 alias expack='export | ack $1'
+alias lock='xscreensaver-command -lock'
 
 # Sourcing git completion file
 source /usr/share/git/completion/git-completion.bash
