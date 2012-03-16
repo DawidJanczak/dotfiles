@@ -8,7 +8,7 @@
 
 -- {{{ Main
 theme = {}
-theme.wallpaper_cmd = { "awsetbg /home/janczak/multimedia/graphics/wallpaper811534.jpg" }
+theme.wallpaper_cmd = { "awsetbg " .. os.getenv("HOME") .. "/multimedia/graphics/wallpaper.jpg" }
 -- }}}
 
 -- {{{ Styles
