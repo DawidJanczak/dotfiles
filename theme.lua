@@ -125,6 +125,13 @@ theme.titlebar_maximized_button_normal_inactive = "/usr/share/awesome/themes/zen
 -- {{{ Widgets
 theme.widget_net_down = "/home/janczak/.config/awesome/icons/download-linux.png"
 theme.widget_net_up = "/home/janczak/.config/awesome/icons/upload-linux.png"
+
+theme.widget_mem = "/home/janczak/.config/awesome/icons/memory.png"
+
+theme.widget_cpu = "/home/janczak/.config/awesome/icons/processor.png"
+
+theme.widget_bat = "/home/janczak/.config/awesome/icons/battery.png"
+
 -- }}}
 -- }}}
 

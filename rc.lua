@@ -117,13 +117,41 @@ separator.text = " ::"
 -- Memory usage progressbar widget
 mem_widget = awful.widget.progressbar()
 mem_widget:set_width(8)
-mem_widget:set_height(10)
+mem_widget:set_height(20)
 mem_widget:set_vertical(true)
 mem_widget:set_background_color("#494B4F")
 mem_widget:set_border_color(nil)
 mem_widget:set_color("#AECF96")
 mem_widget:set_gradient_colors({ "#AECF96", "#88A175", "#FF5656" })
-vicious.register(mem_widget, vicious.widgets.mem, "$1", 5)
+vicious.register(mem_widget, vicious.widgets.mem, "$1")
+
+mem_txt = widget({ type = "textbox" })
+mem_txt.text = "mem"
+
+-- CPU usage graph widget
+cpu_widget = awful.widget.graph()
+cpu_widget:set_width(50)
+cpu_widget:set_background_color("#494B4F")
+cpu_widget:set_color("#FF5656")
+cpu_widget:set_gradient_colors({ "#FF5656", "#88A175", "#AECF96" })
+vicious.register(cpu_widget, vicious.widgets.cpu, "$1")
+
+cpu_txt = widget({ type = "textbox" })
+cpu_txt.text = "cpu"
+
+-- Battery usage progressbar widget
+bat_widget = awful.widget.progressbar()
+bat_widget:set_width(8)
+bat_widget:set_height(20)
+bat_widget:set_vertical(true)
+bat_widget:set_background_color("#494B4F")
+bat_widget:set_border_color(nil)
+bat_widget:set_color("#AECF96")
+bat_widget:set_gradient_colors({ "#AECF96", "#88A175", "#FF5656" })
+vicious.register(bat_widget, vicious.widgets.bat, "$2", 60, "BAT0")
+
+bat_icon = widget({ type = "imagebox" })
+bat_icon.image = image(beautiful.widget_bat)
 
 -- Create a textclock widget
 mytextclock = awful.widget.textclock({ align = "right" })
@@ -196,7 +224,7 @@ for s = 1, screen.count() do
                                           end, mytasklist.buttons)
 
     -- Create the wibox
-    mywibox[s] = awful.wibox({ position = "top", screen = s })
+    mywibox[s] = awful.wibox({ position = "top", screen = s, height="20" })
     -- Add widgets to the wibox - order matters
     mywibox[s].widgets = {
         {
@@ -208,7 +236,9 @@ for s = 1, screen.count() do
         mylayoutbox[s],
         mytextclock,
         separator, up_icon, netwidget, dn_icon,
-        separator, mem_widget,
+        separator, mem_widget.widget, mem_txt,
+        separator, cpu_widget.widget, cpu_txt,
+        separator, bat_widget.widget, bat_icon,
         s == 1 and mysystray or nil,
         mytasklist[s],
         layout = awful.widget.layout.horizontal.rightleft
@@ -271,6 +301,8 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey, "Shift"   }, "space", function () awful.layout.inc(layouts, -1) end),
 
     awful.key({ modkey, "Control" }, "n", awful.client.restore),
+
+    awful.key({ "Control", "Mod1" }, "l", function () awful.util.spawn("xscreensaver-command -lock") end),
 
     -- Prompt
     awful.key({ modkey },            "r",     function () mypromptbox[mouse.screen]:run() end),
@@ -403,4 +435,8 @@ end)
 
 client.add_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.add_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
+-- }}}
+
+-- {{{ Autostart programs
+awful.util.spawn_with_shell("/usr/bin/xscreensaver -no-splash &")
 -- }}}
