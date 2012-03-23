@@ -153,6 +153,52 @@ vicious.register(bat_widget, vicious.widgets.bat, "$2", 60, "BAT0")
 bat_icon = widget({ type = "imagebox" })
 bat_icon.image = image(beautiful.widget_bat)
 
+-- Volume widget
+volumecfg = {}
+volumecfg.cardid = 0
+volumecfg.channel = "Master"
+volumecfg.widget = widget({ type = "textbox", name = "volumecfg.widget", align = "right" })
+
+volumecfg_t = awful.tooltip({ objects = { volumecfg.widget }, })
+volumecfg_t:set_text("Volume")
+
+volumecfg.mixercommand = function(command)
+    local fd = io.popen("amixer -c " .. volumecfg.cardid .. command)
+    local status = fd:read("*all")
+    fd:close()
+
+    local volume = string.match(status, "(%d?%d?%d)%%")
+    volume = string.format("% 3d", volume)
+    status = string.match(status, "%[(o[^%]]*)%]")
+    if string.find(status, "on", 1, true) then
+        volume = volume .. "%"
+    else
+        volume = volume .. "M"
+    end
+    volumecfg.widget.text = volume
+end
+volumecfg.update = function()
+    volumecfg.mixercommand(" sget " .. volumecfg.channel)
+end
+volumecfg.up = function()
+    volumecfg.mixercommand(" sset " .. volumecfg.channel .. " 1%+")
+end
+volumecfg.down = function()
+    volumecfg.mixercommand(" sset ".. volumecfg.channel .. " 1%-")
+end
+volumecfg.toggle = function()
+    volumecfg.mixercommand(" sset " .. volumecfg.channel .. " toggle")
+end
+volumecfg.widget:buttons(awful.util.table.join(
+    awful.button({ }, 4, function() volumecfg.up() end),
+    awful.button({ }, 5, function() volumecfg.down() end),
+    awful.button({ }, 1, function() volumecfg.toggle() end)
+))
+volumecfg.update()
+
+vol_icon = widget({ type = "imagebox" })
+vol_icon.image = image(beautiful.widget_vol)
+
 -- Create a textclock widget
 mytextclock = awful.widget.textclock({ align = "right" })
 
@@ -235,6 +281,7 @@ for s = 1, screen.count() do
         },
         mylayoutbox[s],
         mytextclock,
+        separator, volumecfg.widget, vol_icon,
         separator, up_icon, netwidget, dn_icon,
         separator, mem_widget.widget, mem_txt,
         separator, cpu_widget.widget, cpu_txt,
@@ -259,6 +306,10 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey,           }, "Left",   awful.tag.viewprev       ),
     awful.key({ modkey,           }, "Right",  awful.tag.viewnext       ),
     awful.key({ modkey,           }, "Escape", awful.tag.history.restore),
+
+    awful.key({ modkey }, "Up", function() volumecfg.up() end),
+    awful.key({ modkey }, "Down", function() volumecfg.down() end),
+    awful.key({ modkey }, "End", function() volumecfg.toggle() end),
 
     awful.key({ modkey,           }, "j",
         function ()

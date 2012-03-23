@@ -132,6 +132,8 @@ theme.widget_cpu = "/home/janczak/.config/awesome/icons/processor.png"
 
 theme.widget_bat = "/home/janczak/.config/awesome/icons/battery.png"
 
+theme.widget_vol = "/home/janczak/.config/awesome/icons/speaker-volume.png"
+
 -- }}}
 -- }}}
 
