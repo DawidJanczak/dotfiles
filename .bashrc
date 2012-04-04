@@ -23,8 +23,8 @@ alias psack='ps aux | ack $1'
 alias expack='export | ack $1'
 alias lack='l | ack $1'
 alias lock='xscreensaver-command -lock'
-alias filename="$HOME/ruby/filename.rb $1"
-alias delete_all_but="$HOME/ruby/delete_all_but.rb $@"
+alias filename="$HOME/scripts/filename.rb $1"
+alias delete_all_but="$HOME/scripts/delete_all_but.rb $@"
 
 # Sourcing git completion file
 source /usr/share/git/completion/git-completion.bash
