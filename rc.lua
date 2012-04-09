@@ -186,7 +186,7 @@ vol_icon = widget({ type = "imagebox" })
 vol_icon.image = image(beautiful.widget_vol)
 
 -- Create a textclock widget
-mytextclock = awful.widget.textclock({ align = "right" })
+mytextclock = awful.widget.textclock({ align = "right" }, "%a %b %d, %H:%M:%S", 1)
 
 -- Create a systray
 mysystray = widget({ type = "systray" })
