@@ -139,20 +139,6 @@ vicious.register(cpu_widget, vicious.widgets.cpu, "$1")
 cpu_txt = widget({ type = "textbox" })
 cpu_txt.text = "cpu"
 
--- Battery usage progressbar widget
-bat_widget = awful.widget.progressbar()
-bat_widget:set_width(8)
-bat_widget:set_height(20)
-bat_widget:set_vertical(true)
-bat_widget:set_background_color("#494B4F")
-bat_widget:set_border_color(nil)
-bat_widget:set_color("#AECF96")
-bat_widget:set_gradient_colors({ "#AECF96", "#88A175", "#FF5656" })
-vicious.register(bat_widget, vicious.widgets.bat, "$2", 60, "BAT0")
-
-bat_icon = widget({ type = "imagebox" })
-bat_icon.image = image(beautiful.widget_bat)
-
 -- Volume widget
 volumecfg = {}
 volumecfg.cardid = 0
@@ -285,7 +271,6 @@ for s = 1, screen.count() do
         separator, up_icon, netwidget, dn_icon,
         separator, mem_widget.widget, mem_txt,
         separator, cpu_widget.widget, cpu_txt,
-        separator, bat_widget.widget, bat_icon,
         s == 1 and mysystray or nil,
         mytasklist[s],
         layout = awful.widget.layout.horizontal.rightleft
