@@ -71,8 +71,8 @@ layouts =
 -- {{{ Tags
 -- Define a tag table which hold all screen tags.
 tags = {
-    names = { "www", "dev", "gadu-gadu", 4, 5, 6, 7, 8, 9 },
-    layout = { layouts[4], layouts[4], layouts[3], layouts[2], layouts[2], layouts[2], layouts[2], layouts[2], layouts[2] }
+    names = { "www", "dev", "gadu-gadu", "music", 5, 6, 7, 8, 9 },
+    layout = { layouts[4], layouts[4], layouts[3], layouts[4], layouts[2], layouts[2], layouts[2], layouts[2], layouts[2] }
 }
 for s = 1, screen.count() do
     -- Each screen has its own tag table.
@@ -112,7 +112,7 @@ up_icon.image = image(beautiful.widget_net_up)
 
 -- Separator
 separator = widget({ type = "textbox" })
-separator.text = " ::"
+separator.text = " :: "
 
 -- Memory usage progressbar widget
 mem_widget = awful.widget.progressbar()
@@ -138,6 +138,21 @@ vicious.register(cpu_widget, vicious.widgets.cpu, "$1")
 
 cpu_txt = widget({ type = "textbox" })
 cpu_txt.text = "cpu"
+
+-- Shell-fm track info widget
+shellfm_string = function(command)
+    return "echo \"" .. command .. "\" | socat - TCP:localhost:54311"
+end
+
+shellfm_current = function()
+    return "Now playing: " .. awful.util.pread(shellfm_string("info %a - %t"))
+end
+
+shellfm = widget({ type = "textbox" })
+vicious.register(shellfm, shellfm_current)
+
+shellfm_icon = widget({ type = "imagebox" })
+shellfm_icon.image = image(beautiful.widget_shellfm)
 
 -- Volume widget
 volumecfg = {}
@@ -270,8 +285,9 @@ for s = 1, screen.count() do
         separator, volumecfg.widget, vol_icon,
         separator, up_icon, netwidget, dn_icon,
         separator, mem_widget.widget, mem_txt,
-        separator, cpu_widget.widget, cpu_txt,
+        separator, cpu_widget.widget, cpu_txt, separator,
         s == 1 and mysystray or nil,
+        separator, shellfm_icon, shellfm, shellfm_icon,
         mytasklist[s],
         layout = awful.widget.layout.horizontal.rightleft
     }
@@ -292,9 +308,18 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey,           }, "Right",  awful.tag.viewnext       ),
     awful.key({ modkey,           }, "Escape", awful.tag.history.restore),
 
-    awful.key({ modkey }, "Up", function() volumecfg.up() end),
-    awful.key({ modkey }, "Down", function() volumecfg.down() end),
-    awful.key({ modkey }, "End", function() volumecfg.toggle() end),
+    awful.key({ "Control", "Mod1" }, "Up", function() volumecfg.up() end),
+    awful.key({ "Control", "Mod1" }, "Down", function() volumecfg.down() end),
+    awful.key({ "Control", "Mod1" }, "End", function() volumecfg.toggle() end),
+    -- Same as above only with function keys
+    awful.key({ }, "XF86AudioRaiseVolume", function() volumecfg.up() end),
+    awful.key({ }, "XF86AudioLowerVolume", function() volumecfg.down() end),
+    awful.key({ }, "XF86AudioMute", function() volumecfg.toggle() end),
+
+    -- Skip to the next song in shell-fm
+    awful.key({ "Control", "Mod1" }, "Next", function() awful.util.spawn_with_shell(shellfm_string("skip")) end),
+    -- Pause shell-fm
+    awful.key({ "Control", "Mod1" }, "Home", function() awful.util.spawn_with_shell(shellfm_string("pause")) end),
 
     awful.key({ modkey,           }, "j",
         function ()
