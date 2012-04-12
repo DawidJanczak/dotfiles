@@ -114,6 +114,12 @@ up_icon.image = image(beautiful.widget_net_up)
 separator = widget({ type = "textbox" })
 separator.text = " :: "
 
+-- GMail widget
+gmail_icon = widget({ type = "imagebox" })
+gmail_icon.image = image(beautiful.widget_gmail)
+gmail_widget = widget({ type = "textbox" })
+vicious.register(gmail_widget, vicious.widgets.gmail, " ${count}", 10)
+
 -- Memory usage progressbar widget
 mem_widget = awful.widget.progressbar()
 mem_widget:set_width(8)
@@ -287,6 +293,7 @@ for s = 1, screen.count() do
         separator, mem_widget.widget, mem_txt,
         separator, cpu_widget.widget, cpu_txt, separator,
         s == 1 and mysystray or nil,
+        separator, gmail_widget, gmail_icon,
         separator, shellfm_icon, shellfm, shellfm_icon,
         mytasklist[s],
         layout = awful.widget.layout.horizontal.rightleft
