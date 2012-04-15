@@ -6,6 +6,9 @@ alias ls='ls --color=auto'
 alias ll='ls -l'
 alias l='ls -al'
 
+# Start qiv with: fulscreen, atorotate, scaling large images down and no status bar.
+alias qiv='qiv -f -l -t -i $1'
+
 # Export section
 export TERM=xterm-256color
 export EDITOR=vim
