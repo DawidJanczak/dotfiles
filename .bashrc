@@ -22,6 +22,7 @@ PS1='[\u@\h \W$(__git_ps1 " (%s)")]# '
 alias sudo='sudo -E'
 alias vi=vim
 alias gitcom='git commit -am $1'
+alias gitst='git status $@'
 alias psack='ps aux | ack $1'
 alias expack='export | ack $1'
 alias lack='l | ack $1'

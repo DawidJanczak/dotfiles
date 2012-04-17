@@ -151,7 +151,8 @@ shellfm_string = function(command)
 end
 
 shellfm_current = function()
-    return "Now playing: " .. awful.util.pread(shellfm_string("info %a - %t"))
+    local read_info = awful.util.pread(shellfm_string("info %a - %t"))
+    return "Now playing: " .. awful.util.escape(read_info)
 end
 
 shellfm = widget({ type = "textbox" })
