@@ -33,3 +33,6 @@ eval "$(rbenv init -)"
 
 # Keychain activation.
 eval $(keychain --eval --agents ssh -Q --quiet ~/.ssh/id_rsa)
+
+# Clear screen with ctrl+l
+bind -m vi-insert "\C-l":clear-screen
