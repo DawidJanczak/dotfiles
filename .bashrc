@@ -25,6 +25,7 @@ alias lack='l | ack $1'
 alias lock='xscreensaver-command -lock'
 alias filename="$HOME/scripts/filename.rb $1"
 alias delete_all_but="$HOME/scripts/delete_all_but.rb $@"
+alias nara="sudo shutdown -hP now"
 
 # Sourcing git completion file
 source /usr/share/git/completion/git-completion.bash
