@@ -8,7 +8,7 @@
 
 -- {{{ Main
 theme = {}
-theme.wallpaper_cmd = { "awsetbg " .. os.getenv("HOME") .. "/multimedia/graphics/wallpaper.jpg" }
+theme.wallpaper_cmd = { "awsetbg -r " .. "/windows_d/Wallpapers" }
 -- }}}
 
 -- {{{ Styles
