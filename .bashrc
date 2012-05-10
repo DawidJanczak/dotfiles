@@ -15,6 +15,9 @@ export PATH="$HOME/.rbenv/bin:$PATH"
 # Command prompt in git shows branch name and working copy status
 PS1='[\u@\h \W$(__git_ps1 " (%s)")]# '
 
+# Start qiv with: fulscreen, atorotate, scaling large images down and no status bar.
+alias qiv='qiv -f -l -t -i $1'
+
 # Some aliases
 alias sudo='sudo -E'
 alias vi=vim
