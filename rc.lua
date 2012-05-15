@@ -353,7 +353,7 @@ globalkeys = awful.util.table.join(
 
     awful.key({ modkey, "Control" }, "n", awful.client.restore),
 
-    awful.key({ "Control", "Mod1" }, "l", function () awful.util.spawn("xscreensaver-command -lock") end),
+    awful.key({ "Control", "Mod1" }, "l", function () awful.util.spawn("slock") end),
 
     -- Prompt
     awful.key({ modkey },            "r",     function () mypromptbox[mouse.screen]:run() end),
@@ -489,5 +489,4 @@ client.add_signal("unfocus", function(c) c.border_color = beautiful.border_norma
 -- }}}
 
 -- {{{ Autostart programs
-awful.util.spawn_with_shell("/usr/bin/xscreensaver -no-splash &")
 -- }}}

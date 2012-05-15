@@ -17,6 +17,6 @@ fi
 # exec startkde
 # exec startxfce4
 # ...or the Window Manager of your choice
-/usr/bin/xscreensaver -no-splash &
 setxkbmap pl
+/home/janczak/set_output.sh
 exec awesome
