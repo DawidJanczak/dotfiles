@@ -8,6 +8,8 @@ require("beautiful")
 require("naughty")
 -- Library to use in widgets
 require("vicious")
+-- Lua FileSystem library
+require("lfs")
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
@@ -36,7 +38,7 @@ end
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, and wallpapers
-beautiful.init("/usr/share/awesome/themes/zenburn/theme.lua")
+beautiful.init(lfs.currentdir() .. "/dotfiles/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "xterm"
