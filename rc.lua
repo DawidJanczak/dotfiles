@@ -42,6 +42,7 @@ beautiful.init("/usr/share/awesome/themes/zenburn/theme.lua")
 terminal = "xterm"
 editor = os.getenv("EDITOR") or "nano"
 editor_cmd = terminal .. " -e " .. editor
+wrling_cmd = terminal .. " -e ssh wrling33"
 
 -- Default modkey.
 -- Usually, Mod4 is the key with a logo between Control and Alt.
@@ -71,7 +72,7 @@ layouts =
 -- {{{ Tags
 -- Define a tag table which hold all screen tags.
 tags = {
-    names = { "www", "dev", "communication", "wrling", 5, 6, 7, 8, 9 },
+    names = { "www", "dev", "mail", "wrling", "psi", 6, 7, 8, 9 },
     layout = { layouts[4], layouts[4], layouts[5], layouts[4], layouts[2], layouts[2], layouts[2], layouts[2], layouts[2] }
 }
 for s = 1, screen.count() do
@@ -307,8 +308,8 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey,           }, "Right",  awful.tag.viewnext       ),
     awful.key({ modkey,           }, "Escape", awful.tag.history.restore),
 
-    awful.key({ modkey }, "Up", function() volumecfg.up() end),
-    awful.key({ modkey }, "Down", function() volumecfg.down() end),
+    awful.key({ "Control", "Mod1" }, "Up", function() volumecfg.up() end),
+    awful.key({ "Control", "Mod1" }, "Down", function() volumecfg.down() end),
     awful.key({ modkey }, "End", function() volumecfg.toggle() end),
 
     awful.key({ modkey,           }, "j",
@@ -338,8 +339,16 @@ globalkeys = awful.util.table.join(
         end),
 
     -- Standard program
-    awful.key({ modkey,           }, "Return", function () awful.util.spawn(terminal) end),
-    awful.key({ modkey, "Control" }, "r", awesome.restart),
+    awful.key({ modkey,           }, "Return", 
+    function () 
+        --if awful.tag.getidx() == 4 then
+            --naughty.notify({ text = "xterm -e whoami" })
+            --awful.util.spawn_with_shell("/home/janczak/test.rb")
+        --else
+            awful.util.spawn(terminal) 
+        --end
+    end),
+        awful.key({ modkey, "Control" }, "r", awesome.restart),
     awful.key({ modkey, "Shift"   }, "q", awesome.quit),
 
     awful.key({ modkey,           }, "l",     function () awful.tag.incmwfact( 0.05)    end),
@@ -436,6 +445,10 @@ clientbuttons = awful.util.table.join(
 root.keys(globalkeys)
 -- }}}
 
+-- {{{ Tag properties
+awful.tag.setproperty(tags[1][5], "mwfact", 0.33)
+-- }}}
+
 -- {{{ Rules
 awful.rules.rules = {
     -- All clients will match this rule.
@@ -447,10 +460,13 @@ awful.rules.rules = {
                      buttons = clientbuttons } },
     { rule = { class = "MPlayer" },
       properties = { floating = true } },
-    { rule = { class = "pinentry" },
-      properties = { floating = true } },
-    { rule = { class = "gimp" },
-      properties = { floating = true } },
+    { rule = { class = "Chromium" },
+      properties = { tag = tags[1][1] } },
+    { rule = { class = "Thunderbird" },
+      properties = { tag = tags[1][3] } },
+    { rule = { class = "psi" },
+      properties = { tag = tags[1][5] },
+      callback = awful.client.setslave }
     -- Set Firefox to always map on tags number 2 of screen 1.
     -- { rule = { class = "Firefox" },
     --   properties = { tag = tags[1][2] } },
