@@ -461,11 +461,11 @@ awful.rules.rules = {
     { rule = { class = "MPlayer" },
       properties = { floating = true } },
     { rule = { class = "Chromium" },
-      properties = { tag = tags[2][1] } },
+      properties = { tag = tags[screen.count()][1] } },
     { rule = { class = "Thunderbird" },
-      properties = { tag = tags[2][3] } },
+      properties = { tag = tags[screen.count()][3] } },
     { rule = { class = "psi" },
-      properties = { tag = tags[2][5] },
+      properties = { tag = tags[screen.count()][5] },
       callback = awful.client.setslave }
     -- Set Firefox to always map on tags number 2 of screen 1.
     -- { rule = { class = "Firefox" },

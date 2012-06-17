@@ -18,5 +18,5 @@ fi
 # exec startxfce4
 # ...or the Window Manager of your choice
 setxkbmap pl
-/home/janczak/set_output.sh
+/home/janczak/scripts/set_output.sh
 exec awesome
