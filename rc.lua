@@ -36,7 +36,7 @@ end
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, and wallpapers
-beautiful.init("/usr/share/awesome/themes/zenburn/theme.lua")
+beautiful.init("dotfiles/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "xterm"
