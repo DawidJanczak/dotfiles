@@ -11,6 +11,7 @@ export TERM=xterm-256color
 export EDITOR=vim
 export GIT_PS1_SHOWDIRTYSTATE="OK"
 export PATH="$HOME/.rbenv/bin:$PATH"
+export HISTSIZE=2000
 
 # Command prompt in git shows branch name and working copy status
 PS1='[\u@\h \W$(__git_ps1 " (%s)")]# '
