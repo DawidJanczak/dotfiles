@@ -89,6 +89,7 @@
 #ao=alsa:device=spdif
 #ac=hwac3,hwdts,hwmpa,
 
+channels=6
 
 ##################
 # other settings #
