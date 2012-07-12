@@ -326,7 +326,7 @@ globalkeys = awful.util.table.join(
     -- Skip to the previous song with ncmpcpp
     awful.key({ "Control", "Mod1" }, "Prior", function() awful.util.spawn_with_shell("ncmpcpp prev") end),
     -- Pause ncmpcpp
-    awful.key({ "Control", "Mod1" }, "Home", function() awful.util.spawn_with_shell("ncmpcpp pause") end),
+    awful.key({ "Control", "Mod1" }, "Home", function() awful.util.spawn_with_shell("ncmpcpp toggle") end),
     -- Play ncmpcpp
     awful.key({ "Control", "Mod1" }, "Insert", function() awful.util.spawn_with_shell("ncmpcpp play") end),
 
