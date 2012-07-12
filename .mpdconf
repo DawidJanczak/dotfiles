@@ -193,6 +193,15 @@ input {
 #
 # See <http://mpd.wikia.com/wiki/Configuration#Audio_Outputs> for examples of 
 # other audio outputs.
+
+audio_output {
+        type            "alsa"
+        name            "MPD ALSA"
+        mixer_type      "software"
+        mixer_device    "surround40"
+        mixer_control   "PCM"
+}
+
 #
 # An example of an ALSA output:
 #
