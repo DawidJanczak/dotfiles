@@ -1,0 +1,719 @@
+info_begin
+format: 1
+mpd_version: 0.17
+fs_charset: UTF-8
+tag: Artist
+tag: ArtistSort
+tag: Album
+tag: AlbumArtist
+tag: AlbumArtistSort
+tag: Title
+tag: Track
+tag: Name
+tag: Genre
+tag: Date
+tag: Composer
+tag: Performer
+tag: Disc
+tag: MUSICBRAINZ_ARTISTID
+tag: MUSICBRAINZ_ALBUMID
+tag: MUSICBRAINZ_ALBUMARTISTID
+tag: MUSICBRAINZ_TRACKID
+info_end
+directory: The National Discography
+mtime: 1342109183
+begin: The National Discography
+directory: The National - Boxer
+mtime: 1342109288
+begin: The National Discography/The National - Boxer
+song_begin: The National - Fake Empire.mp3
+Time: 207
+Artist: The National
+AlbumArtist: The National
+Title: Fake Empire
+Album: Boxer
+Track: 01
+Date: 2007
+Genre: Rock
+Genre: Rock
+mtime: 1342109282
+song_end
+song_begin: The National - Mistaken For Strangers.mp3
+Time: 213
+Artist: The National
+AlbumArtist: The National
+Title: Mistaken For Strangers
+Album: Boxer
+Track: 02
+Date: 2007
+Genre: Rock
+Genre: Rock
+mtime: 1342109282
+song_end
+song_begin: The National - Brainy.mp3
+Time: 200
+Artist: The National
+AlbumArtist: The National
+Title: Brainy
+Album: Boxer
+Track: 03
+Date: 2007
+Genre: Rock
+Genre: Rock
+mtime: 1342109278
+song_end
+song_begin: The National - Squalor Victoria.mp3
+Time: 181
+Artist: The National
+AlbumArtist: The National
+Title: Squalor Victoria
+Album: Boxer
+Track: 04
+Date: 2007
+Genre: Rock
+Genre: Rock
+mtime: 1342109281
+song_end
+song_begin: The National - Green Gloves.mp3
+Time: 222
+Artist: The National
+AlbumArtist: The National
+Title: Green Gloves
+Album: Boxer
+Track: 05
+Date: 2007
+Genre: Rock
+Genre: Rock
+mtime: 1342109281
+song_end
+song_begin: The National - Slow Show.mp3
+Time: 250
+Artist: The National
+AlbumArtist: The National
+Title: Slow Show
+Album: Boxer
+Track: 06
+Date: 2007
+Genre: Rock
+Genre: Rock
+mtime: 1342109281
+song_end
+song_begin: The National - Apartment Story.mp3
+Time: 215
+Artist: The National
+AlbumArtist: The National
+Title: Apartment Story
+Album: Boxer
+Track: 07
+Date: 2007
+Genre: Rock
+Genre: Rock
+mtime: 1342109285
+song_end
+song_begin: The National - Start a War.mp3
+Time: 198
+Artist: The National
+AlbumArtist: The National
+Title: Start a War
+Album: Boxer
+Track: 08
+Date: 2007
+Genre: Rock
+Genre: Rock
+mtime: 1342109280
+song_end
+song_begin: The National - Guest Room.mp3
+Time: 201
+Artist: The National
+AlbumArtist: The National
+Title: Guest Room
+Album: Boxer
+Track: 09
+Date: 2007
+Genre: Rock
+Genre: Rock
+mtime: 1342109279
+song_end
+song_begin: The National - Racing Like a Pro.mp3
+Time: 206
+Artist: The National
+AlbumArtist: The National
+Title: Racing Like a Pro
+Album: Boxer
+Track: 10
+Date: 2007
+Genre: Rock
+Genre: Rock
+mtime: 1342109288
+song_end
+song_begin: The National - ADA.mp3
+Time: 245
+Artist: The National
+AlbumArtist: The National
+Title: ADA
+Album: Boxer
+Track: 11
+Date: 2007
+Genre: Rock
+Genre: Rock
+mtime: 1342109285
+song_end
+song_begin: The National - Gospel.mp3
+Time: 269
+Artist: The National
+AlbumArtist: The National
+Title: Gospel
+Album: Boxer
+Track: 12
+Date: 2007
+Genre: Rock
+Genre: Rock
+mtime: 1342109284
+song_end
+end: The National Discography/The National - Boxer
+directory: The National - Cherry Tree
+mtime: 1342109281
+begin: The National Discography/The National - Cherry Tree
+song_begin: The National - Wasp Nest.mp3
+Time: 201
+Artist: The National
+AlbumArtist: The National
+Title: Wasp Nest
+Album: Cherry Tree
+Track: 01
+Date: 2004
+Genre: Electronica
+Composer: The National
+mtime: 1342109263
+song_end
+song_begin: The National - All The Wine.mp3
+Time: 200
+Artist: The National
+AlbumArtist: The National
+Title: All The Wine
+Album: Cherry Tree
+Track: 02
+Date: 2004
+Genre: Electronica
+Composer: The National
+mtime: 1342109267
+song_end
+song_begin: The National - All Dolled-Up In Straps.mp3
+Time: 251
+Artist: The National
+AlbumArtist: The National
+Title: All Dolled-Up In Straps
+Album: Cherry Tree
+Track: 03
+Date: 2004
+Genre: Electronica
+Composer: The National
+mtime: 1342109276
+song_end
+song_begin: The National - Cherry Tree.mp3
+Time: 267
+Artist: The National
+AlbumArtist: The National
+Title: Cherry Tree
+Album: Cherry Tree
+Track: 04
+Date: 2004
+Genre: Electronica
+Composer: The National
+mtime: 1342109281
+song_end
+song_begin: The National - About Today.mp3
+Time: 250
+Artist: The National
+AlbumArtist: The National
+Title: About Today
+Album: Cherry Tree
+Track: 05
+Date: 2004
+Genre: Electronica
+Composer: The National
+mtime: 1342109221
+song_end
+song_begin: The National - Murder Me Rachael (Live).mp3
+Time: 216
+Artist: The National
+AlbumArtist: The National
+Title: Murder Me Rachael (Live)
+Album: Cherry Tree
+Track: 06
+Date: 2004
+Genre: Electronica
+Composer: The National
+mtime: 1342109278
+song_end
+song_begin: The National - A Reasonable Man (I Don't Mind).mp3
+Time: 321
+Artist: The National
+AlbumArtist: The National
+Title: A Reasonable Man (I Don't Mind)
+Album: Cherry Tree
+Track: 07
+Date: 2004
+Genre: Electronica
+Composer: Padma Newsome
+mtime: 1342109266
+song_end
+end: The National Discography/The National - Cherry Tree
+directory: The National - Sad Songs for Dirty Lovers
+mtime: 1342109283
+begin: The National Discography/The National - Sad Songs for Dirty Lovers
+song_begin: The National - Cardinal Song.mp3
+Time: 377
+Artist: The National
+AlbumArtist: The National
+Title: Cardinal Song
+Album: Sad Songs for Dirty Lovers
+Track: 01
+Date: 2003
+Genre: Rock
+Genre: Rock
+mtime: 1342109283
+song_end
+song_begin: The National - Slipping Husband.mp3
+Time: 202
+Artist: The National
+AlbumArtist: The National
+Title: Slipping Husband
+Album: Sad Songs for Dirty Lovers
+Track: 02
+Date: 2003
+Genre: Rock
+Genre: Rock
+mtime: 1342109276
+song_end
+song_begin: The National - 90-Mile Water Wall.mp3
+Time: 224
+Artist: The National
+AlbumArtist: The National
+Title: 90-Mile Water Wall
+Album: Sad Songs for Dirty Lovers
+Track: 03
+Date: 2003
+Genre: Rock
+Genre: Rock
+mtime: 1342109278
+song_end
+song_begin: The National - It Never Happened.mp3
+Time: 277
+Artist: The National
+AlbumArtist: The National
+Title: It Never Happened
+Album: Sad Songs for Dirty Lovers
+Track: 04
+Date: 2003
+Genre: Rock
+Genre: Rock
+mtime: 1342109279
+song_end
+song_begin: The National - Murder Me Rachael.mp3
+Time: 225
+Artist: The National
+AlbumArtist: The National
+Title: Murder Me Rachael
+Album: Sad Songs for Dirty Lovers
+Track: 05
+Date: 2003
+Genre: Rock
+Genre: Rock
+Composer: The National
+mtime: 1342109268
+song_end
+song_begin: The National - Thirsty.mp3
+Time: 228
+Artist: The National
+AlbumArtist: The National
+Title: Thirsty
+Album: Sad Songs for Dirty Lovers
+Track: 06
+Date: 2003
+Genre: Rock
+Genre: Rock
+mtime: 1342109279
+song_end
+song_begin: The National - Available.mp3
+Time: 200
+Artist: The National
+AlbumArtist: The National
+Title: Available
+Album: Sad Songs for Dirty Lovers
+Track: 07
+Date: 2003
+Genre: Rock
+Genre: Rock
+mtime: 1342109277
+song_end
+song_begin: The National - Sugar Wife.mp3
+Time: 141
+Artist: The National
+AlbumArtist: The National
+Title: Sugar Wife
+Album: Sad Songs for Dirty Lovers
+Track: 08
+Date: 2003
+Genre: Rock
+Genre: Rock
+mtime: 1342109279
+song_end
+song_begin: The National - Trophy Wife.mp3
+Time: 213
+Artist: The National
+AlbumArtist: The National
+Title: Trophy Wife
+Album: Sad Songs for Dirty Lovers
+Track: 09
+Date: 2003
+Genre: Rock
+Genre: Rock
+mtime: 1342109275
+song_end
+song_begin: The National - Fashion Coat.mp3
+Time: 122
+Artist: The National
+AlbumArtist: The National
+Title: Fashion Coat
+Album: Sad Songs for Dirty Lovers
+Track: 10
+Date: 2003
+Genre: Rock
+Genre: Rock
+mtime: 1342109252
+song_end
+song_begin: The National - Patterns of Fairytales.mp3
+Time: 223
+Artist: The National
+AlbumArtist: The National
+Title: Patterns of Fairytales
+Album: Sad Songs for Dirty Lovers
+Track: 11
+Date: 2003
+Genre: Rock
+Genre: Rock
+mtime: 1342109260
+song_end
+song_begin: The National - Lucky You.mp3
+Time: 262
+Artist: The National
+AlbumArtist: The National
+Title: Lucky You
+Album: Sad Songs for Dirty Lovers
+Track: 12
+Date: 2003
+Genre: Rock
+Genre: Rock
+mtime: 1342109265
+song_end
+end: The National Discography/The National - Sad Songs for Dirty Lovers
+directory: The National - The Alligator
+mtime: 1342109288
+begin: The National Discography/The National - The Alligator
+song_begin: The National - Secret Meeting.mp3
+Time: 225
+Artist: The National
+AlbumArtist: The National
+Title: Secret Meeting
+Album: The Alligator
+Track: 01
+Date: 2006
+Genre: Rock
+Genre: Rock
+mtime: 1342109272
+song_end
+song_begin: The National - Karen.mp3
+Time: 239
+Artist: The National
+AlbumArtist: The National
+Title: Karen
+Album: The Alligator
+Track: 02
+Date: 2006
+Genre: Rock
+Genre: Rock
+mtime: 1342109288
+song_end
+song_begin: The National - Lit Up.mp3
+Time: 175
+Artist: The National
+AlbumArtist: The National
+Title: Lit Up
+Album: The Alligator
+Track: 03
+Date: 2006
+Genre: Rock
+Genre: Rock
+mtime: 1342109277
+song_end
+song_begin: The National - Looking For Astronauts.mp3
+Time: 203
+Artist: The National
+AlbumArtist: The National
+Title: Looking For Astronauts
+Album: The Alligator
+Track: 04
+Date: 2006
+Genre: Rock
+Genre: Rock
+mtime: 1342109277
+song_end
+song_begin: The National - Daughters Of The Soho Riots.mp3
+Time: 239
+Artist: The National
+AlbumArtist: The National
+Title: Daughters Of The Soho Riots
+Album: The Alligator
+Track: 05
+Date: 2006
+Genre: Rock
+Genre: Rock
+mtime: 1342109273
+song_end
+song_begin: The National - Baby, We'll Be Fine.mp3
+Time: 201
+Artist: The National
+AlbumArtist: The National
+Title: Baby, We'll Be Fine
+Album: The Alligator
+Track: 06
+Date: 2006
+Genre: Rock
+Genre: Rock
+mtime: 1342109276
+song_end
+song_begin: The National - Friend Of Mine.mp3
+Time: 205
+Artist: The National
+AlbumArtist: The National
+Title: Friend Of Mine
+Album: The Alligator
+Track: 07
+Date: 2006
+Genre: Rock
+Genre: Rock
+mtime: 1342109260
+song_end
+song_begin: The National - Val Jester.mp3
+Time: 181
+Artist: The National
+AlbumArtist: The National
+Title: Val Jester
+Album: The Alligator
+Track: 08
+Date: 2006
+Genre: Rock
+Genre: Rock
+mtime: 1342109261
+song_end
+song_begin: The National - All The Wine.mp3
+Time: 195
+Artist: The National
+AlbumArtist: The National
+Title: All The Wine
+Album: The Alligator
+Track: 09
+Date: 2006
+Genre: Rock
+Genre: Rock
+mtime: 1342109254
+song_end
+song_begin: The National - Abel.mp3
+Time: 217
+Artist: The National
+AlbumArtist: The National
+Title: Abel
+Album: The Alligator
+Track: 10
+Date: 2006
+Genre: Rock
+Genre: Rock
+mtime: 1342109277
+song_end
+song_begin: The National - Geese Of Beverly Road, The.mp3
+Time: 297
+Artist: The National
+AlbumArtist: The National
+Title: Geese Of Beverly Road, The
+Album: The Alligator
+Track: 11
+Date: 2006
+Genre: Rock
+Genre: Rock
+mtime: 1342109280
+song_end
+song_begin: The National - City Middle.mp3
+Time: 268
+Artist: The National
+AlbumArtist: The National
+Title: City Middle
+Album: The Alligator
+Track: 12
+Date: 2006
+Genre: Rock
+Genre: Rock
+mtime: 1342109254
+song_end
+song_begin: The National - Mr. November.mp3
+Time: 237
+Artist: The National
+AlbumArtist: The National
+Title: Mr. November
+Album: The Alligator
+Track: 13
+Date: 2006
+Genre: Rock
+Genre: Rock
+mtime: 1342109285
+song_end
+end: The National Discography/The National - The Alligator
+directory: The National - The National
+mtime: 1342109284
+begin: The National Discography/The National - The National
+song_begin: The National - Beautiful Head.mp3
+Time: 189
+Artist: The National
+AlbumArtist: The National
+Title: Beautiful Head
+Album: The National
+Track: 1
+Date: 2001
+Genre: Rock
+Composer: Aaron Dessner/Bryan Devendorf/Matt Berninger/Scott Devendorf
+mtime: 1342109255
+song_end
+song_begin: The National - Cold Girl Fever.mp3
+Time: 246
+Artist: The National
+AlbumArtist: The National
+Title: Cold Girl Fever
+Album: The National
+Track: 2
+Date: 2001
+Genre: Rock
+Composer: Aaron Dessner/Bryan Devendorf/Matt Berninger/Scott Devendorf
+mtime: 1342109255
+song_end
+song_begin: The National - The Perfect Song.mp3
+Time: 195
+Artist: The National
+AlbumArtist: The National
+Title: The Perfect Song
+Album: The National
+Track: 3
+Date: 2001
+Genre: Rock
+Composer: Aaron Dessner/Bryan Devendorf/Matt Berninger/Scott Devendorf
+mtime: 1342109277
+song_end
+song_begin: The National - American Mary.mp3
+Time: 243
+Artist: The National
+AlbumArtist: The National
+Title: American Mary
+Album: The National
+Track: 4
+Date: 2001
+Genre: Rock
+Composer: Aaron Dessner/Bryan Devendorf/Matt Berninger/Scott Devendorf
+mtime: 1342109259
+song_end
+song_begin: The National - Son.mp3
+Time: 320
+Artist: The National
+AlbumArtist: The National
+Title: Son
+Album: The National
+Track: 5
+Date: 2001
+Genre: Rock
+Composer: Aaron Dessner/Bryan Devendorf/Matt Berninger/Scott Devendorf
+mtime: 1342109277
+song_end
+song_begin: The National - Pay For Me.mp3
+Time: 203
+Artist: The National
+AlbumArtist: The National
+Title: Pay For Me
+Album: The National
+Track: 6
+Date: 2001
+Genre: Rock
+Composer: Aaron Dessner/Bryan Devendorf/Matt Berninger/Scott Devendorf
+mtime: 1342109244
+song_end
+song_begin: The National - Bitters & Absolut.mp3
+Time: 240
+Artist: The National
+AlbumArtist: The National
+Title: Bitters & Absolut
+Album: The National
+Track: 7
+Date: 2001
+Genre: Rock
+Composer: Aaron Dessner/Bryan Devendorf/Matt Berninger/Scott Devendorf
+mtime: 1342109262
+song_end
+song_begin: The National - John's Star.mp3
+Time: 185
+Artist: The National
+AlbumArtist: The National
+Title: John's Star
+Album: The National
+Track: 8
+Date: 2001
+Genre: Rock
+Composer: Aaron Dessner/Bryan Devendorf/Matt Berninger/Scott Devendorf
+mtime: 1342109266
+song_end
+song_begin: The National - Watching You Well.mp3
+Time: 183
+Artist: The National
+AlbumArtist: The National
+Title: Watching You Well
+Album: The National
+Track: 9
+Date: 2001
+Genre: Rock
+Composer: Aaron Dessner/Bryan Devendorf/Matt Berninger/Scott Devendorf
+mtime: 1342109249
+song_end
+song_begin: The National - Theory of the Crows.mp3
+Time: 277
+Artist: The National
+AlbumArtist: The National
+Title: Theory of the Crows
+Album: The National
+Track: 10
+Date: 2001
+Genre: Rock
+Composer: Aaron Dessner/Bryan Devendorf/Matt Berninger/Scott Devendorf
+mtime: 1342109271
+song_end
+song_begin: The National - 29 Years.mp3
+Time: 171
+Artist: The National
+AlbumArtist: The National
+Title: 29 Years
+Album: The National
+Track: 11
+Date: 2001
+Genre: Rock
+Composer: Aaron Dessner/Bryan Devendorf/Matt Berninger/Scott Devendorf
+mtime: 1342109284
+song_end
+song_begin: The National - Anna Freud.mp3
+Time: 187
+Artist: The National
+AlbumArtist: The National
+Title: Anna Freud
+Album: The National
+Track: 12
+Date: 2001
+Genre: Rock
+Composer: Aaron Dessner/Bryan Devendorf/Matt Berninger/Scott Devendorf
+mtime: 1342109246
+song_end
+end: The National Discography/The National - The National
+end: The National Discography

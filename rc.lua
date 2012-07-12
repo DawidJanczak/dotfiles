@@ -147,21 +147,16 @@ vicious.register(cpu_widget, vicious.widgets.cpu, "$1")
 cpu_txt = widget({ type = "textbox" })
 cpu_txt.text = "cpu"
 
--- Shell-fm track info widget
-shellfm_string = function(command)
-    return "echo \"" .. command .. "\" | socat - TCP:localhost:54311"
+mpd_current = function()
+    local read_info = awful.util.pread("ncmpcpp --now-playing")
+    return awful.util.escape(read_info)
 end
 
-shellfm_current = function()
-    local read_info = awful.util.pread(shellfm_string("info %a - %t"))
-    return "Now playing: " .. awful.util.escape(read_info)
-end
+mpd = widget({ type = "textbox" })
+vicious.register(mpd, mpd_current)
 
-shellfm = widget({ type = "textbox" })
-vicious.register(shellfm, shellfm_current)
-
-shellfm_icon = widget({ type = "imagebox" })
-shellfm_icon.image = image(beautiful.widget_shellfm)
+music_icon = widget({ type = "imagebox" })
+music_icon.image = image(beautiful.widget_music)
 
 -- Volume widget
 volumecfg = {}
@@ -297,7 +292,7 @@ for s = 1, screen.count() do
         separator, cpu_widget.widget, cpu_txt, separator,
         s == 1 and mysystray or nil,
         separator, gmail_widget, gmail_icon,
-        separator, shellfm_icon, shellfm, shellfm_icon,
+        separator, music_icon, mpd, music_icon,
         mytasklist[s],
         layout = awful.widget.layout.horizontal.rightleft
     }
@@ -326,10 +321,14 @@ globalkeys = awful.util.table.join(
     awful.key({ }, "XF86AudioLowerVolume", function() volumecfg.down() end),
     awful.key({ }, "XF86AudioMute", function() volumecfg.toggle() end),
 
-    -- Skip to the next song in shell-fm
-    awful.key({ "Control", "Mod1" }, "Next", function() awful.util.spawn_with_shell(shellfm_string("skip")) end),
-    -- Pause shell-fm
-    awful.key({ "Control", "Mod1" }, "Home", function() awful.util.spawn_with_shell(shellfm_string("pause")) end),
+    -- Skip to the next song with ncmpcpp
+    awful.key({ "Control", "Mod1" }, "Next", function() awful.util.spawn_with_shell("ncmpcpp next") end),
+    -- Skip to the previous song with ncmpcpp
+    awful.key({ "Control", "Mod1" }, "Prior", function() awful.util.spawn_with_shell("ncmpcpp prev") end),
+    -- Pause ncmpcpp
+    awful.key({ "Control", "Mod1" }, "Home", function() awful.util.spawn_with_shell("ncmpcpp pause") end),
+    -- Play ncmpcpp
+    awful.key({ "Control", "Mod1" }, "Insert", function() awful.util.spawn_with_shell("ncmpcpp play") end),
 
     awful.key({ modkey,           }, "j",
         function ()

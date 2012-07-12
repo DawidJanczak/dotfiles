@@ -132,7 +132,7 @@ theme.widget_cpu = os.getenv("HOME") .. "/.config/awesome/icons/processor.png"
 
 theme.widget_vol = os.getenv("HOME") .. "/.config/awesome/icons/speaker-volume.png"
 
-theme.widget_shellfm = os.getenv("HOME") .. "/.config/awesome/icons/music.png"
+theme.widget_music = os.getenv("HOME") .. "/.config/awesome/icons/music.png"
 
 theme.widget_gmail = os.getenv("HOME") .. "/.config/awesome/icons/gmail.png"
 
