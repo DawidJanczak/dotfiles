@@ -197,9 +197,9 @@ input {
 audio_output {
         type            "alsa"
         name            "MPD ALSA"
-        mixer_type      "software"
-        mixer_device    "surround40"
-        mixer_control   "PCM"
+        #mixer_type      "software"
+        #mixer_device    "vdownmix"
+        #mixer_control   "PCM"
 }
 
 #

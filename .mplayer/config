@@ -73,7 +73,7 @@
 # audio settings #
 ##################
 
-ao=alsa:device=default
+#ao=alsa:device=default
 # Specify default audio driver (see -ao help for a list).
 #ao=oss
 
