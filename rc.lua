@@ -315,7 +315,7 @@ globalkeys = awful.util.table.join(
 
     awful.key({ "Control", "Mod1" }, "Up", function() volumecfg.up() end),
     awful.key({ "Control", "Mod1" }, "Down", function() volumecfg.down() end),
-    awful.key({ "Control", "Mod1" }, "End", function() volumecfg.toggle() end),
+    awful.key({ "Control", "Mod1" }, "End", function() awful.util.spawn_with_shell("ncmpcpp stop") end),
     -- Same as above only with function keys
     awful.key({ }, "XF86AudioRaiseVolume", function() volumecfg.up() end),
     awful.key({ }, "XF86AudioLowerVolume", function() volumecfg.down() end),
