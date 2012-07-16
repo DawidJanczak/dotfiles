@@ -73,8 +73,8 @@ layouts =
 -- {{{ Tags
 -- Define a tag table which hold all screen tags.
 tags = {
-    names = { "www", "dev", "kadu", "music", 5, 6, 7, 8, 9 },
-    layout = { layouts[4], layouts[4], layouts[3], layouts[4], layouts[2], layouts[2], layouts[2], layouts[2], layouts[2] }
+    names = { "www", "dev", "kadu", "music", "torrent", 6, 7, 8, 9 },
+    layout = { layouts[8], layouts[4], layouts[3], layouts[4], layouts[2], layouts[2], layouts[2], layouts[2], layouts[2] }
 }
 for s = 1, screen.count() do
     -- Each screen has its own tag table.
@@ -472,7 +472,9 @@ awful.rules.rules = {
       properties = { tag = tags[1][1] } },
     { rule = { class = "Kadu" },
       properties = { tag = tags[1][3] },
-      callback = awful.client.setslave }
+      callback = awful.client.setslave },
+    { rule = { class = "Transmission-qt" },
+      properties = { tag = tags[1][5] } }
 }
 -- }}}
 
