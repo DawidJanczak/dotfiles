@@ -23,6 +23,7 @@ alias qiv='qiv -f -l -t -i $1'
 alias sudo='sudo -E'
 alias vi=vim
 alias gitcom='git commit -a'
+alias gitst='git status'
 alias psack='ps aux | ack $1'
 alias expack='export | ack $1'
 alias lack='l | ack $1'
