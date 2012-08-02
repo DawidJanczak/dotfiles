@@ -23,6 +23,8 @@ xset -dpms
 # Add some fonts location
 xset +fp /usr/share/fonts/local
 xset fp rehash
+# Run devmon in background
+devmon &
 # Source Xresources
 xrdb -merge ~/.Xresources
 exec awesome
