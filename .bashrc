@@ -33,6 +33,7 @@ alias delete_all_but="$HOME/scripts/delete_all_but.rb $@"
 alias nara="sudo shutdown -hP now"
 
 # Sourcing git completion file
+source /usr/share/git/git-prompt.sh
 source /usr/share/git/completion/git-completion.bash
 
 eval "$(rbenv init -)"
