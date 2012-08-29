@@ -14,6 +14,7 @@ export TERM=xterm-256color
 export EDITOR=vim
 export GIT_PS1_SHOWDIRTYSTATE="OK"
 export PATH="$HOME/scripts:$HOME/.gem/ruby/1.9.1/bin:$PATH"
+export LANG=en_US.utf8
 
 # Command prompt in git shows branch name and working copy status
 PS1='[\u@\h \W$(__git_ps1 " (%s)")]# '
@@ -31,6 +32,7 @@ alias filename="$HOME/scripts/filename.rb $1"
 alias delete_all_but="$HOME/scripts/delete_all_but.rb $@"
 
 # Sourcing git completion file
+source /usr/share/git/git-prompt.sh
 source /usr/share/git/completion/git-completion.bash
 
 # Keychain activation.
