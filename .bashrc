@@ -10,7 +10,7 @@ alias l='ls -al'
 export TERM=xterm-256color
 export EDITOR=vim
 export GIT_PS1_SHOWDIRTYSTATE="OK"
-export PATH="$HOME/.gem/ruby/1.9.1/bin:$HOME/scripts:$PATH"
+export PATH="/usr/bin/vendor_perl:$HOME/.gem/ruby/1.9.1/bin:$HOME/scripts:$PATH"
 export HISTSIZE=2000
 export LANG=en_US.utf-8
 
