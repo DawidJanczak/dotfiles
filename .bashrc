@@ -10,7 +10,7 @@ alias l='ls -al'
 export TERM=xterm-256color
 export EDITOR=vim
 export GIT_PS1_SHOWDIRTYSTATE="OK"
-export PATH="$HOME/.rbenv/bin:$PATH"
+export PATH="$HOME/.rbenv/bin:$HOME/scripts:$PATH"
 export HISTSIZE=2000
 export LANG=en_US.utf-8
 
@@ -28,19 +28,17 @@ alias gitst='git status'
 alias psack='ps aux | ack $1'
 alias expack='export | ack $1'
 alias lack='l | ack $1'
-alias lock='xscreensaver-command -lock'
-alias filename="$HOME/scripts/filename.rb $1"
-alias delete_all_but="$HOME/scripts/delete_all_but.rb $@"
 alias nara="sudo shutdown -hP now"
 
 # Sourcing git completion file
 source /usr/share/git/git-prompt.sh
 source /usr/share/git/completion/git-completion.bash
 
-eval "$(rbenv init -)"
-
 # Keychain activation.
 eval $(keychain --eval --agents ssh -Q --quiet ~/.ssh/id_rsa)
+
+# Alias git as hub.
+eval "$(hub alias -s)"
 
 # Clear screen with ctrl+l
 bind -m vi-insert "\C-l":clear-screen
