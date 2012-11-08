@@ -7,7 +7,7 @@ require("beautiful")
 -- Notification library
 require("naughty")
 -- Library to use in widgets
-require("vicious")
+vicious = require("vicious")
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
