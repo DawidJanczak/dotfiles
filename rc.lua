@@ -42,7 +42,6 @@ beautiful.init("dotfiles/theme.lua")
 terminal = "uxterm"
 editor = os.getenv("EDITOR") or "nano"
 editor_cmd = terminal .. " -e " .. editor
-wrling_cmd = terminal .. " -e ssh wrling33"
 
 -- Default modkey.
 -- Usually, Mod4 is the key with a logo between Control and Alt.
@@ -271,7 +270,7 @@ for s = 1, screen.count() do
                                           end, mytasklist.buttons)
 
     -- Create the wibox
-    mywibox[s] = awful.wibox({ position = "top", screen = s, height="20" })
+    mywibox[s] = awful.wibox({ position = "top", screen = s })
     -- Add widgets to the wibox - order matters
     mywibox[s].widgets = {
         {
@@ -339,26 +338,18 @@ globalkeys = awful.util.table.join(
         end),
 
     -- Standard program
-    awful.key({ modkey,           }, "Return", 
-    function () 
-        --if awful.tag.getidx() == 4 then
-            --naughty.notify({ text = "xterm -e whoami" })
-            --awful.util.spawn_with_shell("/home/janczak/test.rb")
-        --else
-            awful.util.spawn(terminal) 
-        --end
-    end),
-        awful.key({ modkey, "Control" }, "r", awesome.restart),
-    awful.key({ modkey, "Shift"   }, "q", awesome.quit),
+    awful.key({ modkey,           }, "Return",  function () awful.util.spawn(terminal) end),
+    awful.key({ modkey, "Control" }, "r",       awesome.restart),
+    awful.key({ modkey, "Shift"   }, "q",       awesome.quit),
 
-    awful.key({ modkey,           }, "l",     function () awful.tag.incmwfact( 0.05)    end),
-    awful.key({ modkey,           }, "h",     function () awful.tag.incmwfact(-0.05)    end),
-    awful.key({ modkey, "Shift"   }, "h",     function () awful.tag.incnmaster( 1)      end),
-    awful.key({ modkey, "Shift"   }, "l",     function () awful.tag.incnmaster(-1)      end),
-    awful.key({ modkey, "Control" }, "h",     function () awful.tag.incncol( 1)         end),
-    awful.key({ modkey, "Control" }, "l",     function () awful.tag.incncol(-1)         end),
-    awful.key({ modkey,           }, "space", function () awful.layout.inc(layouts,  1) end),
-    awful.key({ modkey, "Shift"   }, "space", function () awful.layout.inc(layouts, -1) end),
+    awful.key({ modkey,           }, "l",       function () awful.tag.incmwfact( 0.05)    end),
+    awful.key({ modkey,           }, "h",       function () awful.tag.incmwfact(-0.05)    end),
+    awful.key({ modkey, "Shift"   }, "h",       function () awful.tag.incnmaster( 1)      end),
+    awful.key({ modkey, "Shift"   }, "l",       function () awful.tag.incnmaster(-1)      end),
+    awful.key({ modkey, "Control" }, "h",       function () awful.tag.incncol( 1)         end),
+    awful.key({ modkey, "Control" }, "l",       function () awful.tag.incncol(-1)         end),
+    awful.key({ modkey,           }, "space",   function () awful.layout.inc(layouts,  1) end),
+    awful.key({ modkey, "Shift"   }, "space",   function () awful.layout.inc(layouts, -1) end),
 
     awful.key({ modkey, "Control" }, "n", awful.client.restore),
 

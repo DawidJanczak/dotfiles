@@ -8,7 +8,7 @@
 
 -- {{{ Main
 theme = {}
-theme.wallpaper_cmd = { "awsetbg .config/awesome/wallpaper-2020116.jpg" }
+theme.wallpaper_cmd = { "awsetbg /home/janczak/.config/awesome/wallpaper-2020116.jpg" }
 -- }}}
 
 -- {{{ Styles
