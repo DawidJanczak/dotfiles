@@ -17,6 +17,25 @@ fi
 # exec startkde
 # exec startxfce4
 # ...or the Window Manager of your choice
+
+# Mute PC speaker
+xset -b
+
+# Turn off energy saving on monitor
+xset -dpms
+
+# Add some fonts location
+xset +fp /usr/share/fonts/local
+xset fp rehash
+
+# Run devmon in background
+devmon &
+
+# Source Xresources
+xrdb -merge ~/.Xresources
+
+# Set polish keyboard map for X applications
 setxkbmap pl
-/home/janczak/scripts/set_output.sh
+
+# Start awesome
 exec awesome
