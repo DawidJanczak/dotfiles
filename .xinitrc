@@ -40,5 +40,9 @@ setxkbmap pl
 # Setup display for dual screen
 xrandr --output HDMI2 --auto --output LVDS1 --auto --right-of HDMI2
 
+# Start wireless network
+sudo wpa_supplicant -B -Dwext -i wlan0 -c /etc/wpa_supplicant/wpa_supplicant.conf
+sudo dhcpcd
+
 # Start awesome
 exec awesome
