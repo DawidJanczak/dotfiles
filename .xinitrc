@@ -37,5 +37,8 @@ xrdb -merge ~/.Xresources
 # Set polish keyboard map for X applications
 setxkbmap pl
 
+# Setup display for dual screen
+xrandr --output HDMI2 --auto --output LVDS1 --auto --right-of HDMI2
+
 # Start awesome
 exec awesome
