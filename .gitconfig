@@ -1,6 +1,6 @@
 [user]
 	email = dawid.janczak@gmail.com
-	name = Dawid Janczak
+	name = DawidJanczak
 [diff]
   external = /home/janczak/scripts/git_vimdiff.sh
 [pager]
@@ -10,3 +10,5 @@
 	merge = refs/heads/master
 [core]
 	excludesfile = /home/janczak/.gitignore_global
+[push]
+	default = simple
