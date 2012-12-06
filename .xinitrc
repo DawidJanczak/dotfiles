@@ -38,11 +38,14 @@ xrdb -merge ~/.Xresources
 setxkbmap pl
 
 # Setup display for dual screen
-xrandr --output HDMI2 --auto --output LVDS1 --auto --right-of HDMI2
+# Use config at /etc/X11/xorg.conf
+#xrandr --output HDMI2 --auto --output LVDS1 --auto --right-of HDMI2
 
-# Start wireless network
-sudo wpa_supplicant -B -Dwext -i wlan0 -c /etc/wpa_supplicant/wpa_supplicant.conf
 sudo dhcpcd
+sudo wpa_supplicant -B -Dwext -i wlan0 -c /etc/wpa_supplicant/wpa_supplicant.conf
+
+# Run elasticsearch
+/home/janczak/elasticsearch-YGT/usr/share/elasticsearch/bin/elasticsearch -f &
 
 # Start awesome
 exec awesome

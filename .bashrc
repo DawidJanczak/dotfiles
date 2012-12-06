@@ -42,3 +42,7 @@ eval "$(hub alias -s)"
 
 # Clear screen with ctrl+l
 bind -m vi-insert "\C-l":clear-screen
+
+rvm_project_rvmrc=1
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+PATH=$PATH:$HOME/.rvm/bin:$HOME/.gem/jruby/1.9/bin # Add RVM to PATH for scripting
