@@ -79,3 +79,4 @@
 URxvt.scrollstyle: rxvt
 URxvt*.transparent: true
 URxvt*.shading: 100
+URxvt.font: fixed
