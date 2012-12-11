@@ -8,7 +8,7 @@
 
 -- {{{ Main
 theme = {}
-theme.wallpaper_cmd = { "awsetbg /home/janczak/.config/awesome/wallpaper-2020116.jpg" }
+theme.wallpaper_cmd = { "awsetbg " .. awful.util.getdir("config") .. "/wallpaper.jpg" }
 -- }}}
 
 -- {{{ Styles
@@ -123,16 +123,16 @@ theme.titlebar_maximized_button_normal_inactive = "/usr/share/awesome/themes/zen
 -- }}}
 
 -- {{{ Widgets
-theme.widget_net_down = "/home/janczak/.config/awesome/icons/download-linux.png"
-theme.widget_net_up = "/home/janczak/.config/awesome/icons/upload-linux.png"
+theme.widget_net_down = ""
+theme.widget_net_up = ""
 
-theme.widget_mem = "/home/janczak/.config/awesome/icons/memory.png"
+theme.widget_mem = ""
 
-theme.widget_cpu = "/home/janczak/.config/awesome/icons/processor.png"
+theme.widget_cpu = ""
 
-theme.widget_bat = "/home/janczak/.config/awesome/icons/battery.png"
+theme.widget_bat = ""
 
-theme.widget_vol = "/home/janczak/.config/awesome/icons/speaker-volume.png"
+theme.widget_vol = ""
 
 -- }}}
 -- }}}
