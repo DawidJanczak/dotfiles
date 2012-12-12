@@ -80,3 +80,8 @@ URxvt.scrollstyle: rxvt
 URxvt*.transparent: true
 URxvt*.shading: 100
 URxvt.font: fixed
+
+URxvt.perl-ext-common: default,url-select
+URxvt.keysym.M-u: perl:url-select:select_next
+URxvt.url-select.launcher: chromium
+URxvt.url-select.underLine: true
