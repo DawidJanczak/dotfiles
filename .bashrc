@@ -16,8 +16,9 @@ export LANG=en_US.utf-8
 
 # Command prompt in git shows branch name and working copy status
 BROWN="\[\033[0;33m\]"
+GREEN="\[\033[0;36m\]"
 GREY="\[\033[m\]"
-PS1=$GREY'[\u@\h \w'$BROWN'$(__git_ps1 " (%s)")'$GREY'\[\]]# '
+PS1=$GREY'[\u@\h '$BROWN'\w'$GREEN'$(__git_ps1 " (%s)")'$GREY'\[\]]# '
 
 # Start qiv with: fulscreen, atorotate, scaling large images down and no status bar.
 alias qiv='qiv -f -l -t -i $1'
