@@ -127,7 +127,7 @@ up_icon:set_image(beautiful.widget_net_up)
 
 ---- Separator
 separator = wibox.widget.textbox()
-separator:set_text(" ")
+separator:set_text("  ")
 
 ---- Memory usage progressbar widget
 mem_widget = awful.widget.progressbar()
@@ -137,7 +137,7 @@ mem_widget:set_vertical(true)
 mem_widget:set_background_color("#494B4F")
 mem_widget:set_border_color(nil)
 --TODO set gradient someday
-mem_widget:set_color(gears.color.parse_color("#00FF00"))
+mem_widget:set_color("#00FF00")
 vicious.register(mem_widget, vicious.widgets.mem, "$1")
 ---- Icon
 mem_icon = wibox.widget.imagebox()
@@ -155,18 +155,18 @@ cpu_icon = wibox.widget.imagebox()
 cpu_icon:set_image(beautiful.widget_cpu)
 
 ---- Battery usage progressbar widget
---bat_widget = awful.widget.progressbar()
---bat_widget:set_width(8)
---bat_widget:set_height(20)
---bat_widget:set_vertical(true)
---bat_widget:set_background_color("#494B4F")
---bat_widget:set_border_color(nil)
---bat_widget:set_color("#AECF96")
+bat_widget = awful.widget.progressbar()
+bat_widget:set_width(8)
+bat_widget:set_height(20)
+bat_widget:set_vertical(true)
+bat_widget:set_background_color("#494B4F")
+bat_widget:set_border_color(nil)
+bat_widget:set_color("#AECF96")
 --bat_widget:set_gradient_colors({ "#AECF96", "#88A175", "#FF5656" })
---vicious.register(bat_widget, vicious.widgets.bat, "$2", 60, "BAT0")
-
---bat_icon = widget({ type = "imagebox" })
---bat_icon.image = image(beautiful.widget_bat)
+vicious.register(bat_widget, vicious.widgets.bat, "$2", 60, "BAT0")
+---- Icon
+bat_icon = wibox.widget.imagebox()
+bat_icon:set_image(beautiful.widget_bat)
 
 ---- Volume widget
 --volumecfg = {}
@@ -312,6 +312,9 @@ for s = 1, screen.count() do
     -- Widgets that are aligned to the right
     local right_layout = wibox.layout.fixed.horizontal()
     if s == 1 then right_layout:add(wibox.widget.systray()) end
+    right_layout:add(separator)
+    right_layout:add(bat_icon)
+    right_layout:add(bat_widget)
     right_layout:add(separator)
     right_layout:add(cpu_icon)
     right_layout:add(cpu_widget)

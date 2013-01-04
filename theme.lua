@@ -133,7 +133,7 @@ theme.widget_mem = icon_dir .. "widget_mem.png"
 
 theme.widget_cpu = icon_dir .. "widget_cpu.png"
 
-theme.widget_bat = ""
+theme.widget_bat = icon_dir .. "widget_bat.png"
 
 theme.widget_vol = ""
 
