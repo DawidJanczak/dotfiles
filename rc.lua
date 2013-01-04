@@ -476,6 +476,7 @@ root.keys(globalkeys)
 
 -- {{{ Tag properties
 awful.tag.setproperty(tags[1][3], "mwfact", 0.33)
+awful.tag.setproperty(tags[1][2], "mwfact", 0.7)
 -- }}}
 
 -- {{{ Rules
