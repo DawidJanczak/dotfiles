@@ -129,7 +129,7 @@ theme.titlebar_maximized_button_normal_inactive = "/usr/share/awesome/themes/zen
 theme.widget_net_down = icon_dir .. "widget_net_down.png"
 theme.widget_net_up = icon_dir .. "widget_net_up.png"
 
-theme.widget_mem = ""
+theme.widget_mem = icon_dir .. "widget_mem.png"
 
 theme.widget_cpu = ""
 

@@ -130,15 +130,18 @@ separator = wibox.widget.textbox()
 separator:set_text(" ")
 
 ---- Memory usage progressbar widget
---mem_widget = awful.widget.progressbar()
---mem_widget:set_width(8)
---mem_widget:set_height(20)
---mem_widget:set_vertical(true)
---mem_widget:set_background_color("#494B4F")
---mem_widget:set_border_color(nil)
---mem_widget:set_color("#AECF96")
---mem_widget:set_gradient_colors({ "#AECF96", "#88A175", "#FF5656" })
---vicious.register(mem_widget, vicious.widgets.mem, "$1")
+mem_widget = awful.widget.progressbar()
+mem_widget:set_width(8)
+mem_widget:set_height(20)
+mem_widget:set_vertical(true)
+mem_widget:set_background_color("#494B4F")
+mem_widget:set_border_color(nil)
+--TODO set gradient someday
+mem_widget:set_color(gears.color.parse_color("#00FF00"))
+vicious.register(mem_widget, vicious.widgets.mem, "$1")
+---- Icon
+mem_icon = wibox.widget.imagebox()
+mem_icon:set_image(beautiful.widget_mem)
 
 --mem_txt = widget({ type = "textbox" })
 --mem_txt.text = "mem"
@@ -312,6 +315,9 @@ for s = 1, screen.count() do
     -- Widgets that are aligned to the right
     local right_layout = wibox.layout.fixed.horizontal()
     if s == 1 then right_layout:add(wibox.widget.systray()) end
+    right_layout:add(separator)
+    right_layout:add(mem_icon)
+    right_layout:add(mem_widget)
     right_layout:add(separator)
     right_layout:add(up_icon)
     right_layout:add(netwidget)
