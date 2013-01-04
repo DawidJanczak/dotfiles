@@ -131,7 +131,7 @@ theme.widget_net_up = icon_dir .. "widget_net_up.png"
 
 theme.widget_mem = icon_dir .. "widget_mem.png"
 
-theme.widget_cpu = ""
+theme.widget_cpu = icon_dir .. "widget_cpu.png"
 
 theme.widget_bat = ""
 

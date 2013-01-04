@@ -143,19 +143,16 @@ vicious.register(mem_widget, vicious.widgets.mem, "$1")
 mem_icon = wibox.widget.imagebox()
 mem_icon:set_image(beautiful.widget_mem)
 
---mem_txt = widget({ type = "textbox" })
---mem_txt.text = "mem"
-
----- CPU usage graph widget
---cpu_widget = awful.widget.graph()
---cpu_widget:set_width(50)
---cpu_widget:set_background_color("#494B4F")
---cpu_widget:set_color("#FF5656")
+-- CPU usage graph widget
+cpu_widget = awful.widget.graph()
+cpu_widget:set_width(50)
+cpu_widget:set_background_color("#494B4F")
+cpu_widget:set_color("#FF5656")
 --cpu_widget:set_gradient_colors({ "#FF5656", "#88A175", "#AECF96" })
---vicious.register(cpu_widget, vicious.widgets.cpu, "$1")
-
---cpu_txt = widget({ type = "textbox" })
---cpu_txt.text = "cpu"
+vicious.register(cpu_widget, vicious.widgets.cpu, "$1")
+---- Icon
+cpu_icon = wibox.widget.imagebox()
+cpu_icon:set_image(beautiful.widget_cpu)
 
 ---- Battery usage progressbar widget
 --bat_widget = awful.widget.progressbar()
@@ -315,6 +312,9 @@ for s = 1, screen.count() do
     -- Widgets that are aligned to the right
     local right_layout = wibox.layout.fixed.horizontal()
     if s == 1 then right_layout:add(wibox.widget.systray()) end
+    right_layout:add(separator)
+    right_layout:add(cpu_icon)
+    right_layout:add(cpu_widget)
     right_layout:add(separator)
     right_layout:add(mem_icon)
     right_layout:add(mem_widget)
