@@ -48,4 +48,4 @@ sudo wpa_supplicant -B -Dwext -i wlan0 -c /etc/wpa_supplicant/wpa_supplicant.con
 /home/janczak/elasticsearch-YGT/usr/share/elasticsearch/bin/elasticsearch -f &
 
 # Start awesome
-exec awesome
+exec /usr/bin/awesome >> ~/.cache/awesome/stdout 2>> ~/.cache/awesome/stderr
