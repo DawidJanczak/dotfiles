@@ -6,9 +6,11 @@
 -- Alternative icon sets and widget icons:
 --  * http://awesome.naquadah.org/wiki/Nice_Icons
 
+local awful = require("awful")
+
 -- {{{ Main
 theme = {}
-theme.wallpaper_cmd = { "awsetbg " .. awful.util.getdir("config") .. "/wallpaper.jpg" }
+theme.wallpaper = awful.util.getdir("config") .. "/wallpaper.jpg"
 -- }}}
 
 -- {{{ Styles
