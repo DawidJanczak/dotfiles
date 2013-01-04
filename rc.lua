@@ -116,14 +116,14 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 -- {{{ Wibox
 -- Network usage widget
 -- Initialize widget
---netwidget = widget({ type = "textbox" })
+netwidget = wibox.widget.textbox()
 ---- Register widget
---vicious.register(netwidget, vicious.widgets.net, '<span color="#CC9393">${wlan0 down_kb}</span> <span color="#7F9F7F">${wlan0 up_kb}</span>', 3)
+vicious.register(netwidget, vicious.widgets.net, '<span color="#CC9393">${wlan0 down_kb}</span> <span color="#7F9F7F">${wlan0 up_kb}</span>', 3)
 ---- Add icons
---dn_icon = widget({ type = "imagebox" })
---up_icon = widget({ type = "imagebox" })
---dn_icon.image = image(beautiful.widget_net_down)
---up_icon.image = image(beautiful.widget_net_up)
+dn_icon = wibox.widget.imagebox()
+up_icon = wibox.widget.imagebox()
+dn_icon:set_image(beautiful.widget_net_down)
+up_icon:set_image(beautiful.widget_net_up)
 
 ---- Separator
 --separator = widget({ type = "textbox" })
@@ -312,6 +312,10 @@ for s = 1, screen.count() do
     -- Widgets that are aligned to the right
     local right_layout = wibox.layout.fixed.horizontal()
     if s == 1 then right_layout:add(wibox.widget.systray()) end
+    --right_layout:add(separator)
+    right_layout:add(up_icon)
+    right_layout:add(netwidget)
+    right_layout:add(dn_icon)
     right_layout:add(mytextclock)
     right_layout:add(mylayoutbox[s])
 
