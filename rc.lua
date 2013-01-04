@@ -169,50 +169,51 @@ bat_icon = wibox.widget.imagebox()
 bat_icon:set_image(beautiful.widget_bat)
 
 ---- Volume widget
---volumecfg = {}
---volumecfg.cardid = 0
---volumecfg.channel = "Master"
---volumecfg.widget = widget({ type = "textbox", name = "volumecfg.widget", align = "right" })
+volumecfg = {}
+volumecfg.cardid = 0
+volumecfg.channel = "Master"
+volumecfg.widget = wibox.widget.textbox()
 
---volumecfg_t = awful.tooltip({ objects = { volumecfg.widget }, })
---volumecfg_t:set_text("Volume")
+volumecfg_t = awful.tooltip({ objects = { volumecfg.widget }, })
+volumecfg_t:set_text("Volume")
 
---volumecfg.mixercommand = function(command)
-    --local fd = io.popen("amixer -c " .. volumecfg.cardid .. command)
-    --local status = fd:read("*all")
-    --fd:close()
+volumecfg.mixercommand = function(command)
+    local fd = io.popen("amixer -c " .. volumecfg.cardid .. command)
+    local status = fd:read("*all")
+    fd:close()
 
-    --local volume = string.match(status, "(%d?%d?%d)%%")
-    --volume = string.format("% 3d", volume)
-    --status = string.match(status, "%[(o[^%]]*)%]")
-    --if string.find(status, "on", 1, true) then
-        --volume = volume .. "%"
-    --else
-        --volume = volume .. "M"
-    --end
-    --volumecfg.widget.text = volume
---end
---volumecfg.update = function()
-    --volumecfg.mixercommand(" sget " .. volumecfg.channel)
---end
---volumecfg.up = function()
-    --volumecfg.mixercommand(" sset " .. volumecfg.channel .. " 1%+")
---end
---volumecfg.down = function()
-    --volumecfg.mixercommand(" sset ".. volumecfg.channel .. " 1%-")
---end
---volumecfg.toggle = function()
-    --volumecfg.mixercommand(" sset " .. volumecfg.channel .. " toggle")
---end
---volumecfg.widget:buttons(awful.util.table.join(
-    --awful.button({ }, 4, function() volumecfg.up() end),
-    --awful.button({ }, 5, function() volumecfg.down() end),
-    --awful.button({ }, 1, function() volumecfg.toggle() end)
---))
---volumecfg.update()
+    local volume = string.match(status, "(%d?%d?%d)%%")
+    volume = string.format("% 3d", volume)
+    status = string.match(status, "%[(o[^%]]*)%]")
+    if string.find(status, "on", 1, true) then
+        volume = volume .. "%"
+    else
+        volume = volume .. "M"
+    end
+    volumecfg.widget:set_text(volume)
+end
+volumecfg.update = function()
+    volumecfg.mixercommand(" sget " .. volumecfg.channel)
+end
+volumecfg.up = function()
+    volumecfg.mixercommand(" sset " .. volumecfg.channel .. " 1%+")
+end
+volumecfg.down = function()
+    volumecfg.mixercommand(" sset ".. volumecfg.channel .. " 1%-")
+end
+volumecfg.toggle = function()
+    volumecfg.mixercommand(" sset " .. volumecfg.channel .. " toggle")
+end
+volumecfg.widget:buttons(awful.util.table.join(
+    awful.button({ }, 4, function() volumecfg.up() end),
+    awful.button({ }, 5, function() volumecfg.down() end),
+    awful.button({ }, 1, function() volumecfg.toggle() end)
+))
+volumecfg.update()
 
---vol_icon = widget({ type = "imagebox" })
---vol_icon.image = image(beautiful.widget_vol)
+---- Icon
+vol_icon = wibox.widget.imagebox()
+vol_icon:set_image(beautiful.widget_vol)
 
 -- Create a textclock widget
 mytextclock = awful.widget.textclock()
@@ -284,25 +285,6 @@ for s = 1, screen.count() do
 
     -- Create the wibox
     mywibox[s] = awful.wibox({ position = "top", screen = s })
-    -- Add widgets to the wibox - order matters
-    --mywibox[s].widgets = {
-        --{
-            --mylauncher,
-            --mytaglist[s],
-            --mypromptbox[s],
-            --layout = awful.widget.layout.horizontal.leftright
-        --},
-        --mylayoutbox[s],
-        --mytextclock,
-        --separator, volumecfg.widget, vol_icon,
-        --separator, up_icon, netwidget, dn_icon,
-        --separator, mem_widget.widget, mem_txt,
-        --separator, cpu_widget.widget, cpu_txt,
-        --separator, bat_widget.widget, bat_icon,
-        --s == 1 and mysystray or nil,
-        --mytasklist[s],
-        --layout = awful.widget.layout.horizontal.rightleft
-    --}
     -- Widgets that are aligned to the left
     local left_layout = wibox.layout.fixed.horizontal()
     left_layout:add(mylauncher)
@@ -312,6 +294,12 @@ for s = 1, screen.count() do
     -- Widgets that are aligned to the right
     local right_layout = wibox.layout.fixed.horizontal()
     if s == 1 then right_layout:add(wibox.widget.systray()) end
+    right_layout:add(vol_icon)
+    right_layout:add(volumecfg.widget)
+    right_layout:add(separator)
+    right_layout:add(up_icon)
+    right_layout:add(netwidget)
+    right_layout:add(dn_icon)
     right_layout:add(separator)
     right_layout:add(bat_icon)
     right_layout:add(bat_widget)
@@ -321,10 +309,6 @@ for s = 1, screen.count() do
     right_layout:add(separator)
     right_layout:add(mem_icon)
     right_layout:add(mem_widget)
-    right_layout:add(separator)
-    right_layout:add(up_icon)
-    right_layout:add(netwidget)
-    right_layout:add(dn_icon)
     right_layout:add(separator)
     right_layout:add(mytextclock)
     right_layout:add(mylayoutbox[s])
