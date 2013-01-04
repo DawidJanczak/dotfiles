@@ -126,8 +126,8 @@ dn_icon:set_image(beautiful.widget_net_down)
 up_icon:set_image(beautiful.widget_net_up)
 
 ---- Separator
---separator = widget({ type = "textbox" })
---separator.text = " ::"
+separator = wibox.widget.textbox()
+separator:set_text(" ")
 
 ---- Memory usage progressbar widget
 --mem_widget = awful.widget.progressbar()
@@ -312,10 +312,11 @@ for s = 1, screen.count() do
     -- Widgets that are aligned to the right
     local right_layout = wibox.layout.fixed.horizontal()
     if s == 1 then right_layout:add(wibox.widget.systray()) end
-    --right_layout:add(separator)
+    right_layout:add(separator)
     right_layout:add(up_icon)
     right_layout:add(netwidget)
     right_layout:add(dn_icon)
+    right_layout:add(separator)
     right_layout:add(mytextclock)
     right_layout:add(mylayoutbox[s])
 
