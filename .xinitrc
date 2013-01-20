@@ -29,7 +29,7 @@ xset +fp /usr/share/fonts/local
 xset fp rehash
 
 # Run devmon in background
-devmon &
+devmon --ignore-device /dev/sdb &
 
 # Source Xresources
 xrdb -merge ~/.Xresources
@@ -43,9 +43,6 @@ setxkbmap pl
 
 sudo dhcpcd
 sudo wpa_supplicant -B -Dwext -i wlan0 -c /etc/wpa_supplicant/wpa_supplicant.conf
-
-# Run elasticsearch
-/home/janczak/elasticsearch-YGT/usr/share/elasticsearch/bin/elasticsearch -f &
 
 # Start awesome
 exec /usr/bin/awesome >> ~/.cache/awesome/stdout 2>> ~/.cache/awesome/stderr
