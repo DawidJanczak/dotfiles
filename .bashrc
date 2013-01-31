@@ -33,6 +33,10 @@ alias expack='export | ack $1'
 alias lack='l | ack $1'
 alias nara="sudo shutdown -hP now"
 
+# Path aliases (Git mostly)
+alias cdf='cd ~/git/frontend'
+alias cdr='cd ~/git/roads'
+
 # Sourcing git completion file
 source /usr/share/git/git-prompt.sh
 source /usr/share/git/completion/git-completion.bash
