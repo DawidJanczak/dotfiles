@@ -10,7 +10,7 @@ alias l='ls -al'
 export TERM=xterm-256color
 export EDITOR=vim
 export GIT_PS1_SHOWDIRTYSTATE="OK"
-export PATH="/usr/bin/vendor_perl:$HOME/.gem/ruby/1.9.1/bin:$HOME/scripts:$PATH"
+export PATH="/usr/bin/vendor_perl:$HOME/.rbenv/bin:$HOME/.gem/ruby/1.9.1/bin:$HOME/scripts:$PATH"
 export HISTSIZE=2000
 export LANG=en_US.utf-8
 
@@ -47,9 +47,8 @@ eval $(keychain --eval --agents ssh -Q --quiet ~/.ssh/id_rsa)
 # Alias git as hub.
 eval "$(hub alias -s)"
 
+# Initialize rbenv
+eval "$(rbenv init -)"
+
 # Clear screen with ctrl+l
 bind -m vi-insert "\C-l":clear-screen
-
-rvm_project_rvmrc=1
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
-PATH=$PATH:$HOME/.rvm/bin:$HOME/.gem/jruby/1.9/bin # Add RVM to PATH for scripting
