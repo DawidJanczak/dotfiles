@@ -52,3 +52,6 @@ eval "$(rbenv init -)"
 
 # Clear screen with ctrl+l
 bind -m vi-insert "\C-l":clear-screen
+
+# Set up default options for rdesktop
+alias rdesktop='rdesktop -g 1366x768 -P -z -x l -r sound:off'

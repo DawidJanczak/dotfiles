@@ -80,15 +80,3 @@ URxvt.scrollstyle: rxvt
 URxvt*.transparent: true
 URxvt*.shading: 100
 URxvt.font: -misc-fixed-medium-r-semicondensed--13-120-75-75-c-60-iso8859-1
-
-URxvt.perl-ext-common: default,url-select,keyboard-select,clipboard
-
-URxvt.keysym.M-Escape: perl:keyboard-select:activate
-
-URxvt.keysym.M-u: perl:url-select:select_next
-URxvt.url-select.launcher: chromium
-URxvt.url-select.underLine: true
-
-URxvt.keysym.M-c: perl:clipboard:copy
-URxvt.keysym.M-v: perl:clipboard:paste
-URxvt.clipboard.autocopy: true

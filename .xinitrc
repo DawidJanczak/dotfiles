@@ -41,8 +41,11 @@ setxkbmap pl
 # Use config at /etc/X11/xorg.conf
 #xrandr --output HDMI2 --auto --output LVDS1 --auto --right-of HDMI2
 
-sudo dhcpcd
-sudo wpa_supplicant -B -Dwext -i wlan0 -c /etc/wpa_supplicant/wpa_supplicant.conf
+#sudo dhcpcd
+#sudo wpa_supplicant -B -Dwext -i wlan0 -c /etc/wpa_supplicant/wpa_supplicant.conf
 
 # Start awesome
 exec /usr/bin/awesome >> ~/.cache/awesome/stdout 2>> ~/.cache/awesome/stderr
+
+# Turn numlock on
+numlockx &
