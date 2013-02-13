@@ -44,8 +44,8 @@ setxkbmap pl
 #sudo dhcpcd
 #sudo wpa_supplicant -B -Dwext -i wlan0 -c /etc/wpa_supplicant/wpa_supplicant.conf
 
-# Start awesome
-exec /usr/bin/awesome >> ~/.cache/awesome/stdout 2>> ~/.cache/awesome/stderr
-
 # Turn numlock on
 numlockx &
+
+# Start awesome
+exec /usr/bin/awesome >> ~/.cache/awesome/stdout 2>> ~/.cache/awesome/stderr
