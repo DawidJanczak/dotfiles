@@ -32,10 +32,14 @@ alias psack='ps aux | ack $1'
 alias expack='export | ack $1'
 alias lack='l | ack $1'
 alias nara="sudo shutdown -hP now"
+alias wifi="sudo wifi-menu"
 
 # Path aliases (Git mostly)
 alias cdf='cd ~/git/frontend'
 alias cdr='cd ~/git/roads'
+
+# Set up default options for rdesktop
+alias rdesktop='rdesktop -g 1366x768 -P -z -x l -r sound:off'
 
 # Sourcing git completion file
 source /usr/share/git/git-prompt.sh
@@ -52,6 +56,3 @@ eval "$(rbenv init -)"
 
 # Clear screen with ctrl+l
 bind -m vi-insert "\C-l":clear-screen
-
-# Set up default options for rdesktop
-alias rdesktop='rdesktop -g 1366x768 -P -z -x l -r sound:off'
