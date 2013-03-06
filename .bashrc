@@ -48,9 +48,6 @@ source /usr/share/git/completion/git-completion.bash
 # Keychain activation.
 eval $(keychain --eval --agents ssh -Q --quiet ~/.ssh/id_rsa)
 
-# Alias git as hub.
-eval "$(hub alias -s)"
-
 # Initialize rbenv
 eval "$(rbenv init -)"
 
