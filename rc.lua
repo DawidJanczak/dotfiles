@@ -209,6 +209,16 @@ volumecfg.widget:buttons(awful.util.table.join(
 ))
 volumecfg.update()
 
+---- VLC control
+vlccfg = {}
+vlccfg.socket_file = "/tmp/vlc.sock"
+vlccfg.pause = function() vlccfg.send_command("pause") end
+vlccfg.next = function() vlccfg.send_command("next") end
+vlccfg.prev = function() vlccfg.send_command("prev") end
+vlccfg.send_command = function(command)
+    io.popen("echo -n \"" .. command .."\" | nc -U " .. vlccfg.socket_file)
+end
+
 ---- Icon
 vol_icon = wibox.widget.imagebox()
 vol_icon:set_image(beautiful.widget_vol)
@@ -337,6 +347,9 @@ globalkeys = awful.util.table.join(
 
     awful.key({ "Control", "Mod1" }, "Up", function() volumecfg.up() end),
     awful.key({ "Control", "Mod1" }, "Down", function() volumecfg.down() end),
+    awful.key({ "Control", "Mod1" }, "Home", function() vlccfg.pause() end),
+    awful.key({ "Control", "Mod1" }, "Next", function() vlccfg.next() end),
+    awful.key({ "Control", "Mod1" }, "Prior", function() vlccfg.prev() end),
     awful.key({ modkey }, "End", function() volumecfg.toggle() end),
 
     awful.key({ modkey,           }, "j",
