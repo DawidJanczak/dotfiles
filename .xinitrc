@@ -47,5 +47,8 @@ setxkbmap pl
 # Turn numlock on
 numlockx &
 
+# Start MPD
+mpd ~/dotfiles/.mpdconf
+
 # Start awesome
 exec /usr/bin/awesome >> ~/.cache/awesome/stdout 2>> ~/.cache/awesome/stderr
