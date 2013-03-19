@@ -209,21 +209,14 @@ volumecfg.widget:buttons(awful.util.table.join(
 ))
 volumecfg.update()
 
+mpd_current = function()
+    local read_info = awful.util.pread("ncmpcpp --now-playing")
+    return awful.util.escape(read_info)
+end
 ---- MPD/ncmpcpp control
 mpdwidget = wibox.widget.textbox()
 -- Register widget
-vicious.register(mpdwidget, vicious.widgets.mpd,
-    function (mpdwidget, args)
-        if args["{state}"] == "Stop" then 
-            return " - "
-        else 
-            if args["{Artist}"] == "N/A" then
-                return args["{Title}"]
-            else
-                return args["{Artist}"]..' - '.. args["{Title}"]
-            end
-        end
-    end, 1)
+vicious.register(mpdwidget, mpd_current)
 
 ---- Icon
 vol_icon = wibox.widget.imagebox()
