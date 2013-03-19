@@ -209,15 +209,21 @@ volumecfg.widget:buttons(awful.util.table.join(
 ))
 volumecfg.update()
 
----- VLC control
-vlccfg = {}
-vlccfg.socket_file = "/tmp/vlc.sock"
-vlccfg.pause = function() vlccfg.send_command("pause") end
-vlccfg.next = function() vlccfg.send_command("next") end
-vlccfg.prev = function() vlccfg.send_command("prev") end
-vlccfg.send_command = function(command)
-    io.popen("echo -n \"" .. command .."\" | nc -U " .. vlccfg.socket_file)
-end
+---- MPD/ncmpcpp control
+mpdwidget = wibox.widget.textbox()
+-- Register widget
+vicious.register(mpdwidget, vicious.widgets.mpd,
+    function (mpdwidget, args)
+        if args["{state}"] == "Stop" then 
+            return " - "
+        else 
+            if args["{Artist}"] == "N/A" then
+                return args["{Title}"]
+            else
+                return args["{Artist}"]..' - '.. args["{Title}"]
+            end
+        end
+    end, 1)
 
 ---- Icon
 vol_icon = wibox.widget.imagebox()
@@ -303,7 +309,9 @@ for s = 1, screen.count() do
     local right_layout = wibox.layout.fixed.horizontal()
     if s == 1 then right_layout:add(wibox.widget.systray()) end
     right_layout:add(vol_icon)
+    right_layout:add(mpdwidget)
     right_layout:add(volumecfg.widget)
+    right_layout:add(vol_icon)
     right_layout:add(separator)
     right_layout:add(up_icon)
     right_layout:add(netwidget)
@@ -347,9 +355,11 @@ globalkeys = awful.util.table.join(
 
     awful.key({ "Control", "Mod1" }, "Up", function() volumecfg.up() end),
     awful.key({ "Control", "Mod1" }, "Down", function() volumecfg.down() end),
-    awful.key({ "Control", "Mod1" }, "Home", function() vlccfg.pause() end),
-    awful.key({ "Control", "Mod1" }, "Next", function() vlccfg.next() end),
-    awful.key({ "Control", "Mod1" }, "Prior", function() vlccfg.prev() end),
+    awful.key({ "Control", "Mod1" }, "Home", function() io.popen("ncmpcpp pause") end),
+    awful.key({ "Control", "Mod1" }, "Next", function() io.popen("ncmpcpp next") end),
+    awful.key({ "Control", "Mod1" }, "Prior", function() io.popen("ncmpcpp prev") end),
+    awful.key({ "Control", "Mod1" }, "Insert", function() io.popen("ncmpcpp play") end),
+    awful.key({ "Control", "Mod1" }, "End", function() io.popen("ncmpcpp stop") end),
     awful.key({ modkey }, "End", function() volumecfg.toggle() end),
 
     awful.key({ modkey,           }, "j",
