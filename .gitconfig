@@ -1,11 +1,17 @@
 [user]
-	email = dawid.janczak@gmail.com
-	name = DawidJanczak
+  email = dawid.janczak@gmail.com
+  name = DawidJanczak
 [diff]
   external = /home/janczak/scripts/git_vimdiff.sh
 [pager]
-	diff =
+  diff =
 [core]
-	excludesfile = /home/janczak/.gitignore_global
+  excludesfile = /home/janczak/.gitignore_global
 [push]
-	default = simple
+  default = simple
+[color]
+  ui = true
+[color "status"]
+  added = yellow
+  changed = green
+  untracked = cyan

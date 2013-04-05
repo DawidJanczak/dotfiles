@@ -29,7 +29,7 @@ xset +fp /usr/share/fonts/local
 xset fp rehash
 
 # Run devmon in background
-devmon --ignore-device /dev/sdb &
+devmon &
 
 # Source Xresources
 xrdb -merge ~/.Xresources
