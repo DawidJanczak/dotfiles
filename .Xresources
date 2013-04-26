@@ -80,6 +80,6 @@ URxvt.scrollstyle: rxvt
 URxvt*.transparent: true
 URxvt*.shading: 100
 URxvt.perl-ext-common: font-size
-URxvt.keysym.C-Up:     perl:font-size:incglobal
-URxvt.keysym.C-Down:   perl:font-size:decglobal
+URxvt.keysym.C-Page_Up:     perl:font-size:incglobal
+URxvt.keysym.C-Page_Down:   perl:font-size:decglobal
 URxvt.font: -misc-fixed-medium-r-semicondensed--13-120-75-75-c-60-iso8859-1

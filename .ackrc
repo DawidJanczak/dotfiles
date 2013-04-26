@@ -1,6 +1,7 @@
 --ignore-dir=coverage
 --ignore-dir=tmp
 --ignore-dir=.bundle
+--ignore-dir=bin
 --type-add=ruby=.haml,.rake
 --type-add=css=.scss
 --type-set=rabl=.rabl
