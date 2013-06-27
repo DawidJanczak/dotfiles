@@ -59,3 +59,6 @@ setopt hist_no_functions
 
 setopt noclobber
 
+autoload -U colors && colors
+export PROMPT='%B%(?..[%?] )%b%n@%U%m%u> '
+export RPROMPT="%F{green}%~%f"
