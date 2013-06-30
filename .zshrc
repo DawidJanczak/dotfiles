@@ -62,3 +62,7 @@ setopt noclobber
 autoload -U colors && colors
 export PROMPT='%B%(?..[%?] )%b%n@%U%m%u> '
 export RPROMPT="%F{green}%~%f"
+
+setopt auto_cd
+setopt multios
+setopt correct
