@@ -66,3 +66,7 @@ export RPROMPT="%F{green}%~%f"
 setopt auto_cd
 setopt multios
 setopt correct
+
+# Named directories
+spin=~/git/spin
+frontend=~/git/frontend
