@@ -1,6 +1,5 @@
-autoload -U compinit promptinit
-compinit
-promptinit
+autoload -Uz compinit && compinit
+autoload -Uz promptinit && promptinit
 
 prompt walters
 
@@ -59,10 +58,6 @@ setopt hist_no_functions
 
 setopt noclobber
 
-autoload -U colors && colors
-export PROMPT='%B%(?..[%?] )%b%n@%U%m%u> '
-export RPROMPT="%F{green}%~%f"
-
 setopt auto_cd
 setopt multios
 setopt correct
@@ -70,7 +65,24 @@ setopt correct
 # Named directories
 spin=~/git/spin
 frontend=~/git/frontend
-: ~spin ~frontend
+dotfiles=~/dotfiles
+: ~spin ~frontend ~dotfiles
+
+# GIT prompt setup
+
+autoload -Uz colors && colors
+autoload -Uz vcs_info
+setopt prompt_subst
+
+zstyle ':vcs_info:*' enable git
+zstyle ':vcs_info:git*' formats "%{$fg[white]%} at %{$fg[blue]%}%b%{${reset_color}%}"
+precmd() {
+  vcs_info
+}
+
+export PROMPT='%B%(?..[%?] )%b%n@%U%m%u in %{$fg[blue]%}%1~${vcs_info_msg_0_}%{$reset_color%}> '
+export RPROMPT="%F{green}%~%f"
+
 
 # TODO
 # BASHRC SECTION - cleanup!!!
@@ -95,31 +107,31 @@ export TERM=xterm-256color
 export EDITOR=vim
 export GIT_PS1_SHOWDIRTYSTATE="OK"
 #export PATH="/usr/bin/vendor_perl:$HOME/.rbenv/bin:$HOME/.gem/ruby/2.0.0/bin:$HOME/.gem/ruby/1.9.1/bin:$HOME/scripts:$HOME/.gem/ruby/1.8/bin:$PATH"
-export HISTSIZE=2000
 export LANG=en_US.utf-8
 
 # Command prompt in git shows branch name and working copy status
-BROWN="\[\033[0;33m\]"
-GREEN="\[\033[0;36m\]"
-GREY="\[\033[m\]"
+#BROWN="\[\033[0;33m\]"
+#GREEN="\[\033[0;36m\]"
+#GREY="\[\033[m\]"
 #PS1=$GREY'[\u@\h '$BROWN'\w'$GREEN'$(__git_ps1 " (%s)")'$GREY'\[\]]# '
 
 # Start qiv with: fulscreen, atorotate, scaling large images down and no status bar.
 alias qiv='qiv -f -l -t -i $1'
+#
+# Set up default options for rdesktop
+alias rdesktop='rdesktop -g 1366x768 -P -z -x l -r sound:off'
 
 # Some aliases
 alias sudo='sudo -E'
 alias vi=vim
 alias gitcom='git commit -a'
 alias gitst='git status'
+
 alias psack='ps aux | ack $1'
 alias expack='export | ack $1'
 alias lack='l | ack $1'
 alias nara="sudo shutdown -hP now"
 alias wifi="sudo wifi-menu"
-
-# Set up default options for rdesktop
-alias rdesktop='rdesktop -g 1366x768 -P -z -x l -r sound:off'
 
 # Keychain activation.
 eval $(keychain --eval --agents ssh -Q --quiet ~/.ssh/id_rsa)
