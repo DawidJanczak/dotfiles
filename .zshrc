@@ -1,7 +1,4 @@
 autoload -Uz compinit && compinit
-autoload -Uz promptinit && promptinit
-
-prompt walters
 
 zstyle ':completion:*' menu select
 
@@ -56,8 +53,8 @@ setopt hist_reduce_blanks
 setopt hist_no_store
 setopt hist_no_functions
 
+# MISC zsh settings
 setopt noclobber
-
 setopt auto_cd
 setopt multios
 setopt correct
@@ -68,8 +65,7 @@ frontend=~/git/frontend
 dotfiles=~/dotfiles
 : ~spin ~frontend ~dotfiles
 
-# GIT prompt setup
-
+# Prompts
 autoload -Uz colors && colors
 autoload -Uz vcs_info
 setopt prompt_subst
@@ -92,15 +88,6 @@ precmd() {
 export PROMPT='%B%(?..[%?] )%b%n@%U%m%u in %{$fg[yellow]%}%1~${vcs_info_msg_0_}%{$reset_color%}> '
 export RPROMPT="%F{yellow}%~%f"
 
-
-# TODO
-# BASHRC SECTION - cleanup!!!
-
-# Aliases for different ls commands
-alias ls='ls --color=auto'
-alias ll='ls -l'
-alias l='ls -al'
-
 # PATH
 typeset -U path
 path=(/usr/bin/vendor_perl
@@ -114,21 +101,24 @@ path=(/usr/bin/vendor_perl
 # Export section
 export TERM=xterm-256color
 export EDITOR=vim
-export GIT_PS1_SHOWDIRTYSTATE="OK"
-#export PATH="/usr/bin/vendor_perl:$HOME/.rbenv/bin:$HOME/.gem/ruby/2.0.0/bin:$HOME/.gem/ruby/1.9.1/bin:$HOME/scripts:$HOME/.gem/ruby/1.8/bin:$PATH"
 export LANG=en_US.utf-8
-
-# Command prompt in git shows branch name and working copy status
-#BROWN="\[\033[0;33m\]"
-#GREEN="\[\033[0;36m\]"
-#GREY="\[\033[m\]"
-#PS1=$GREY'[\u@\h '$BROWN'\w'$GREEN'$(__git_ps1 " (%s)")'$GREY'\[\]]# '
 
 # Start qiv with: fulscreen, atorotate, scaling large images down and no status bar.
 alias qiv='qiv -f -l -t -i $1'
 #
 # Set up default options for rdesktop
 alias rdesktop='rdesktop -g 1366x768 -P -z -x l -r sound:off'
+
+# Keychain activation.
+eval $(keychain --eval --agents ssh -Q --quiet ~/.ssh/id_rsa)
+
+# Initialize rbenv
+eval "$(rbenv init -)"
+
+# Aliases for different ls commands
+alias ls='ls --color=auto'
+alias ll='ls -l'
+alias l='ls -al'
 
 # Some aliases
 alias sudo='sudo -E'
@@ -141,9 +131,3 @@ alias expack='export | ack $1'
 alias lack='l | ack $1'
 alias nara="sudo shutdown -hP now"
 alias wifi="sudo wifi-menu"
-
-# Keychain activation.
-eval $(keychain --eval --agents ssh -Q --quiet ~/.ssh/id_rsa)
-
-# Initialize rbenv
-eval "$(rbenv init -)"
