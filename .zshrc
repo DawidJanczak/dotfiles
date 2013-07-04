@@ -43,9 +43,9 @@ key[PageDown]=${terminfo[knp]}
 source /usr/share/doc/pkgfile/command-not-found.zsh
 
 # History settings
-histsize=1000
-savehist=1000
-histfile=~/.history
+HISTFILE=~/.history
+HISTSIZE=1000
+SAVEHIST=1000
 setopt inc_append_history
 setopt extended_history
 setopt hist_ignore_dups
