@@ -75,12 +75,12 @@ autoload -Uz vcs_info
 setopt prompt_subst
 
 zstyle ':vcs_info:*' enable git
-zstyle ':vcs_info:git*' formats "%{$fg[white]%} at %{$fg[blue]%}%b%{${reset_color}%}"
+zstyle ':vcs_info:git*' formats "%{$reset_color%} at %{$fg[blue]%}%b%{$reset_color%}"
 precmd() {
   vcs_info
 }
 
-export PROMPT='%B%(?..[%?] )%b%n@%U%m%u in %{$fg[blue]%}%1~${vcs_info_msg_0_}%{$reset_color%}> '
+export PROMPT='%B%(?..[%?] )%b%n@%U%m%u in %{$fg[green]%}%1~${vcs_info_msg_0_}%{$reset_color%}> '
 export RPROMPT="%F{green}%~%f"
 
 
