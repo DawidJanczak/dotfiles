@@ -131,3 +131,5 @@ alias expack='export | ack $1'
 alias lack='l | ack $1'
 alias nara="sudo shutdown -hP now"
 alias wifi="sudo wifi-menu"
+
+source "$HOME/.zshrc_private"
