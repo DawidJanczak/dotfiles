@@ -52,6 +52,7 @@ setopt hist_ignore_dups
 setopt hist_reduce_blanks
 setopt hist_no_store
 setopt hist_no_functions
+setopt hist_verify
 
 # MISC zsh settings
 setopt noclobber
