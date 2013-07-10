@@ -63,8 +63,10 @@ setopt correct
 # Named directories
 spin=~/git/spin
 frontend=~/git/frontend
+puppet=~/git/puppet
+feeds=~/git/ygt-feeds
 dotfiles=~/dotfiles
-: ~spin ~frontend ~dotfiles
+: ~spin ~frontend ~puppet ~feeds ~dotfiles
 
 # Prompts
 autoload -Uz colors && colors
