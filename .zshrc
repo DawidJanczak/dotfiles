@@ -61,12 +61,13 @@ setopt multios
 setopt correct
 
 # Named directories
+dotfiles=~/dotfiles
 spin=~/git/spin
 frontend=~/git/frontend
 puppet=~/git/puppet
 feeds=~/git/ygt_feeds
-dotfiles=~/dotfiles
-: ~spin ~frontend ~puppet ~feeds ~dotfiles
+searcher=~/git/searcher
+: ~dotfiles ~spin ~frontend ~puppet ~feeds ~searcher
 
 # Prompts
 autoload -Uz colors && colors
