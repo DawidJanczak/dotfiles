@@ -64,7 +64,7 @@ setopt correct
 spin=~/git/spin
 frontend=~/git/frontend
 puppet=~/git/puppet
-feeds=~/git/ygt-feeds
+feeds=~/git/ygt_feeds
 dotfiles=~/dotfiles
 : ~spin ~frontend ~puppet ~feeds ~dotfiles
 
