@@ -4,8 +4,12 @@
 --ignore-dir=bundle
 --ignore-dir=bin
 --ignore-dir=doc
+
+--type-set=rabl=.rabl
+
 --type-add=ruby=.haml,.rake
 --type-add=css=.scss
---type-set=rabl=.rabl
+
+--type-del=sql
 
 --known-types
