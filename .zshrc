@@ -15,7 +15,6 @@ ZSH=$HOME/.oh-my-zsh
 plugins=(archlinux
          bundler
          git
-         golang
          rails3
          systemd
 )
