@@ -15,7 +15,9 @@ ZSH=$HOME/.oh-my-zsh
 plugins=(archlinux
          bundler
          git
+         golang
          rails3
+         systemd
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -128,6 +130,7 @@ path=(/usr/bin/vendor_perl
 export TERM=xterm-256color
 export EDITOR=vim
 export LANG=en_US.utf-8
+export GOPATH=~/git
 
 # Start qiv with: fulscreen, atorotate, scaling large images down and no status bar.
 alias qiv='qiv -f -l -t -i $1'
