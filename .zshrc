@@ -119,9 +119,6 @@ export RPROMPT="%F{yellow}%~%f"
 typeset -U path
 path=(/usr/bin/vendor_perl
       ~/.rbenv/bin
-      ~/.gem/ruby/2.0.0/bin
-      ~/.gem/ruby/1.9.1/bin
-      ~/.gem/ruby/1.8/bin
       ~/scripts
       $path)
 
