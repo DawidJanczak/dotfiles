@@ -50,5 +50,8 @@ numlockx &
 # Start MPD
 mpd ~/dotfiles/.mpdconf
 
+# Disable touchpad while typing
+syndaemon -t -k -i 2 -d &
+
 # Start awesome
 exec /usr/bin/awesome >> ~/.cache/awesome/stdout 2>> ~/.cache/awesome/stderr
