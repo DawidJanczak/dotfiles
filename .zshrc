@@ -21,6 +21,7 @@ plugins=(archlinux
 
 source $ZSH/oh-my-zsh.sh
 
+autoload -Uz zmv
 autoload -Uz compinit && compinit
 
 zstyle ':completion:*' menu select
