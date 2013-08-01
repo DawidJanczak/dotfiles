@@ -1,5 +1,10 @@
 # oh-my-zsh
 
+autoload -Uz zmv
+autoload -Uz compinit && compinit
+
+zstyle ':completion:*' menu select
+
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
 
@@ -20,11 +25,6 @@ plugins=(archlinux
 )
 
 source $ZSH/oh-my-zsh.sh
-
-autoload -Uz zmv
-autoload -Uz compinit && compinit
-
-zstyle ':completion:*' menu select
 
 setopt completealiases
 
@@ -76,6 +76,7 @@ setopt hist_ignore_dups
 setopt hist_reduce_blanks
 setopt hist_no_store
 setopt hist_no_functions
+unsetopt hist_verify
 
 # MISC zsh settings
 setopt noclobber
@@ -85,12 +86,13 @@ setopt correct
 
 # Named directories
 dotfiles=~/dotfiles
+charon=~/git/src/github.com/ygt/charon
 spin=~/git/spin
 frontend=~/git/frontend
 puppet=~/git/puppet
 feeds=~/git/ygt_feeds
 searcher=~/git/searcher
-: ~dotfiles ~spin ~frontend ~puppet ~feeds ~searcher
+: ~dotfiles ~charon ~spin ~frontend ~puppet ~feeds ~searcher
 
 # Prompts
 autoload -Uz colors && colors
