@@ -9,6 +9,7 @@
 
 --type-add=ruby=.haml,.rake
 --type-add=css=.scss
+--type-add=js=.coffee
 
 --type-del=sql
 
