@@ -129,6 +129,8 @@ export TERM=xterm-256color
 export EDITOR=vim
 export LANG=en_US.utf-8
 export GOPATH=~/git
+export RUBY_GC_MALLOC_LIMIT=90000000
+export RUBY_FREE_MIN=200000
 
 # Start qiv with: fulscreen, atorotate, scaling large images down and no status bar.
 alias qiv='qiv -f -l -t -i $1'

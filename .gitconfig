@@ -15,3 +15,5 @@
   added = yellow
   changed = green
   untracked = cyan
+[alias]
+  edit-unmerged = "!f() { git diff --name-status --diff-filter=U | cut -f2 ; }; vim `f`"
