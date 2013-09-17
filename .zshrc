@@ -150,7 +150,7 @@ alias ll='ls -l'
 alias l='ls -al'
 
 # Some aliases
-alias sudo='sudo -E'
+alias sudo='nocorrect sudo -E'
 alias vi=vim
 alias gitcom='git commit -a'
 alias gitst='git status'
