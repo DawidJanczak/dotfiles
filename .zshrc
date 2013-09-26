@@ -70,7 +70,7 @@ source /usr/share/doc/pkgfile/command-not-found.zsh
 HISTFILE=~/.history
 HISTSIZE=1000
 SAVEHIST=1000
-setopt inc_append_history
+setopt append_history
 setopt extended_history
 setopt hist_ignore_dups
 setopt hist_reduce_blanks
@@ -151,6 +151,7 @@ alias l='ls -al'
 
 # Some aliases
 alias sudo='nocorrect sudo -E'
+alias go='nocorrect go'
 alias vi=vim
 alias gitcom='git commit -a'
 alias gitst='git status'
