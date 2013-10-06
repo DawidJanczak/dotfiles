@@ -1,6 +1,6 @@
 [user]
   email = dawid.janczak@gmail.com
-  name = DawidJanczak
+  name = Dawid Janczak
 [diff]
   external = /home/janczak/scripts/git_vimdiff.sh
 [pager]
