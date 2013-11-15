@@ -118,7 +118,7 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 -- Initialize widget
 netwidget = wibox.widget.textbox()
 ---- Register widget
-vicious.register(netwidget, vicious.widgets.net, '<span color="#CC9393">${wlp0s20u2 down_kb}</span> <span color="#7F9F7F">${wlp0s20u2 up_kb}</span>', 3)
+vicious.register(netwidget, vicious.widgets.net, '<span color="#CC9393">${enp0s20u2 down_kb}</span> <span color="#7F9F7F">${enp0s20u2 up_kb}</span>', 3)
 ---- Add icons
 dn_icon = wibox.widget.imagebox()
 up_icon = wibox.widget.imagebox()
