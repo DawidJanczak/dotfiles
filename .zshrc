@@ -82,7 +82,6 @@ unsetopt hist_verify
 setopt noclobber
 setopt auto_cd
 setopt multios
-setopt correct
 
 # Named directories
 dotfiles=~/dotfiles
@@ -150,8 +149,8 @@ alias ll='ls -l'
 alias l='ls -al'
 
 # Some aliases
-alias sudo='nocorrect sudo -E'
-alias go='nocorrect go'
+alias sudo='sudo -E'
+alias go='go'
 alias vi=vim
 alias gitcom='git commit -a'
 alias gitst='git status'
