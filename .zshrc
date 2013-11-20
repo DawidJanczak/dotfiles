@@ -82,6 +82,7 @@ unsetopt hist_verify
 setopt noclobber
 setopt auto_cd
 setopt multios
+unsetopt correctall
 
 # Named directories
 dotfiles=~/dotfiles
