@@ -54,7 +54,7 @@ mpd ~/dotfiles/.mpdconf
 syndaemon -t -k -i 2 -d &
 
 # GTK redshift
-gtk-redshift &
+#gtk-redshift &
 
 # Start awesome
 exec /usr/bin/awesome >> ~/.cache/awesome/stdout 2>> ~/.cache/awesome/stderr
