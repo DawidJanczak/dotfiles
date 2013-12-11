@@ -17,3 +17,4 @@
   untracked = cyan
 [alias]
   edit-unmerged = "!f() { git diff --name-status --diff-filter=U | cut -f2 ; }; vim `f`"
+  open-modified = "!f() { git diff --name-only; }; vim `f`"
