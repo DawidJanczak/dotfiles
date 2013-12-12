@@ -20,7 +20,7 @@ ZSH=$HOME/.oh-my-zsh
 plugins=(archlinux
          bundler
          git
-         rails3
+         rails
          systemd
 )
 
