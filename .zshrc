@@ -163,3 +163,7 @@ alias nara="sudo shutdown -hP now"
 alias wifi="sudo wifi-menu"
 
 source "$HOME/.zshrc_private"
+
+function mkcd {
+  [[ -n "$1" ]] && mkdir -p "$1" && builtin cd "$1"
+}
