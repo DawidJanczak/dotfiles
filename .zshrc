@@ -92,7 +92,8 @@ frontend=~/git/frontend
 puppet=~/git/puppet
 feeds=~/git/ygt_feeds
 searcher=~/git/searcher
-: ~dotfiles ~charon ~spin ~frontend ~puppet ~feeds ~searcher
+sales=~/git/sales
+: ~dotfiles ~charon ~spin ~frontend ~puppet ~feeds ~searcher ~sales
 
 # Prompts
 autoload -Uz colors && colors
