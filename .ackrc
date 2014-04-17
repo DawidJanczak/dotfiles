@@ -6,6 +6,7 @@
 --ignore-dir=doc
 
 --type-set=rabl=.rabl
+--type-add=puppet=.pp
 
 --type-add=ruby=.haml,.rake
 --type-add=css=.scss
