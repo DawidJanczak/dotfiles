@@ -25,6 +25,7 @@ plugins=(archlinux
          systemd
 )
 
+DISABLE_AUTO_UPDATE="true"
 source $ZSH/oh-my-zsh.sh
 
 setopt completealiases
@@ -73,7 +74,8 @@ puppet=~/git/puppet
 feeds=~/git/ygt_feeds
 searcher=~/git/searcher
 sales=~/git/sales
-: ~dotfiles ~charon ~spin ~frontend ~puppet ~feeds ~searcher ~sales
+spabreaks=~/git/spabreaks
+: ~dotfiles ~charon ~spin ~frontend ~puppet ~feeds ~searcher ~sales ~spabreaks
 
 # Prompts
 autoload -Uz colors && colors
