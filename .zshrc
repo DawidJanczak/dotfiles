@@ -25,7 +25,7 @@ plugins=(archlinux
          systemd
 )
 
-DISABLE_AUTO_UPDATE="true"
+DISABLE_AUTO_UPDATE=true
 source $ZSH/oh-my-zsh.sh
 
 setopt completealiases
@@ -75,7 +75,8 @@ feeds=~/git/ygt_feeds
 searcher=~/git/searcher
 sales=~/git/sales
 spabreaks=~/git/spabreaks
-: ~dotfiles ~charon ~spin ~frontend ~puppet ~feeds ~searcher ~sales ~spabreaks
+yourteetimes=~/git/yourteetimes
+: ~dotfiles ~charon ~spin ~frontend ~puppet ~feeds ~searcher ~sales ~spabreaks ~yourteetimes
 
 # Prompts
 autoload -Uz colors && colors
@@ -113,7 +114,7 @@ export EDITOR=vim
 export LANG=en_US.utf-8
 export GOPATH=~/git
 export RUBY_GC_MALLOC_LIMIT=90000000
-export RUBY_FREE_MIN=200000
+export RUBY_GC_HEAP_FREE_SLOTS=200000
 
 # Start qiv with: fulscreen, atorotate, scaling large images down and no status bar.
 alias qiv='qiv -f -l -t -i $1'

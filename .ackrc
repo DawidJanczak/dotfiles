@@ -11,6 +11,8 @@
 --type-add=ruby=.haml,.rake
 --type-add=css=.scss
 --type-add=js=.coffee
+--type-add=gemfile:is:Gemfile
+--type-add=vagrantfile:is:Vagrantfile
 
 --type-del=sql
 
