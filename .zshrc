@@ -23,6 +23,7 @@ plugins=(archlinux
          git
          rails
          systemd
+         npm
 )
 
 DISABLE_AUTO_UPDATE=true
@@ -106,6 +107,7 @@ typeset -U path
 path=(/usr/bin/vendor_perl
       ~/.rbenv/bin
       ~/scripts
+      node_modules/.bin
       $path)
 
 # Export section
