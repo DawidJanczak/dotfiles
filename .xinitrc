@@ -18,9 +18,6 @@ fi
 # exec startxfce4
 # ...or the Window Manager of your choice
 
-# Mute PC speaker
-xset -b
-
 # Turn off energy saving on monitor
 xset -dpms
 
@@ -33,9 +30,6 @@ devmon &
 
 # Source Xresources
 xrdb -merge ~/.Xresources
-
-# Set polish keyboard map for X applications
-setxkbmap pl
 
 # Setup display for dual screen
 # Use config at /etc/X11/xorg.conf
