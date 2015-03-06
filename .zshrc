@@ -104,7 +104,8 @@ export RPROMPT="%F{yellow}%~%f"
 
 # PATH
 typeset -U path
-path=(/usr/bin/vendor_perl
+path=(./node_modules/.bin
+      /usr/bin/vendor_perl
       ~/.rbenv/bin
       ~/scripts
       $path)
@@ -146,8 +147,6 @@ alias expack='export | ack $1'
 alias lack='l | ack $1'
 alias nara="sudo shutdown -hP now"
 alias wifi="sudo wifi-menu"
-
-source "$HOME/.zshrc_private"
 
 function mkcd {
   [[ -n "$1" ]] && mkdir -p "$1" && builtin cd "$1"
