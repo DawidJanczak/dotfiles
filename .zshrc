@@ -50,8 +50,8 @@ source /usr/share/doc/pkgfile/command-not-found.zsh
 
 # History settings
 HISTFILE=~/.history
-HISTSIZE=1000
-SAVEHIST=1000
+HISTSIZE=5000
+SAVEHIST=5000
 setopt append_history
 setopt extended_history
 setopt hist_ignore_dups
