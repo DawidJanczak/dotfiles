@@ -138,6 +138,7 @@ export RPROMPT="%F{yellow}%~%f"
 # PATH
 typeset -U path
 path=(./node_modules/.bin
+      ~/.npm/bin
       /usr/bin/vendor_perl
       ~/.rbenv/bin
       ~/scripts
