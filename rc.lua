@@ -210,10 +210,10 @@ volumecfg.widget:buttons(awful.util.table.join(
 volumecfg.update()
 
 mpd_current = function()
-    local read_info = awful.util.pread("ncmpcpp --now-playing")
+    local read_info = awful.util.pread("mpc -f %title%")
     return awful.util.escape(read_info)
 end
----- MPD/ncmpcpp control
+---- MPD/mpc control
 mpdwidget = wibox.widget.textbox()
 -- Register widget
 vicious.register(mpdwidget, mpd_current)
@@ -348,11 +348,11 @@ globalkeys = awful.util.table.join(
 
     awful.key({ "Control", "Mod1" }, "Up", function() volumecfg.up() end),
     awful.key({ "Control", "Mod1" }, "Down", function() volumecfg.down() end),
-    awful.key({ "Control", "Mod1" }, "Home", function() io.popen("ncmpcpp pause") end),
-    awful.key({ "Control", "Mod1" }, "Next", function() io.popen("ncmpcpp next") end),
-    awful.key({ "Control", "Mod1" }, "Prior", function() io.popen("ncmpcpp prev") end),
-    awful.key({ "Control", "Mod1" }, "Insert", function() io.popen("ncmpcpp play") end),
-    awful.key({ "Control", "Mod1" }, "End", function() io.popen("ncmpcpp stop") end),
+    awful.key({ "Control", "Mod1" }, "Home", function() io.popen("mpc pause") end),
+    awful.key({ "Control", "Mod1" }, "Next", function() io.popen("mpc next") end),
+    awful.key({ "Control", "Mod1" }, "Prior", function() io.popen("mpc prev") end),
+    awful.key({ "Control", "Mod1" }, "Insert", function() io.popen("mpc play") end),
+    awful.key({ "Control", "Mod1" }, "End", function() io.popen("mpc stop") end),
     awful.key({ modkey }, "End", function() volumecfg.toggle() end),
 
     awful.key({ modkey,           }, "j",
