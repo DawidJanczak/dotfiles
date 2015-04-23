@@ -303,8 +303,8 @@ for s = 1, screen.count() do
     if s == 1 then right_layout:add(wibox.widget.systray()) end
     right_layout:add(vol_icon)
     right_layout:add(mpdwidget)
-    right_layout:add(volumecfg.widget)
     right_layout:add(vol_icon)
+    right_layout:add(volumecfg.widget)
     right_layout:add(separator)
     right_layout:add(dn_icon)
     right_layout:add(netwidget)
