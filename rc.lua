@@ -210,7 +210,7 @@ volumecfg.widget:buttons(awful.util.table.join(
 volumecfg.update()
 
 mpd_current = function()
-    local read_info = awful.util.pread("mpc -f %title%")
+    local read_info = awful.util.pread("mpc -f %title% current")
     return awful.util.escape(read_info)
 end
 ---- MPD/mpc control
