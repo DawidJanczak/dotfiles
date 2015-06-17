@@ -62,8 +62,6 @@ plugins=(archlinux
 
 source $ZSH/oh-my-zsh.sh
 
-setopt completealiases
-
 # Finally, make sure the terminal is in application mode, when zle is
 # active. Only then are the values from $terminfo valid.
 if (( ${+terminfo[smkx]} )) && (( ${+terminfo[rmkx]} )); then
