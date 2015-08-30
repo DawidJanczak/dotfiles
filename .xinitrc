@@ -47,8 +47,8 @@ mpd ~/dotfiles/.mpdconf
 # Disable touchpad while typing
 syndaemon -t -k -i 2 -d &
 
-# GTK redshift
-#gtk-redshift &
+# Autostart desktop apps
+dex -a -e Awesome &
 
 # Start awesome
 exec /usr/bin/awesome >> ~/.cache/awesome/stdout 2>> ~/.cache/awesome/stderr

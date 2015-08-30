@@ -209,14 +209,15 @@ volumecfg.widget:buttons(awful.util.table.join(
 ))
 volumecfg.update()
 
-mpd_current = function()
-    local read_info = awful.util.pread("mpc -f %title% current")
-    return awful.util.escape(read_info)
+spotify_current = function()
+    local artist = awful.util.pread("playerctl metadata xesam:artist")
+    local title = awful.util.pread("playerctl metadata xesam:title")
+    return awful.util.escape(artist .. ": " .. title)
 end
----- MPD/mpc control
-mpdwidget = wibox.widget.textbox()
+---- Spotify current track
+spotifywidget = wibox.widget.textbox()
 -- Register widget
-vicious.register(mpdwidget, mpd_current)
+vicious.register(spotifywidget, spotify_current)
 
 ---- Icon
 vol_icon = wibox.widget.imagebox()
@@ -302,7 +303,7 @@ for s = 1, screen.count() do
     local right_layout = wibox.layout.fixed.horizontal()
     if s == 1 then right_layout:add(wibox.widget.systray()) end
     right_layout:add(vol_icon)
-    right_layout:add(mpdwidget)
+    right_layout:add(spotifywidget)
     right_layout:add(vol_icon)
     right_layout:add(volumecfg.widget)
     right_layout:add(separator)
@@ -348,11 +349,11 @@ globalkeys = awful.util.table.join(
 
     awful.key({ "Control", "Mod1" }, "Up", function() volumecfg.up() end),
     awful.key({ "Control", "Mod1" }, "Down", function() volumecfg.down() end),
-    awful.key({ "Control", "Mod1" }, "Home", function() io.popen("mpc pause") end),
-    awful.key({ "Control", "Mod1" }, "Next", function() io.popen("mpc next") end),
-    awful.key({ "Control", "Mod1" }, "Prior", function() io.popen("mpc prev") end),
-    awful.key({ "Control", "Mod1" }, "Insert", function() io.popen("mpc play") end),
-    awful.key({ "Control", "Mod1" }, "End", function() io.popen("mpc stop") end),
+    awful.key({ "Control", "Mod1" }, "Home", function() io.popen("playerctl pause") end),
+    awful.key({ "Control", "Mod1" }, "Next", function() io.popen("playerctl next") end),
+    awful.key({ "Control", "Mod1" }, "Prior", function() io.popen("playerctl previous") end),
+    awful.key({ "Control", "Mod1" }, "Insert", function() io.popen("playerctl play") end),
+    awful.key({ "Control", "Mod1" }, "End", function() io.popen("playerctl stop") end),
     awful.key({ modkey }, "End", function() volumecfg.toggle() end),
 
     awful.key({ modkey,           }, "j",

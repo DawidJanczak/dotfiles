@@ -11,7 +11,7 @@
 
 --type-add=ruby=.haml,.rake
 --type-add=css=.scss
---type-add=js=.coffee,.cjsx
+--type-add=js=.coffee,.jsx,.cjsx
 --type-add=gemfile:is:Gemfile
 --type-add=vagrantfile:is:Vagrantfile
 
