@@ -92,7 +92,6 @@ setopt hist_no_functions
 unsetopt hist_verify
 
 # MISC zsh settings
-setopt noclobber
 setopt auto_cd
 setopt multios
 unsetopt correctall
@@ -135,8 +134,7 @@ export RPROMPT="%F{yellow}%~%f"
 
 # PATH
 typeset -U path
-path=(./node_modules/.bin
-      ~/.npm/bin
+path=(~/.npm/bin
       /usr/bin/vendor_perl
       ~/.rbenv/bin
       ~/scripts

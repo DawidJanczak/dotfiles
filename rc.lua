@@ -8,7 +8,7 @@ local wibox = require("wibox")
 -- Theme handling library
 local beautiful = require("beautiful")
 -- Notification library
-local naughty = require("naughty")
+--local naughty = require("naughty")
 local menubar = require("menubar")
 -- Library to use in widgets
 vicious = require("vicious")
@@ -168,7 +168,7 @@ bat_icon:set_image(beautiful.widget_bat)
 
 ---- Volume widget
 volumecfg = {}
-volumecfg.cardid = 0
+volumecfg.device = "pulse"
 volumecfg.channel = "Master"
 volumecfg.widget = wibox.widget.textbox()
 
@@ -176,7 +176,7 @@ volumecfg_t = awful.tooltip({ objects = { volumecfg.widget }, })
 volumecfg_t:set_text("Volume")
 
 volumecfg.mixercommand = function(command)
-    local fd = io.popen("amixer -c " .. volumecfg.cardid .. command)
+    local fd = io.popen("amixer -D " .. volumecfg.device .. command)
     local status = fd:read("*all")
     fd:close()
 
@@ -349,7 +349,7 @@ globalkeys = awful.util.table.join(
 
     awful.key({ "Control", "Mod1" }, "Up", function() volumecfg.up() end),
     awful.key({ "Control", "Mod1" }, "Down", function() volumecfg.down() end),
-    awful.key({ "Control", "Mod1" }, "Home", function() io.popen("playerctl pause") end),
+    awful.key({ "Control", "Mod1" }, "Home", function() io.popen("playerctl play-pause") end),
     awful.key({ "Control", "Mod1" }, "Next", function() io.popen("playerctl next") end),
     awful.key({ "Control", "Mod1" }, "Prior", function() io.popen("playerctl previous") end),
     awful.key({ "Control", "Mod1" }, "Insert", function() io.popen("playerctl play") end),
