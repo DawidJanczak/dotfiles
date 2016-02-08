@@ -86,4 +86,4 @@ URxvt.keysym.C-Page_Down:   perl:font-size:decglobal
 
 !Termsyn
 URxvt*font: xft:Tamsyn:pixelsize=16:style=Regular
-URxvt*boldFont: xft:Terminus:pixelsize=13:style=Bold
+URxvt*boldFont: xft:Tamsyn:pixelsize=16:style=Bold
