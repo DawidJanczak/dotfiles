@@ -210,9 +210,9 @@ volumecfg.widget:buttons(awful.util.table.join(
 volumecfg.update()
 
 spotify_current = function()
-    local artist = awful.util.pread("playerctl metadata xesam:artist")
-    local title = awful.util.pread("playerctl metadata xesam:title")
-    return awful.util.escape(artist .. ": " .. title)
+    local artist = awful.util.pread("sp.sh current | ack '^Artist' | cut -c14-"):gsub("\n", "")
+    local title = awful.util.pread("sp.sh current | ack 'Title' | cut -c14-"):gsub("\n", "")
+    return (artist .. ": " .. title)
 end
 ---- Spotify current track
 spotifywidget = wibox.widget.textbox()
@@ -349,11 +349,10 @@ globalkeys = awful.util.table.join(
 
     awful.key({ "Control", "Mod1" }, "Up", function() volumecfg.up() end),
     awful.key({ "Control", "Mod1" }, "Down", function() volumecfg.down() end),
-    awful.key({ "Control", "Mod1" }, "Home", function() io.popen("playerctl play-pause") end),
-    awful.key({ "Control", "Mod1" }, "Next", function() io.popen("playerctl next") end),
-    awful.key({ "Control", "Mod1" }, "Prior", function() io.popen("playerctl previous") end),
-    awful.key({ "Control", "Mod1" }, "Insert", function() io.popen("playerctl play") end),
-    awful.key({ "Control", "Mod1" }, "End", function() io.popen("playerctl stop") end),
+    awful.key({ "Control", "Mod1" }, "Home", function() io.popen("sp.sh play") end),
+    awful.key({ "Control", "Mod1" }, "Next", function() io.popen("sp.sh next") end),
+    awful.key({ "Control", "Mod1" }, "Prior", function() io.popen("sp.sh prev") end),
+    awful.key({ "Control", "Mod1" }, "End", function() io.popen("sp.sh stop") end),
     awful.key({ modkey }, "End", function() volumecfg.toggle() end),
 
     awful.key({ modkey,           }, "j",
