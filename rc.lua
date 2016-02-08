@@ -40,7 +40,7 @@ end
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, and wallpapers
-beautiful.init("dotfiles/theme.lua")
+beautiful.init("git/dotfiles/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "urxvt"
@@ -118,7 +118,7 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 -- Initialize widget
 netwidget = wibox.widget.textbox()
 ---- Register widget
-vicious.register(netwidget, vicious.widgets.net, '<span color="#CC9393">${wlp2s0b1 down_kb}</span> <span color="#7F9F7F">${wlp2s0b1 up_kb}</span>', 3)
+vicious.register(netwidget, vicious.widgets.net, '<span color="#CC9393">${wlp2s0 down_kb}</span> <span color="#7F9F7F">${wlp2s0 up_kb}</span>', 3)
 ---- Add icons
 dn_icon = wibox.widget.imagebox()
 up_icon = wibox.widget.imagebox()

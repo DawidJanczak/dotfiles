@@ -39,10 +39,10 @@ xrdb -merge ~/.Xresources
 #sudo wpa_supplicant -B -Dwext -i wlan0 -c /etc/wpa_supplicant/wpa_supplicant.conf
 
 # Turn numlock on
-numlockx &
+#numlockx &
 
 # Start MPD
-mpd ~/dotfiles/.mpdconf
+#mpd ~/dotfiles/.mpdconf
 
 # Disable touchpad while typing
 syndaemon -t -k -i 2 -d &

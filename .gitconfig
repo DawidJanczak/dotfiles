@@ -2,11 +2,11 @@
   email = dawid.janczak@gmail.com
   name = Dawid Janczak
 [diff]
-  external = /home/janczak/scripts/git_vimdiff.sh
+  external = $HOME/scripts/git_vimdiff.sh
 [pager]
   diff =
 [core]
-  excludesfile = /home/janczak/.gitignore_global
+  excludesfile = $HOME/.gitignore_global
 [push]
   default = current
 [color]
