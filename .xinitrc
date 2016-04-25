@@ -50,5 +50,11 @@ syndaemon -t -k -i 2 -d &
 # Autostart desktop apps
 dex -a -e Awesome &
 
+# fcitx env vars
+export GTK_IM_MODULE=fcitx
+export XMODIFIERS=@im=fcitx
+export QT_IM_MODULE=fcitx
+export _JAVA_AWT_WM_NONREPARENTING=1
+
 # Start awesome
 exec /usr/bin/awesome >> ~/.cache/awesome/stdout 2>> ~/.cache/awesome/stderr
