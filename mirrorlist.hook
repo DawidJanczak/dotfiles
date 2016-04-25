@@ -1,0 +1,10 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Package
+Target = pacman-mirrorlist
+
+[Action]
+When = PostTransaction
+Exec = /usr/bin/whoami
+Exec = /etc/pacman.d/hooks/setup_mirrorlist.sh
