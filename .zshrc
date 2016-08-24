@@ -159,6 +159,7 @@ eval $(keychain --eval --agents ssh -Q --quiet ~/.ssh/id_rsa)
 
 # Initialize rbenv
 eval "$(rbenv init -)"
+source /usr/share/nvm/init-nvm.sh
 
 # Aliases for different ls commands
 alias ls='ls --color=auto'
