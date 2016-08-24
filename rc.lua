@@ -499,6 +499,8 @@ awful.rules.rules = {
       properties = { floating = true } },
     { rule = { class = "Chromium" },
       properties = { tag = tags[1][1] } },
+    { rule = { class = "Firefox" },
+      properties = { tag = tags[1][4] } },
     { rule = { class = "Skype" },
       properties = { tag = tags[1][3] },
       callback = awful.client.setslave },
