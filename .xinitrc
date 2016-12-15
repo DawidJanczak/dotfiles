@@ -47,6 +47,9 @@ xrdb -merge ~/.Xresources
 # Disable touchpad while typing
 syndaemon -t -k -i 2 -d &
 
+# Disable touchpad when mouse is connected
+ls /dev/input/by-id/*-mouse && synclient TouchpadOff=1
+
 # Autostart desktop apps
 dex -a -e Awesome &
 

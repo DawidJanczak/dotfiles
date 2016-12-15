@@ -147,6 +147,7 @@ export LANG=en_US.utf-8
 export GOPATH=~/git
 export RUBY_GC_MALLOC_LIMIT=90000000
 export RUBY_GC_HEAP_FREE_SLOTS=200000
+export FZF_DEAFULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
 
 # Start qiv with: fulscreen, atorotate, scaling large images down and no status bar.
 alias qiv='qiv -f -l -t -i $1'
@@ -179,6 +180,10 @@ alias lack='l | ack $1'
 alias nara="sudo shutdown -hP now"
 alias wifi="sudo wifi-menu"
 
+unalias rg
+
 function mkcd {
   [[ -n "$1" ]] && mkdir -p "$1" && builtin cd "$1"
 }
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
