@@ -85,5 +85,13 @@ URxvt.keysym.C-Page_Down:   perl:font-size:decglobal
 !URxvt.font: -misc-fixed-medium-r-semicondensed--13-120-75-75-c-60-iso8859-1
 
 !Termsyn
-URxvt*font: xft:Tamsyn:pixelsize=16:style=Regular
-URxvt*boldFont: xft:Tamsyn:pixelsize=16:style=Bold
+URxvt*font: xft:Misc Tamsyn:pixelsize=16:style=Regular:antialias=true
+URxvt*boldFont: xft:Misc Tamsyn:pixelsize=16:style=Bold:antialias=true
+
+Xft.autohint: 0
+Xft.lcdfilter: lcddefault
+Xft.hintstyle: hintslight
+Xft.hinting: 1
+Xft.antialias: 1
+Xft.rgba: rgb
+Xft.dpi: 96

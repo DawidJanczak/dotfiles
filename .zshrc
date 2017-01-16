@@ -174,9 +174,9 @@ alias vi=vim
 alias gitcom='git commit -a'
 alias gitst='git status'
 
-alias psack='ps aux | ack $1'
-alias expack='export | ack $1'
-alias lack='l | ack $1'
+alias psack='ps aux | rg $1'
+alias expack='export | rg $1'
+alias lack='l | rg $1'
 alias nara="sudo shutdown -hP now"
 alias wifi="sudo wifi-menu"
 
@@ -187,3 +187,16 @@ function mkcd {
 }
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# added by travis gem
+[ -f /home/gat/.travis/travis.sh ] && source /home/gat/.travis/travis.sh
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f /home/gat/git/spabreaks/google-cloud-sdk/path.zsh.inc ]; then
+  source '/home/gat/git/spabreaks/google-cloud-sdk/path.zsh.inc'
+fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f /home/gat/git/spabreaks/google-cloud-sdk/completion.zsh.inc ]; then
+  source '/home/gat/git/spabreaks/google-cloud-sdk/completion.zsh.inc'
+fi
