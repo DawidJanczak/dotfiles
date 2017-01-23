@@ -39,7 +39,7 @@ end
 -- }}}
 
 -- {{{ Variable definitions
--- Themes define colours, icons, and wallpapers
+-- Themes define colours, icons, font and wallpapers.
 beautiful.init("git/dotfiles/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
@@ -55,8 +55,7 @@ editor_cmd = terminal .. " -e " .. editor
 modkey = "Mod4"
 
 -- Table of layouts to cover with awful.layout.inc, order matters.
-local layouts =
-{
+awful.layout.layouts = {
     awful.layout.suit.floating,
     awful.layout.suit.tile,
     awful.layout.suit.tile.left,
@@ -68,6 +67,10 @@ local layouts =
     --awful.layout.suit.spiral.dwindle,
     awful.layout.suit.max,
     awful.layout.suit.max.fullscreen,
+    awful.layout.suit.magnifier,
+    awful.layout.suit.corner.nw,
+    -- awful.layout.suit.corner.ne,
+    -- awful.layout.suit.corner.sw,
     awful.layout.suit.magnifier
 }
 -- }}}
@@ -77,18 +80,6 @@ if beautiful.wallpaper then
     for s = 1, screen.count() do
         gears.wallpaper.maximized(beautiful.wallpaper, s, true)
     end
-end
--- }}}
-
--- {{{ Tags
--- Define a tag table which hold all screen tags.
-tags = {
-    names = { "www", "dev", "skype", 4, 5, 6, 7, 8, 9 },
-    layout = { layouts[8], layouts[4], layouts[4], layouts[2], layouts[2], layouts[2], layouts[2], layouts[2], layouts[2] }
-}
-for s = 1, screen.count() do
-    -- Each screen has its own tag table.
-    tags[s] = awful.tag(tags.names, s, tags.layout)
 end
 -- }}}
 
@@ -294,8 +285,32 @@ awful.screen.connect_for_each_screen(function(s)
     -- Wallpaper
     set_wallpaper(s)
 
-    -- Each screen has its own tag table.
-    awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9" }, s, awful.layout.layouts[1])
+    -- {{{ Tags
+    -- Define a tag table which hold all screen tags.
+    layouts = {
+        awful.layout.layouts[8],
+        awful.layout.layouts[4],
+        awful.layout.layouts[4],
+        awful.layout.layouts[2],
+        awful.layout.layouts[2],
+        awful.layout.layouts[2],
+        awful.layout.layouts[2],
+        awful.layout.layouts[2],
+        awful.layout.layouts[2]
+    }
+    names = { "www", "dev", "skype", 4, 5, 6, 7, 8, 9 }
+    tags = {}
+    for s = 1, screen.count() do
+        -- Each screen has its own tag table.
+        tags[s] = awful.tag(names, s, layouts)
+        --TODO not working
+        awful.tag.setmwfact(0.33, tags[s][4])
+        -- awful.tag.setproperty("2", "mwfact", 0.7)
+    end
+    -- }}}
+
+    -- {{{ Tag properties
+    -- }}}
 
     -- Create a promptbox for each screen
     s.mypromptbox = awful.widget.prompt()
@@ -419,8 +434,8 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey, "Shift"   }, "l",       function () awful.tag.incnmaster(-1)      end),
     awful.key({ modkey, "Control" }, "h",       function () awful.tag.incncol( 1)         end),
     awful.key({ modkey, "Control" }, "l",       function () awful.tag.incncol(-1)         end),
-    awful.key({ modkey,           }, "space",   function () awful.layout.inc(layouts,  1) end),
-    awful.key({ modkey, "Shift"   }, "space",   function () awful.layout.inc(layouts, -1) end),
+    awful.key({ modkey,           }, "space",   function () awful.layout.inc( 1) end),
+    awful.key({ modkey, "Shift"   }, "space",   function () awful.layout.inc(-1) end),
 
     awful.key({ modkey, "Control" }, "n", awful.client.restore),
 
@@ -432,11 +447,14 @@ globalkeys = awful.util.table.join(
 
     awful.key({ modkey }, "x",
               function ()
-                  awful.prompt.run({ prompt = "Run Lua code: " },
-                  mypromptbox[mouse.screen].widget,
-                  awful.util.eval, nil,
-                  awful.util.getdir("cache") .. "/history_eval")
-              end),
+                  awful.prompt.run {
+                    prompt       = "Run Lua code: ",
+                    textbox      = awful.screen.focused().mypromptbox.widget,
+                    exe_callback = awful.util.eval,
+                    history_path = awful.util.get_cache_dir() .. "/history_eval"
+                  }
+              end,
+              {description = "lua execute prompt", group = "awesome"}),
     -- Menubar
     awful.key({ modkey }, "p", function() menubar.show() end)
 )
@@ -460,12 +478,6 @@ clientkeys = awful.util.table.join(
             c.maximized_vertical   = not c.maximized_vertical
         end)
 )
-
--- Compute the maximum number of digit we need, limited to 9
-keynumber = 0
-for s = 1, screen.count() do
-   keynumber = math.min(9, math.max(#tags[s], keynumber))
-end
 
 -- Bind all key numbers to tags.
 -- Be careful: we use keycodes to make it works on any keyboard layout.
@@ -526,11 +538,6 @@ clientbuttons = awful.util.table.join(
 root.keys(globalkeys)
 -- }}}
 
--- {{{ Tag properties
-awful.tag.setproperty(tags[1][3], "mwfact", 0.33)
-awful.tag.setproperty(tags[1][2], "mwfact", 0.7)
--- }}}
-
 -- {{{ Rules
 awful.rules.rules = {
     -- All clients will match this rule.
@@ -543,17 +550,11 @@ awful.rules.rules = {
     { rule = { class = "MPlayer" },
       properties = { floating = true } },
     { rule = { class = "Chromium" },
-      properties = { tag = tags[1][1] } },
+      properties = { tag = "1" } },
     { rule = { class = "Firefox" },
-      properties = { tag = tags[1][4] } },
-    { rule = { class = "Skype" },
-      properties = { tag = tags[1][3] },
-      callback = awful.client.setslave },
+      properties = { tag = "4" } },
     { rule = { class = "org-igoweb-cgoban-CGoban" },
-      properties = { floating = true } }
-    -- Set Firefox to always map on tags number 2 of screen 1.
-    -- { rule = { class = "Firefox" },
-    --   properties = { tag = tags[1][2] } },
+      properties = { floating = true } },
 }
 -- }}}
 
