@@ -112,6 +112,9 @@ mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
 menubar.utils.terminal = terminal -- Set the terminal for applications that require it
 -- }}}
 
+-- Keyboard map indicator and switcher
+mykeyboardlayout = awful.widget.keyboardlayout()
+
 -- {{{ Wibox
 -- Network usage widget
 -- Initialize widget
@@ -228,7 +231,6 @@ mytextclock = awful.widget.textclock()
 -- Create a wibox for each screen and add it
 mywibox = {}
 mypromptbox = {}
-mylayoutbox = {}
 mytaglist = {}
 local taglist_buttons = awful.util.table.join(
                     awful.button({ }, 1, awful.tag.viewonly),
@@ -367,7 +369,43 @@ awful.screen.connect_for_each_screen(function(s)
     layout:set_middle(mytasklist[s])
     layout:set_right(right_layout)
 
-    s.mywibox:set_widget(layout)
+
+    -- Add widgets to the wibox
+    s.mywibox:setup {
+        layout = wibox.layout.align.horizontal,
+        { -- Left widgets
+            layout = wibox.layout.fixed.horizontal,
+            mylauncher,
+            s.mytaglist,
+            s.mypromptbox,
+        },
+        s.mytasklist, -- Middle widget
+        { -- Right widgets
+            layout = wibox.layout.fixed.horizontal,
+            mykeyboardlayout,
+            wibox.widget.systray(),
+            vol_icon,
+            spotifywidget,
+            vol_icon,
+            volumecfg.widget,
+            separator,
+            dn_icon,
+            netwidget,
+            up_icon,
+            separator,
+            bat_icon,
+            bat_widget,
+            separator,
+            cpu_icon,
+            cpu_widget,
+            separator,
+            mem_icon,
+            mem_widget,
+            separator,
+            mytextclock,
+            s.mylayoutbox
+        },
+    }
 end)
 -- }}}
 
