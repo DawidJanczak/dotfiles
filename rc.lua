@@ -115,13 +115,10 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 -- Keyboard map indicator and switcher
 mykeyboardlayout = awful.widget.keyboardlayout()
 
--- {{{ Wibox
+-- {{{ Wibar
 -- Network usage widget
--- Initialize widget
 netwidget = wibox.widget.textbox()
----- Register widget
 vicious.register(netwidget, vicious.widgets.net, '<span color="#CC9393">${wlp2s0 down_kb}</span> <span color="#7F9F7F">${wlp2s0 up_kb}</span>', 3)
----- Add icons
 dn_icon = wibox.widget.imagebox()
 up_icon = wibox.widget.imagebox()
 dn_icon:set_image(beautiful.widget_net_down)
@@ -226,21 +223,26 @@ vol_icon = wibox.widget.imagebox()
 vol_icon:set_image(beautiful.widget_vol)
 
 -- Create a textclock widget
-mytextclock = awful.widget.textclock()
+mytextclock = wibox.widget.textclock()
 
 -- Create a wibox for each screen and add it
-mywibox = {}
-mypromptbox = {}
-mytaglist = {}
 local taglist_buttons = awful.util.table.join(
-                    awful.button({ }, 1, awful.tag.viewonly),
-                    awful.button({ modkey }, 1, awful.client.movetotag),
+                    awful.button({ }, 1, function(t) t:view_only() end),
+                    awful.button({ modkey }, 1, function(t)
+                                              if client.focus then
+                                                  client.focus:move_to_tag(t)
+                                              end
+                                          end),
                     awful.button({ }, 3, awful.tag.viewtoggle),
-                    awful.button({ modkey }, 3, awful.client.toggletag),
-                    awful.button({ }, 4, function(t) awful.tag.viewnext(awful.tag.getscreen(t)) end),
-                    awful.button({ }, 5, function(t) awful.tag.viewprev(awful.tag.getscreen(t)) end)
-                    )
-mytasklist = {}
+                    awful.button({ modkey }, 3, function(t)
+                                              if client.focus then
+                                                  client.focus:toggle_tag(t)
+                                              end
+                                          end),
+                    awful.button({ }, 4, function(t) awful.tag.viewnext(t.screen) end),
+                    awful.button({ }, 5, function(t) awful.tag.viewprev(t.screen) end)
+                )
+
 local tasklist_buttons = awful.util.table.join(
                      awful.button({ }, 1, function (c)
                                               if c == client.focus then
@@ -261,11 +263,9 @@ local tasklist_buttons = awful.util.table.join(
                      awful.button({ }, 3, client_menu_toggle_fn()),
                      awful.button({ }, 4, function ()
                                               awful.client.focus.byidx(1)
-                                              if client.focus then client.focus:raise() end
                                           end),
                      awful.button({ }, 5, function ()
                                               awful.client.focus.byidx(-1)
-                                              if client.focus then client.focus:raise() end
                                           end))
 
 local function set_wallpaper(s)
@@ -366,7 +366,7 @@ awful.screen.connect_for_each_screen(function(s)
     -- Now bring it all together (with the tasklist in the middle)
     local layout = wibox.layout.align.horizontal()
     layout:set_left(left_layout)
-    layout:set_middle(mytasklist[s])
+    layout:set_middle(s.mytasklist)
     layout:set_right(right_layout)
 
 
