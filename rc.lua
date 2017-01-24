@@ -119,24 +119,28 @@ mykeyboardlayout = awful.widget.keyboardlayout()
 -- Network usage widget
 netwidget = wibox.widget.textbox()
 vicious.register(netwidget, vicious.widgets.net, '<span color="#CC9393">${wlp2s0 down_kb}</span> <span color="#7F9F7F">${wlp2s0 up_kb}</span>', 3)
-dn_icon = wibox.widget.imagebox()
-up_icon = wibox.widget.imagebox()
-dn_icon:set_image(beautiful.widget_net_down)
-up_icon:set_image(beautiful.widget_net_up)
+dn_icon = wibox.widget.imagebox(beautiful.widget_net_down)
+up_icon = wibox.widget.imagebox(beautiful.widget_net_up)
 
 ---- Separator
 separator = wibox.widget.textbox()
 separator:set_text("  ")
 
 ---- Memory usage progressbar widget
-mem_widget = awful.widget.progressbar()
-mem_widget:set_width(8)
-mem_widget:set_height(20)
-mem_widget:set_vertical(true)
-mem_widget:set_background_color("#494B4F")
-mem_widget:set_border_color(nil)
-mem_widget:set_color({ type = "linear", from = {0, 0}, to = {0,20}, stops = { {0, "#FF5656"}, {0.5, "#88A175"}, {1.0, "#AECF96"} } })
-vicious.register(mem_widget, vicious.widgets.mem, "$1")
+inner_mem_widget = wibox.widget {
+    forced_width = 20,
+    forced_height = 10,
+    widget = wibox.widget.progressbar,
+    background_color = "#494B4F",
+    border_color = nil,
+    color = gears.color.create_linear_pattern("20,0:0,0:0,#FF5656:0.5,#88A175:1,#AECF96")
+}
+mem_widget = wibox.widget {
+    inner_mem_widget,
+    widget = wibox.container.rotate
+}
+mem_widget = wibox.container.rotate(inner_mem_widget, 'east')
+vicious.register(inner_mem_widget, vicious.widgets.mem, "$1")
 ---- Icon
 mem_icon = wibox.widget.imagebox()
 mem_icon:set_image(beautiful.widget_mem)

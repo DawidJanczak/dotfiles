@@ -7,7 +7,7 @@
 --  * http://awesome.naquadah.org/wiki/Nice_Icons
 
 local awful = require("awful")
-local icon_dir = "dotfiles/icons/"
+local icon_dir = "/home/gat/git/dotfiles/icons/"
 
 -- {{{ Main
 theme = {}
