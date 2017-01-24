@@ -634,9 +634,9 @@ awful.rules.rules = {
     { rule = { class = "MPlayer" },
       properties = { floating = true } },
     { rule = { class = "Chromium" },
-      properties = { tag = "1" } },
+      properties = { tag = "Chrome" } },
     { rule = { class = "Firefox" },
-      properties = { tag = "4" } },
+      properties = { tag = "Firefox" } },
     { rule = { class = "org-igoweb-cgoban-CGoban" },
       properties = { floating = true } },
 }
