@@ -333,42 +333,6 @@ awful.screen.connect_for_each_screen(function(s)
 
     -- Create the wibox
     s.mywibox = awful.wibar({ position = "top", screen = s })
-    -- Widgets that are aligned to the left
-    local left_layout = wibox.layout.fixed.horizontal()
-    left_layout:add(mylauncher)
-    left_layout:add(s.mytaglist)
-    left_layout:add(s.mypromptbox)
-
-    -- Widgets that are aligned to the right
-    local right_layout = wibox.layout.fixed.horizontal()
-    if s == 1 then right_layout:add(wibox.widget.systray()) end
-    right_layout:add(vol_icon)
-    right_layout:add(spotifywidget)
-    right_layout:add(vol_icon)
-    right_layout:add(volumecfg.widget)
-    right_layout:add(separator)
-    right_layout:add(dn_icon)
-    right_layout:add(netwidget)
-    right_layout:add(up_icon)
-    right_layout:add(separator)
-    right_layout:add(bat_icon)
-    right_layout:add(bat_widget)
-    right_layout:add(separator)
-    right_layout:add(cpu_icon)
-    right_layout:add(cpu_widget)
-    right_layout:add(separator)
-    right_layout:add(mem_icon)
-    right_layout:add(mem_widget)
-    right_layout:add(separator)
-    right_layout:add(mytextclock)
-    right_layout:add(s.mylayoutbox)
-
-    -- Now bring it all together (with the tasklist in the middle)
-    local layout = wibox.layout.align.horizontal()
-    layout:set_left(left_layout)
-    layout:set_middle(s.mytasklist)
-    layout:set_right(right_layout)
-
 
     -- Add widgets to the wibox
     s.mywibox:setup {
@@ -403,7 +367,7 @@ awful.screen.connect_for_each_screen(function(s)
             mem_widget,
             separator,
             mytextclock,
-            s.mylayoutbox
+            s.mylayoutbox,
         },
     }
 end)
