@@ -287,29 +287,30 @@ awful.screen.connect_for_each_screen(function(s)
 
     -- {{{ Tags
     -- Define a tag table which hold all screen tags.
-    layouts = {
-        awful.layout.layouts[8],
-        awful.layout.layouts[4],
-        awful.layout.layouts[4],
-        awful.layout.layouts[2],
-        awful.layout.layouts[2],
-        awful.layout.layouts[2],
-        awful.layout.layouts[2],
-        awful.layout.layouts[2],
-        awful.layout.layouts[2]
-    }
-    names = { "www", "dev", "skype", 4, 5, 6, 7, 8, 9 }
-    tags = {}
     for s = 1, screen.count() do
-        -- Each screen has its own tag table.
-        tags[s] = awful.tag(names, s, layouts)
-        --TODO not working
-        awful.tag.setmwfact(0.33, tags[s][4])
-        -- awful.tag.setproperty("2", "mwfact", 0.7)
+        awful.tag.add("Chrome", {
+            screen = s,
+            layout = awful.layout.suit.max
+        })
+        awful.tag.add("Dev", {
+            screen = s,
+            layout = awful.layout.suit.tile.bottom,
+            master_width_factor = 0.7
+        })
+        awful.tag.add("Servers", {
+            screen = s,
+            layout = awful.layout.suit.tile.bottom,
+            master_width_factor = 0.33
+        })
+        awful.tag.add("Firefox", {
+            screen = s,
+            layout = awful.layout.suit.max
+        })
+        awful.tag.add("5", {
+            screen = s,
+            layout = awful.layout.suit.tile.bottom
+        })
     end
-    -- }}}
-
-    -- {{{ Tag properties
     -- }}}
 
     -- Create a promptbox for each screen
