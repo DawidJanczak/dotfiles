@@ -1,19 +1,9 @@
 #!/usr/bin/env zsh
-# oh-my-zsh
 
 autoload -Uz zmv
 autoload -Uz compinit && compinit
 
 zstyle ':completion:*' menu select
-
-# Path to your oh-my-zsh configuration.
-ZSH=/usr/share/oh-my-zsh/
-
-# Set name of the theme to load.
-# Look in ~/.oh-my-zsh/themes/
-# Optionally, if you set this to "random", it'll load a random theme each
-# time that oh-my-zsh is loaded.
-#ZSH_THEME="powerline"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -48,19 +38,6 @@ DISABLE_AUTO_UPDATE="true"
 
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
-
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(archlinux
-         bundler
-         git
-         rails
-         systemd
-         npm
-)
-
-source $ZSH/oh-my-zsh.sh
 
 # Finally, make sure the terminal is in application mode, when zle is
 # active. Only then are the values from $terminfo valid.
@@ -178,8 +155,6 @@ alias expack='export | rg $1'
 alias lack='l | rg $1'
 alias nara="sudo shutdown -hP now"
 alias wifi="sudo wifi-menu"
-
-unalias rg
 
 function mkcd {
   [[ -n "$1" ]] && mkdir -p "$1" && builtin cd "$1"
