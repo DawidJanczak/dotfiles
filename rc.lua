@@ -633,7 +633,7 @@ awful.rules.rules = {
     },
     { rule = { class = "MPlayer" },
       properties = { floating = true } },
-    { rule = { class = "Chromium" },
+    { rule = { class = "Google-chrome-beta" },
       properties = { tag = "Chrome" } },
     { rule = { class = "Firefox" },
       properties = { tag = "Firefox" } },
