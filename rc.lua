@@ -475,6 +475,8 @@ globalkeys = awful.util.table.join(
               end,
               {description = "restore minimized", group = "client"}),
 
+    awful.key({ "Control", "Mod1" }, "l", function () awful.util.spawn("slock") end),
+
     -- Prompt
     awful.key({ modkey },            "r",     function () awful.screen.focused().mypromptbox:run() end,
               {description = "run prompt", group = "launcher"}),
