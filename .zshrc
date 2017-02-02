@@ -74,7 +74,7 @@ setopt multios
 unsetopt correctall
 
 # Named directories
-dotfiles=~/dotfiles
+dotfiles=~/git/dotfiles
 charon=~/git/src/github.com/ygt/charon
 spin=~/git/spin
 frontend=~/git/frontend
@@ -128,9 +128,6 @@ export FZF_DEAFULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.g
 
 # Start qiv with: fulscreen, atorotate, scaling large images down and no status bar.
 alias qiv='qiv -f -l -t -i $1'
-#
-# Set up default options for rdesktop
-alias rdesktop='rdesktop -g 1366x768 -P -z -x l -r sound:off'
 
 # Keychain activation.
 eval $(keychain --eval --agents ssh -Q --quiet ~/.ssh/id_rsa)
@@ -154,7 +151,20 @@ alias psack='ps aux | rg $1'
 alias expack='export | rg $1'
 alias lack='l | rg $1'
 alias nara="sudo shutdown -hP now"
-alias wifi="sudo wifi-menu"
+
+# Git aliases
+alias g='git'
+alias ga='git add'
+alias gb='git branch'
+alias gc='git commit -v'
+alias gco='git checkout'
+alias gd='git diff'
+alias gdca='git diff --cached'
+alias gl='git pull'
+alias gp='git push -u'
+alias gst='git status'
+alias gsta='git stash save'
+alias gstp='git stash pop'
 
 function mkcd {
   [[ -n "$1" ]] && mkdir -p "$1" && builtin cd "$1"
