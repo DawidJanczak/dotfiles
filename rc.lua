@@ -296,6 +296,7 @@ awful.screen.connect_for_each_screen(function(s)
     for s = 1, screen.count() do
         awful.tag.add("Chrome", {
             screen = s,
+            selected = true,
             layout = awful.layout.suit.max
         })
         awful.tag.add("Dev", {
