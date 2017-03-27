@@ -6,6 +6,9 @@ autoload -Uz compinit && compinit
 zstyle ':completion:*' menu select
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z-_}={A-Za-z_-}' 'r:|=*' 'l:|=* r:|=*'
 
+autoload -U select-word-style
+select-word-style bash
+
 # Finally, make sure the terminal is in application mode, when zle is
 # active. Only then are the values from $terminfo valid.
 if (( ${+terminfo[smkx]} )) && (( ${+terminfo[rmkx]} )); then
@@ -25,8 +28,8 @@ source /usr/share/doc/pkgfile/command-not-found.zsh
 
 # History settings
 HISTFILE=~/.history
-HISTSIZE=5000
-SAVEHIST=5000
+HISTSIZE=10000
+SAVEHIST=10000
 setopt append_history
 setopt extended_history
 setopt hist_ignore_dups
@@ -87,6 +90,8 @@ path=(~/.node_modules/bin
 # Export section
 export TERM=xterm-256color
 export EDITOR=vim
+export SHELL=/bin/zsh
+export PAGER=less
 export LANG=en_US.utf-8
 export GOPATH=~/git
 export RUBY_GC_MALLOC_LIMIT=90000000
@@ -109,10 +114,8 @@ alias l='ls -al'
 
 # Some aliases
 alias sudo='sudo -E'
-alias go='go'
 alias vi=vim
-alias gitcom='git commit -a'
-alias gitst='git status'
+alias md='mkdir -p'
 
 alias psack='ps aux | rg $1'
 alias expack='export | rg $1'
@@ -128,10 +131,25 @@ alias gco='git checkout'
 alias gd='git diff'
 alias gdca='git diff --cached'
 alias gl='git pull'
+alias glog='git log --oneline --decorate --graph'
 alias gp='git push -u'
+alias grec="git reflog | rg checkout | head | cut -d' ' -f6"
+alias grhh="git reset --hard HEAD"
 alias gst='git status'
 alias gsta='git stash save'
 alias gstp='git stash pop'
+
+alias rs='bin/rails s'
+alias rc='bin/rails c'
+
+alias yain='yaourt -S'
+alias yaloc='yaourt -Qi'
+alias yalocs='yaourt -Qs'
+alias yaorph='yaourt -Qtd'
+alias yarem='yaourt -Rns'
+alias yaupg='yaourt -Syua'
+
+alias nvm-init='source /usr/share/nvm/init-nvm.sh && nvm use'
 
 function mkcd {
   [[ -n "$1" ]] && mkdir -p "$1" && builtin cd "$1"
