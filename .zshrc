@@ -6,9 +6,6 @@ autoload -Uz compinit && compinit
 zstyle ':completion:*' menu select
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z-_}={A-Za-z_-}' 'r:|=*' 'l:|=* r:|=*'
 
-autoload -U select-word-style
-select-word-style bash
-
 # Finally, make sure the terminal is in application mode, when zle is
 # active. Only then are the values from $terminfo valid.
 if (( ${+terminfo[smkx]} )) && (( ${+terminfo[rmkx]} )); then
@@ -23,6 +20,9 @@ if (( ${+terminfo[smkx]} )) && (( ${+terminfo[rmkx]} )); then
 fi
 ## Key bindings
 bindkey -e
+
+# / is not a part of word, allows ctrl+w to delete paths up till /
+WORDCHARS=${WORDCHARS/\/}
 
 source /usr/share/doc/pkgfile/command-not-found.zsh
 
