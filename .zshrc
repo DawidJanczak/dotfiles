@@ -22,7 +22,7 @@ fi
 bindkey -e
 
 # / is not a part of word, allows ctrl+w to delete paths up till /
-WORDCHARS=${WORDCHARS/\/}
+WORDCHARS=''
 
 source /usr/share/doc/pkgfile/command-not-found.zsh
 

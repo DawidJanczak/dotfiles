@@ -33,4 +33,4 @@ root: ~/git
 windows:
   - rails: cd spabreaks && rs 
   - sb-webpack: cd sb-webpack && nvm-init && make
-  - sb-query-server: cd sb-query-server && sleep 2 && .bin/rackup -p 5000
+  - sb-query-server: cd sb-query-server && sleep 3 && .bin/rackup -p 5000
