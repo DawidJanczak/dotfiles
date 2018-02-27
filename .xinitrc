@@ -28,9 +28,6 @@ xset fp rehash
 # Run devmon in background
 devmon &
 
-# Source Xresources
-xrdb -merge ~/.Xresources
-
 # Setup display for dual screen
 # Use config at /etc/X11/xorg.conf
 #xrandr --output HDMI2 --auto --output LVDS1 --auto --right-of HDMI2
@@ -45,10 +42,11 @@ xrdb -merge ~/.Xresources
 #mpd ~/dotfiles/.mpdconf
 
 # Disable touchpad while typing
-syndaemon -t -k -i 2 -d &
+# syndaemon -t -k -i 2 -d &
 
 # Disable touchpad when mouse is connected
-ls /dev/input/by-id/*-mouse && synclient TouchpadOff=1
+# TODO check if this is needed
+# ls /dev/input/by-id/*-mouse && synclient TouchpadOff=1
 
 # Autostart desktop apps
 dex -a -e Awesome &
