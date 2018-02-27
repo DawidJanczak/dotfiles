@@ -31,6 +31,6 @@ root: ~/git
 # post: tmux -CC attach -t spabreaks
 
 windows:
-  - rails: cd spabreaks && rs 
+  - rails: cd spabreaks && rs -b 0.0.0.0
   - sb-webpack: cd sb-webpack && nvm-init && make
   - sb-query-server: cd sb-query-server && sleep 3 && .bin/rackup -p 5000
