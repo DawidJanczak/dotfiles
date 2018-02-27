@@ -102,7 +102,7 @@ export FZF_DEAFULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.g
 alias qiv='qiv -f -l -t -i $1'
 
 # Keychain activation.
-eval $(keychain --eval --agents ssh -Q --quiet ~/.ssh/id_rsa)
+eval $(keychain --eval --quiet id_rsa ~/.ssh/id_rsa)
 
 # Initialize rbenv
 eval "$(rbenv init -)"
@@ -130,10 +130,13 @@ alias gc='git commit -v'
 alias gco='git checkout'
 alias gd='git diff'
 alias gdca='git diff --cached'
+alias gdne='git diff --no-ext-diff'
 alias gl='git pull'
 alias glog='git log --oneline --decorate --graph'
 alias gp='git push -u'
-alias grec="git reflog | rg checkout | head | cut -d' ' -f6"
+function grec() {
+  git reflog | rg checkout | head -n ${1:-20} | cut -d' ' -f6
+}
 alias grhh="git reset --hard HEAD"
 alias gst='git status'
 alias gsta='git stash save'
@@ -142,12 +145,12 @@ alias gstp='git stash pop'
 alias rs='bin/rails s'
 alias rc='bin/rails c'
 
-alias yain='yaourt -S'
-alias yaloc='yaourt -Qi'
-alias yalocs='yaourt -Qs'
-alias yaorph='yaourt -Qtd'
-alias yarem='yaourt -Rns'
-alias yaupg='yaourt -Syua'
+alias yain='pacaur -S'
+alias yaloc='pacaur -Qi'
+alias yalocs='pacaur -Qs'
+alias yaorph='pacaur -Qtd'
+alias yarem='pacaur -Rns'
+alias yaupg='pacaur -Syua'
 
 alias nvm-init='source /usr/share/nvm/init-nvm.sh && nvm use'
 
@@ -169,3 +172,5 @@ fi
 if [ -f /home/gat/git/spabreaks/google-cloud-sdk/completion.zsh.inc ]; then
   source '/home/gat/git/spabreaks/google-cloud-sdk/completion.zsh.inc'
 fi
+
+export PATH="$HOME/.yarn/bin:$PATH"
