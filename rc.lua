@@ -13,6 +13,9 @@ local hotkeys_popup = require("awful.hotkeys_popup").widget
 -- Library to use in widgets
 vicious = require("vicious")
 
+-- workaround for https://github.com/awesomeWM/awesome/issues/1862
+naughty.config.defaults['icon_size'] = 50
+
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
 -- another config (This code will only ever execute for the fallback config)
@@ -171,7 +174,7 @@ bat_icon:set_image(beautiful.widget_bat)
 
 ---- Volume widget
 volumecfg = {}
-volumecfg.device = "pulse"
+volumecfg.device = "default"
 volumecfg.channel = "Master"
 volumecfg.widget = wibox.widget.textbox()
 
