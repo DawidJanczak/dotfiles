@@ -38,6 +38,9 @@ theme.titlebar_bg_focus  = "#3F3F3F"
 theme.titlebar_bg_normal = "#3F3F3F"
 -- }}}
 
+theme.notification_height = 100
+theme.notification_width = 200
+
 -- There are other variable sets
 -- overriding the default one when
 -- defined, the sets are:
