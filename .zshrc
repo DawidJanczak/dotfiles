@@ -150,7 +150,7 @@ alias yaloc='pacaur -Qi'
 alias yalocs='pacaur -Qs'
 alias yaorph='pacaur -Qtd'
 alias yarem='pacaur -Rns'
-alias yaupg='pacaur -Syua'
+alias yaupg='pacaur -Syu'
 
 alias nvm-init='source /usr/share/nvm/init-nvm.sh && nvm use'
 
