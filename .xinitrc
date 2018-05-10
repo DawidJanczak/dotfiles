@@ -52,10 +52,13 @@ devmon &
 dex -a -e Awesome &
 
 # fcitx env vars
-export GTK_IM_MODULE=fcitx
-export XMODIFIERS=@im=fcitx
-export QT_IM_MODULE=fcitx
 export _JAVA_AWT_WM_NONREPARENTING=1
+
+# Ibus setup
+export GTK_IM_MODULE=ibus
+export XMODIFIERS=@im=ibus
+export QT_IM_MODULE=ibus
+ibus-daemon -dr
 
 # Start awesome
 exec /usr/bin/awesome >> ~/.cache/awesome/stdout 2>> ~/.cache/awesome/stderr
