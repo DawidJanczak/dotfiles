@@ -174,46 +174,41 @@ bat_icon:set_image(beautiful.widget_bat)
 
 ---- Volume widget
 volumecfg = {}
-volumecfg.device = "default"
-volumecfg.channel = "Master"
 volumecfg.widget = wibox.widget.textbox()
 
 volumecfg_t = awful.tooltip({ objects = { volumecfg.widget }, })
 volumecfg_t:set_text("Volume")
 
 volumecfg.mixercommand = function(command)
-    local fd = io.popen("amixer -D " .. volumecfg.device .. command)
+    local fd = io.popen("pactl " .. command)
     local status = fd:read("*all")
     fd:close()
 
-    local volume = string.match(status, "(%d?%d?%d)%%")
-    volume = string.format("% 3d", volume)
-    status = string.match(status, "%[(o[^%]]*)%]")
-    if string.find(status, "on", 1, true) then
-        volume = volume .. "%"
-    else
-        volume = volume .. "M"
+    local volumecmd = "pacmd list-sinks | grep '^\\s\\+volume:'"
+    local mutedcmd = "pacmd list-sinks | grep muted"
+    local volume = string.match(io.popen(volumecmd):read("*all"), "(%d+%%)")
+    local muted = io.popen(mutedcmd):read("*all")
+    local status = string.match(muted, "muted: (%a+)")
+    if status == "yes" then
+        volume = volume .. " M"
     end
     volumecfg.widget:set_text(volume)
 end
-volumecfg.update = function()
-    volumecfg.mixercommand(" sget " .. volumecfg.channel)
-end
 volumecfg.up = function()
-    volumecfg.mixercommand(" sset " .. volumecfg.channel .. " 1%+")
+    volumecfg.mixercommand("set-sink-volume 0 " .. "+5%")
 end
 volumecfg.down = function()
-    volumecfg.mixercommand(" sset ".. volumecfg.channel .. " 1%-")
+    volumecfg.mixercommand("set-sink-volume 0 " .. "-5%")
 end
 volumecfg.toggle = function()
-    volumecfg.mixercommand(" sset " .. volumecfg.channel .. " toggle")
+    volumecfg.mixercommand("set-sink-mute 0 toggle")
 end
 volumecfg.widget:buttons(awful.util.table.join(
     awful.button({ }, 4, function() volumecfg.up() end),
     awful.button({ }, 5, function() volumecfg.down() end),
     awful.button({ }, 1, function() volumecfg.toggle() end)
 ))
-volumecfg.update()
+volumecfg.mixercommand("")
 
 spotify_current = function()
     local artist = awful.util.pread("sp.sh current | ack '^Artist' | cut -c14-"):gsub("\n", "")
