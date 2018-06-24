@@ -85,8 +85,12 @@ URxvt.resize-font.bigger: C-Page_Up
 !URxvt.font: -misc-fixed-medium-r-semicondensed--13-120-75-75-c-60-iso8859-1
 
 !Termsyn
-URxvt*font: xft:Misc Tamsyn:pixelsize=16:style=Regular
+URxvt*font: xft:Misc Tamsyn:pixelsize=16:style=Regular,\
+            xft:WenQuanYi Micro Hei Mono:pixelsize=20:antialias=true
 URxvt*boldFont: xft:Misc Tamsyn:pixelsize=16:style=Bold
+
+URxvt.inputMethod: ibus
+URxvt.preeditType: OverTheSpot
 
 Xft.autohint: 0
 Xft.lcdfilter: lcddefault

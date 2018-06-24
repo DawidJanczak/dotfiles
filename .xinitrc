@@ -58,7 +58,7 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 export GTK_IM_MODULE=ibus
 export XMODIFIERS=@im=ibus
 export QT_IM_MODULE=ibus
-ibus-daemon -dr
+ibus-daemon -dr --xim
 
 # Start awesome
 exec /usr/bin/awesome >> ~/.cache/awesome/stdout 2>> ~/.cache/awesome/stderr
