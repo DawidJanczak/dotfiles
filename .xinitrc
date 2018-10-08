@@ -60,5 +60,5 @@ export XMODIFIERS=@im=ibus
 export QT_IM_MODULE=ibus
 ibus-daemon -dr --xim
 
-# Start awesome
-exec /usr/bin/awesome >> ~/.cache/awesome/stdout 2>> ~/.cache/awesome/stderr
+# Start i3
+exec i3
