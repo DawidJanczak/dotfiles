@@ -197,3 +197,7 @@ mode $audiomenu {
     bindsym Return        mode "default"
     bindsym Escape        mode "default"
 }
+
+# Always hide edge borders
+
+hide_edge_borders both
