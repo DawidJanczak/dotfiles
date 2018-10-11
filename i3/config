@@ -200,4 +200,4 @@ mode $audiomenu {
 
 # Always hide edge borders
 
-hide_edge_borders both
+hide_edge_borders smart
