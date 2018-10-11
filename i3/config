@@ -183,3 +183,17 @@ bindsym $mod+o move workspace to output right
 # Lock screen
 
 bindsym Control+$mod+l exec betterlockscreen -l dim
+
+# Audio menu
+
+set $audiomenu "volume:  [Up]10%  [Down]10%  [m]ute  [r]eset"
+bindsym Control+$mod+v         mode $audiomenu
+
+mode $audiomenu {
+    bindsym r             exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ 100%
+    bindsym Up            exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10%
+    bindsym Down          exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10%
+    bindsym m             exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
+    bindsym Return        mode "default"
+    bindsym Escape        mode "default"
+}
