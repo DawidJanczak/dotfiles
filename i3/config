@@ -201,3 +201,9 @@ mode $audiomenu {
 # Always hide edge borders
 
 hide_edge_borders smart
+
+# Make the currently focused window a scratchpad
+bindsym $mod+Shift+minus move scratchpad
+
+# Show the first scratchpad window
+bindsym $mod+minus scratchpad show
