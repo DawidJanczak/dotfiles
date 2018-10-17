@@ -212,4 +212,4 @@ bindsym $mod+minus scratchpad show
 assign [class="mpv"] output HDMI1
 
 # Exec polybar
-exec_always --no-startup-id $HOME/.config/polybar/launch.sh &
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
