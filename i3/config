@@ -213,3 +213,6 @@ assign [class="mpv"] output HDMI1
 
 # Exec polybar
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+
+# Run unclutter
+exec --no-startup-id unclutter
