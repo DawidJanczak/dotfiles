@@ -53,8 +53,8 @@ feeds=~/git/ygt_feeds
 searcher=~/git/searcher
 sales=~/git/sales
 spabreaks=~/git/spabreaks
-yourteetimes=~/git/yourteetimes
-: ~dotfiles ~charon ~spin ~frontend ~puppet ~feeds ~searcher ~sales ~spabreaks ~yourteetimes
+media=/home/media
+: ~dotfiles ~charon ~spin ~frontend ~puppet ~feeds ~searcher ~sales ~spabreaks ~media
 
 # Prompts
 autoload -Uz colors && colors
@@ -156,6 +156,11 @@ alias nvm-init='source /usr/share/nvm/init-nvm.sh && nvm use'
 
 function mkcd {
   [[ -n "$1" ]] && mkdir -p "$1" && builtin cd "$1"
+}
+
+function docker-clean {
+  docker rm -v $(docker ps --filter status=exited -q 2>/dev/null) 2>/dev/null
+  docker rmi $(docker images --filter dangling=true -q 2>/dev/null) 2>/dev/null
 }
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
