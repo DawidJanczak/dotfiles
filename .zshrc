@@ -53,6 +53,7 @@ feeds=~/git/ygt_feeds
 searcher=~/git/searcher
 sales=~/git/sales
 spabreaks=~/git/spabreaks
+qs=~/git/sb-query-server
 media=/home/media
 : ~dotfiles ~charon ~spin ~frontend ~puppet ~feeds ~searcher ~sales ~spabreaks ~media
 
@@ -164,6 +165,7 @@ function docker-clean {
 }
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[ -f ~/k/k.sh ] && source ~/k/k.sh
 
 # added by travis gem
 [ -f /home/gat/.travis/travis.sh ] && source /home/gat/.travis/travis.sh

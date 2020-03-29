@@ -19,7 +19,7 @@ fi
 # ...or the Window Manager of your choice
 
 # Turn off energy saving on monitor
-xset -dpms
+# xset -dpms
 
 # Add some fonts location
 xset +fp /usr/share/fonts/local
