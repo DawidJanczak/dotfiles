@@ -37,7 +37,7 @@ source /usr/share/doc/pkgfile/command-not-found.zsh
 HISTFILE=~/.history
 HISTSIZE=10000
 SAVEHIST=10000
-setopt append_history
+setopt inc_append_history
 setopt extended_history
 setopt hist_ignore_dups
 setopt hist_reduce_blanks
@@ -96,7 +96,6 @@ path=(~/.node_modules/bin
       $path)
 
 # Export section
-export TERM=xterm-256color
 export EDITOR=vim
 export SHELL=/bin/zsh
 export PAGER=less
