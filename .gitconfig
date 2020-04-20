@@ -2,7 +2,10 @@
   email = dawid.janczak@gmail.com
   name = Dawid Janczak
 [diff]
-  external = $HOME/scripts/git_vimdiff.sh
+  ; external = $HOME/scripts/git_vimdiff.sh
+  tool = meld
+[difftool]
+  prompt = false
 [pager]
   diff =
 [core]
@@ -18,3 +21,5 @@
 [alias]
   edit-unmerged = "!f() { git diff --name-status --diff-filter=U | cut -f2 ; }; vim `f`"
   open-modified = "!f() { git diff --name-only; }; vim `f`"
+[diff "sopsdiffer"]
+	textconv = sops -d
