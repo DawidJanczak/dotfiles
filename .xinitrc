@@ -60,5 +60,11 @@ export XMODIFIERS=@im=ibus
 export QT_IM_MODULE=ibus
 ibus-daemon -dr --xim
 
+# Enable numlock
+numlockx &
+
+# Start copyq
+copyq &
+
 # Start i3
 exec i3
