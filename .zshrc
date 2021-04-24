@@ -56,13 +56,13 @@ charon=~/git/src/github.com/ygt/charon
 spin=~/git/spin
 frontend=~/git/frontend
 puppet=~/git/puppet
-feeds=~/git/ygt_feeds
-searcher=~/git/searcher
 sales=~/git/sales
 spabreaks=~/git/spabreaks
 qs=~/git/sb-query-server
+redemptions=~/git/sb-voucher-redemptions
+canting=~/git/canting
 media=/home/media
-: ~dotfiles ~charon ~spin ~frontend ~puppet ~feeds ~searcher ~sales ~spabreaks ~media
+# : ~dotfiles ~charon ~spin ~frontend ~puppet ~redemptions ~sales ~spabreaks ~media ~canting
 
 # Prompts
 autoload -Uz colors && colors
@@ -99,11 +99,11 @@ path=(~/.node_modules/bin
 export EDITOR=vim
 export SHELL=/bin/zsh
 export PAGER=less
-export LANG=en_US.utf-8
 export GOPATH=~/git
 export RUBY_GC_MALLOC_LIMIT=90000000
 export RUBY_GC_HEAP_FREE_SLOTS=200000
-export FZF_DEAFULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
+export FZF_DEAFULT_COMMAND='fd --type f --hidden --follow --exclude .git'
+# export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock
 
 # Start qiv with: fulscreen, atorotate, scaling large images down and no status bar.
 alias qiv='qiv -f -l -t -i $1'
@@ -120,7 +120,7 @@ alias ll='ls -l'
 alias l='ls -al'
 
 # Some aliases
-alias sudo='sudo -E'
+# alias sudo='sudo -E'
 alias vi=vim
 alias md='mkdir -p'
 
@@ -142,7 +142,7 @@ alias gl='git pull'
 alias glog='git log --oneline --decorate --graph'
 alias gp='git push -u'
 function grec() {
-  git reflog | rg checkout | head -n ${1:-20} | cut -d' ' -f6
+  git branch --sort=-committerdate
 }
 alias grhh="git reset --hard HEAD"
 alias gst='git status'
@@ -152,12 +152,7 @@ alias gstp='git stash pop'
 alias rs='bin/rails s'
 alias rc='bin/rails c'
 
-alias yain='pacaur -S'
-alias yaloc='pacaur -Qi'
-alias yalocs='pacaur -Qs'
-alias yaorph='pacaur -Qtd'
-alias yarem='pacaur -Rns'
-alias yaupg='pacaur -Syu'
+alias dco='docker-compose'
 
 alias nvm-init='source /usr/share/nvm/init-nvm.sh && nvm use'
 
@@ -184,6 +179,11 @@ fi
 # The next line enables shell command completion for gcloud.
 if [ -f /home/gat/git/spabreaks/google-cloud-sdk/completion.zsh.inc ]; then
   source '/home/gat/git/spabreaks/google-cloud-sdk/completion.zsh.inc'
+fi
+
+# Source pazi
+if command -v pazi &>/dev/null; then
+  eval "$(pazi init zsh)"
 fi
 
 export PATH="$HOME/.yarn/bin:$PATH"
