@@ -10,15 +10,15 @@
   added = yellow
   changed = green
   untracked = cyan
+[delta]
+  features = side-by-side
+  syntax-theme = zenburn
 [diff]
-  ; external = $HOME/scripts/git_vimdiff.sh
-  tool = meld
+  colorMoved = default
 [diff "sopsdiffer"]
 	textconv = sops -d
 [difftool]
   prompt = false
-[pager]
-  diff =
 [push]
   default = current
 [user]
