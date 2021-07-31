@@ -117,7 +117,7 @@ eval "$(rbenv init -)"
 # Aliases for different ls commands
 alias ls='ls --color=auto'
 alias ll='ls -l'
-alias l='ls -al'
+alias l='exa -ahl'
 
 # Some aliases
 # alias sudo='sudo -E'
@@ -128,6 +128,7 @@ alias psack='ps aux | rg $1'
 alias expack='export | rg $1'
 alias lack='l | rg $1'
 alias nara="sudo shutdown -hP now"
+alias vim=nvim
 
 # Git aliases
 alias g='git'

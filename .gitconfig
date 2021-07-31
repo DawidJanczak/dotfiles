@@ -1,6 +1,6 @@
 [alias]
-  edit-unmerged = "!f() { git diff --name-status --diff-filter=U | cut -f2 ; }; vim `f`"
-  open-modified = "!f() { git diff --name-only; }; vim `f`"
+  edit-unmerged = "!f() { git diff --name-status --diff-filter=U | cut -f2 ; }; nvim `f`"
+  open-modified = "!f() { git diff --name-only; }; nvim `f`"
 [core]
   excludesfile = $HOME/.gitignore_global
   pager = delta
