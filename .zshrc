@@ -96,7 +96,7 @@ path=(~/.node_modules/bin
       $path)
 
 # Export section
-export EDITOR=vim
+export EDITOR=nvim
 export SHELL=/bin/zsh
 export PAGER=less
 export GOPATH=~/git
