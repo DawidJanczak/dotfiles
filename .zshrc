@@ -93,6 +93,7 @@ path=(~/.node_modules/bin
       /usr/bin/vendor_perl
       ~/.rbenv/bin
       ~/scripts
+      ~/.local/bin
       $path)
 
 # Export section
@@ -103,6 +104,8 @@ export GOPATH=~/git
 export RUBY_GC_MALLOC_LIMIT=90000000
 export RUBY_GC_HEAP_FREE_SLOTS=200000
 export FZF_DEAFULT_COMMAND='fd --type f --hidden --follow --exclude .git'
+export COMPOSE_DOCKER_CLI_BUILD=1
+export DOCKER_BUILDKIT=1
 # export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock
 
 # Start qiv with: fulscreen, atorotate, scaling large images down and no status bar.
@@ -143,7 +146,7 @@ alias gl='git pull'
 alias glog='git log --oneline --decorate --graph'
 alias gp='git push -u'
 function grec() {
-  git branch --sort=-committerdate
+  git branch --sort=-committerdate | head
 }
 alias grhh="git reset --hard HEAD"
 alias gst='git status'

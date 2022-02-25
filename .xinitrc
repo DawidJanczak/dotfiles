@@ -66,5 +66,12 @@ numlockx &
 # Start copyq
 copyq &
 
+# Start xsession target that binds to graphical session
+# Required for Redshift
+# https://github.com/jonls/redshift/issues/265
+# https://superuser.com/a/1128905
+systemctl --user import-environment PATH DBUS_SESSION_BUS_ADDRESS
+systemctl --no-block --user start xsession.target
+
 # Start i3
 exec i3
