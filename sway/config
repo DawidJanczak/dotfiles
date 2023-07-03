@@ -182,7 +182,11 @@ bindsym $mod+o move workspace to output right
 
 # Lock screen
 
-bindsym Control+$mod+l exec betterlockscreen -l dim
+bindsym Control+$mod+l exec swaylock
+
+# Turn off display after 5 mins
+
+exec swayidle -w timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"'
 
 # Audio menu
 
@@ -211,8 +215,18 @@ bindsym $mod+minus scratchpad show
 # Always put mpv on the TV
 assign [class="mpv"] output HDMI1
 
-# Exec polybar
-exec_always --no-startup-id $HOME/.config/polybar/launch.sh
-
 # Run unclutter
-exec --no-startup-id unclutter
+exec unclutter
+
+# Sway new config
+
+bar {
+  swaybar_command waybar
+}
+
+# Enable num lock
+input type:keyboard xkb_numlock enabled
+
+exec_always "pkill kanshi; kanshi"
+
+exec "systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"

@@ -10,18 +10,21 @@
   added = yellow
   changed = green
   untracked = cyan
+[include]
+  path = /home/gat/themes.gitconfig
 [delta]
   syntax-theme = zenburn
+  features = woolly-mammoth
 [diff]
   colorMoved = default
 [diff "sopsdiffer"]
-	textconv = sops -d
+  textconv = sops -d
 [difftool]
   prompt = false
 [push]
   default = current
 [user]
   email = dawid.janczak@gmail.com
-  name = Dawid Janczak
+  name = DawidJanczak
 [pull]
-	ff = only
+	rebase = false

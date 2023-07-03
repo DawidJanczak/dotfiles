@@ -66,6 +66,9 @@ numlockx &
 # Start copyq
 copyq &
 
+# NetworkManager applet
+nm-applet &
+
 # Start xsession target that binds to graphical session
 # Required for Redshift
 # https://github.com/jonls/redshift/issues/265
@@ -74,4 +77,5 @@ systemctl --user import-environment PATH DBUS_SESSION_BUS_ADDRESS
 systemctl --no-block --user start xsession.target
 
 # Start i3
-exec i3
+# Use 25 MiB of RAM for debug logs
+exec i3 -V -d all &>> "$HOME/i3.log"

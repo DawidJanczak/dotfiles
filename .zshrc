@@ -39,7 +39,7 @@ HISTSIZE=10000
 SAVEHIST=10000
 setopt inc_append_history
 setopt extended_history
-setopt hist_ignore_dups
+setopt hist_ignore_all_dups
 setopt hist_reduce_blanks
 setopt hist_no_store
 setopt hist_no_functions
@@ -103,10 +103,12 @@ export PAGER=less
 export GOPATH=~/git
 export RUBY_GC_MALLOC_LIMIT=90000000
 export RUBY_GC_HEAP_FREE_SLOTS=200000
-export FZF_DEAFULT_COMMAND='fd --type f --hidden --follow --exclude .git'
+# export FZF_DEAFULT_COMMAND='fd --type f --hidden --follow --exclude .git'
+export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix'
 export COMPOSE_DOCKER_CLI_BUILD=1
 export DOCKER_BUILDKIT=1
-# export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock
+export USE_GKE_GCLOUD_AUTH_PLUGIN=True
+export MOZ_ENABLE_WAYLAND=1
 
 # Start qiv with: fulscreen, atorotate, scaling large images down and no status bar.
 alias qiv='qiv -f -l -t -i $1'
@@ -132,6 +134,7 @@ alias expack='export | rg $1'
 alias lack='l | rg $1'
 alias nara="sudo shutdown -hP now"
 alias vim=nvim
+alias task=go-task
 
 # Git aliases
 alias g='git'
@@ -146,7 +149,7 @@ alias gl='git pull'
 alias glog='git log --oneline --decorate --graph'
 alias gp='git push -u'
 function grec() {
-  git branch --sort=-committerdate | head
+  git branch --sort=-committerdate | head -n "${1:-10}"
 }
 alias grhh="git reset --hard HEAD"
 alias gst='git status'
@@ -159,6 +162,8 @@ alias rc='bin/rails c'
 alias dco='docker-compose'
 
 alias nvm-init='source /usr/share/nvm/init-nvm.sh && nvm use'
+
+alias k='kubectl'
 
 function mkcd {
   [[ -n "$1" ]] && mkdir -p "$1" && builtin cd "$1"
