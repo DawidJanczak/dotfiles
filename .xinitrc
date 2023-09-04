@@ -55,10 +55,10 @@ dex -a -e Awesome &
 export _JAVA_AWT_WM_NONREPARENTING=1
 
 # Ibus setup
-export GTK_IM_MODULE=ibus
-export XMODIFIERS=@im=ibus
-export QT_IM_MODULE=ibus
-ibus-daemon -dr --xim
+export XMODIFIERS=@im=fcitx
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+# ibus-daemon -dr --xim
 
 # Enable numlock
 numlockx &

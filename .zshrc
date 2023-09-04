@@ -114,7 +114,7 @@ export MOZ_ENABLE_WAYLAND=1
 alias qiv='qiv -f -l -t -i $1'
 
 # Keychain activation.
-eval $(keychain --eval --quiet id_rsa ~/.ssh/id_rsa)
+eval $(keychain --eval --quiet --noask id_rsa ~/.ssh/id_rsa)
 
 # Initialize rbenv
 eval "$(rbenv init -)"
@@ -155,6 +155,10 @@ alias grhh="git reset --hard HEAD"
 alias gst='git status'
 alias gsta='git stash save'
 alias gstp='git stash pop'
+function github_pr_title() {
+  IFS=- read jira1 jira2 branch <<< "$(git symbolic-ref --short HEAD)"
+  echo "[${jira1}-${jira2}] $(echo $branch | tr '-' ' ')"
+} 
 
 alias rs='bin/rails s'
 alias rc='bin/rails c'
