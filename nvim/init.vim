@@ -3,9 +3,9 @@ let &packpath = &runtimepath
 source ~/.vimrc
 
 lua <<EOF
-  local nvim_lsp = require('lspconfig')
-
   require('telescope').load_extension('yaml_schema')
+
+  local nvim_lsp = require('lspconfig')
 
   -- Use an on_attach function to only map the following keys
   -- after the language server attaches to the current buffer
@@ -35,17 +35,19 @@ lua <<EOF
     -- Enable on 0.10
     -- vim.lsp.buf.inlay_hint(0, true)
 
-    vim.cmd [[
-      hi LspReferenceText gui=bold guibg=#45403d
-      hi LspReferenceRead gui=bold guibg=#45403d
-      hi LspReferenceWrite gui=bold guibg=#45403d
+    if client.resolved_capabilities.document_highlight then
+      vim.cmd [[
+        hi LspReferenceText gui=bold guibg=#45403d
+        hi LspReferenceRead gui=bold guibg=#45403d
+        hi LspReferenceWrite gui=bold guibg=#45403d
 
-      augroup document_highlight
-        autocmd! * <buffer>
-        autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
-        autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
-      augroup END
-    ]]
+        augroup document_highlight
+          autocmd! * <buffer>
+          autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
+          autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+        augroup END
+      ]]
+    end
   end
 
   -- Use a loop to conveniently call 'setup' on multiple servers and
@@ -151,6 +153,10 @@ lua <<EOF
     end,
   })
 
+  -- Hook up yaml companion to yamlLS
+  local cfg = require("yaml-companion").setup()
+  require("lspconfig").yamlls.setup(cfg)
+
   -- Treesitter config
   require('nvim-treesitter.configs').setup {
     textobjects = {
@@ -215,8 +221,8 @@ lua <<EOF
       ['<Tab>'] = cmp.mapping(function(fallback)
         if cmp.visible() then
           cmp.select_next_item()
-        elseif luasnip.expand_or_locally_jumpable() then
-          luasnip.expand_or_jump()
+        --elseif luasnip.expand_or_locally_jumpable() then
+          --luasnip.expand_or_jump()
         else
           fallback()
         end
@@ -224,8 +230,8 @@ lua <<EOF
       ['<S-Tab>'] = cmp.mapping(function(fallback)
         if cmp.visible() then
           cmp.select_prev_item()
-        elseif luasnip.locally_jumpable(-1) then
-          luasnip.jump(-1)
+        --elseif luasnip.locally_jumpable(-1) then
+          --luasnip.jump(-1)
         else
           fallback()
         end
