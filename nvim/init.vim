@@ -29,13 +29,13 @@ lua <<EOF
     buf_set_keymap('n', '<leader>a', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
     buf_set_keymap('v', '<leader>a', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
     buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-    buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
-    buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
+    buf_set_keymap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
+    buf_set_keymap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
 
     -- Enable on 0.10
     -- vim.lsp.buf.inlay_hint(0, true)
 
-    if client.resolved_capabilities.document_highlight then
+    if client.server_capabilities.documentHighlightProvider then
       vim.cmd [[
         hi LspReferenceText gui=bold guibg=#45403d
         hi LspReferenceRead gui=bold guibg=#45403d
@@ -52,7 +52,7 @@ lua <<EOF
 
   -- Use a loop to conveniently call 'setup' on multiple servers and
   -- map buffer local keybindings when the language server attaches
-  local servers = { "elmls", "tsserver", "gopls", "yamlls" }
+  local servers = { "elmls", "eslint", "tsserver", "gopls", "yamlls" }
   for _, lsp in ipairs(servers) do
     nvim_lsp[lsp].setup {
       on_attach = on_attach,
@@ -63,46 +63,9 @@ lua <<EOF
   end
 
   nvim_lsp.diagnosticls.setup {
-    filetypes = { "javascript", "typescript", "css", "go" },
-    init_options = {
-      filetypes = {
-        javascript = "eslint",
-        typescript = "eslint"
-      },
-      linters = {
-        eslint = {
-          sourceName = "eslint",
-          command = "eslint_d",
-          rootPatterns = {
-            ".eslintrc.js",
-            "package.json"
-          },
-          debounce = 100,
-          args = {
-            "--cache",
-            "--stdin",
-            "--stdin-filename",
-            "%filepath",
-            "--format",
-            "json"
-          },
-          parseJson = {
-            errorsRoot = "[0].messages",
-            line = "line",
-            column = "column",
-            endLine = "endLine",
-            endColumn = "endColumn",
-            message = "${message} [${ruleId}]",
-            security = "severity"
-          },
-          securities = {
-            [2] = "error",
-            [1] = "warning"
-          }
-        }
-      }
-    }
+    filetypes = { "elmls", "javascript", "typescript", "css", "go" },
   }
+
   -- Ruby-lsp textDocument/diagnostic support until 0.10.0 is released
   _timers = {}
   local function setup_diagnostics(client, buffer)
@@ -154,8 +117,8 @@ lua <<EOF
   })
 
   -- Hook up yaml companion to yamlLS
-  local cfg = require("yaml-companion").setup()
-  require("lspconfig").yamlls.setup(cfg)
+  --local cfg = require("yaml-companion").setup()
+  --require("lspconfig").yamlls.setup(cfg)
 
   -- Treesitter config
   require('nvim-treesitter.configs').setup {

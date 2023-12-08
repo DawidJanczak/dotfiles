@@ -99,7 +99,7 @@ path=(~/.node_modules/bin
 # Export section
 export EDITOR=nvim
 export SHELL=/bin/zsh
-export PAGER=less
+# export PAGER=nvimpager
 export GOPATH=~/git
 export RUBY_GC_MALLOC_LIMIT=90000000
 export RUBY_GC_HEAP_FREE_SLOTS=200000

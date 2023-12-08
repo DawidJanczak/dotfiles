@@ -13,8 +13,7 @@
 [include]
   path = /home/gat/themes.gitconfig
 [delta]
-  syntax-theme = zenburn
-  features = woolly-mammoth
+  syntax-theme = Colddark-Dark
 [diff]
   colorMoved = default
 [diff "sopsdiffer"]
