@@ -5,6 +5,11 @@ source ~/.vimrc
 lua <<EOF
   require('telescope').load_extension('yaml_schema')
 
+  local builtin = require('telescope.builtin')
+  vim.keymap.set('n', '<leader>g', ":Telescope grep_string word_match=-w<cr>")
+  vim.keymap.set('n', '<leader>ga', ":Telescope grep_string word_match=-w search_dirs=app<cr>")
+  vim.keymap.set('n', '<leader>G', ":Telescope live_grep")
+
   local nvim_lsp = require('lspconfig')
 
   -- Use an on_attach function to only map the following keys
@@ -58,6 +63,9 @@ lua <<EOF
       on_attach = on_attach,
       flags = {
         debounce_text_changes = 150,
+      },
+      trace = {
+        server = 'verbose'
       }
     }
   end
@@ -109,7 +117,7 @@ lua <<EOF
     })
   end
 
-  require("lspconfig").ruby_ls.setup({
+  require("lspconfig").ruby_lsp.setup({
     on_attach = function(client, buffer)
       on_attach(client, buffer)
       setup_diagnostics(client, buffer)
