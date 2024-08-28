@@ -31,7 +31,7 @@ bindkey -e
 # / is not a part of word, allows ctrl+w to delete paths up till /
 WORDCHARS=''
 
-source /usr/share/doc/pkgfile/command-not-found.zsh
+source /usr/share/doc/find-the-command/ftc.zsh
 
 # History settings
 HISTFILE=~/.history
@@ -114,7 +114,7 @@ export MOZ_ENABLE_WAYLAND=1
 alias qiv='qiv -f -l -t -i $1'
 
 # Keychain activation.
-eval $(keychain --eval --quiet --noask id_rsa ~/.ssh/id_rsa)
+eval $(keychain --inherit any-once --eval --quiet --noask id_ed25519)
 
 # Initialize rbenv
 eval "$(rbenv init -)"
@@ -184,6 +184,7 @@ function docker-clean {
 # added by travis gem
 [ -f /home/gat/.travis/travis.sh ] && source /home/gat/.travis/travis.sh
 
+source '/usr/share/zsh/site-functions/_gcloud'
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f /home/gat/git/spabreaks/google-cloud-sdk/path.zsh.inc ]; then
   source '/home/gat/git/spabreaks/google-cloud-sdk/path.zsh.inc'
