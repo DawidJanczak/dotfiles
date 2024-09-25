@@ -282,8 +282,11 @@ bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
 bindsym XF86MonBrightnessDown exec brightnessctl set 5%- | sed -En 's/.*\(([0-9]+)%\).*/\1/p' > $WOBSOCK
 bindsym XF86MonBrightnessUp exec brightnessctl set 5%+ | sed -En 's/.*\(([0-9]+)%\).*/\1/p' > $WOBSOCK
 
+bindsym Print exec grim -g "$(slurp -d)" - | wl-copy -t image/png
+
 exec_always "pkill kanshi; kanshi"
-exec_always "nm-applet --no-agent"
+exec_always "pkill gammastep; gammastep-indicator"
+exec_always "blueman-applet"
 
 exec "systemctl --user start app-org.fcitx.Fcitx5@autostart.service"
 

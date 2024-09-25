@@ -74,6 +74,17 @@ lua <<EOF
     filetypes = { "elmls", "javascript", "typescript", "css", "go" },
   }
 
+  require("conform").setup({
+    format_on_save = {
+      lsp_format = "fallback",
+      timeout_ms = 1000,
+    },
+    formatters_by_ft = {
+      typescript = { "prettier" },
+      ruby = { "rubocop" }
+    },
+  })
+
   -- Ruby-lsp textDocument/diagnostic support until 0.10.0 is released
   _timers = {}
   local function setup_diagnostics(client, buffer)
