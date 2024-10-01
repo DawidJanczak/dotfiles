@@ -158,7 +158,10 @@ alias gstp='git stash pop'
 function github_pr_title() {
   IFS=- read jira1 jira2 branch <<< "$(git symbolic-ref --short HEAD)"
   echo "[${jira1}-${jira2}] $(echo $branch | tr '-' ' ')"
-} 
+}
+function gom() {
+  vim $(git status --porcelain | awk '{print $2}')
+}
 
 alias rs='bin/rails s'
 alias rc='bin/rails c'
