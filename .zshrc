@@ -99,6 +99,7 @@ path=(~/.node_modules/bin
 # Export section
 export EDITOR=nvim
 export SHELL=/bin/zsh
+export BROWSER=/usr/bin/google-chrome-stable
 # export PAGER=nvimpager
 export GOPATH=~/git
 export RUBY_GC_MALLOC_LIMIT=90000000
@@ -149,7 +150,7 @@ alias gl='git pull'
 alias glog='git log --oneline --decorate --graph'
 alias gp='git push -u'
 function grec() {
-  git branch --sort=-committerdate | head -n "${1:-10}"
+  git branch --sort=-committerdate | head -n "${1:-10}" | fzf | xargs git checkout
 }
 alias grhh="git reset --hard HEAD"
 alias gst='git status'
@@ -179,6 +180,10 @@ function mkcd {
 function docker-clean {
   docker rm -v $(docker ps --filter status=exited -q 2>/dev/null) 2>/dev/null
   docker rmi $(docker images --filter dangling=true -q 2>/dev/null) 2>/dev/null
+}
+
+function last-migration {
+  vim db/migrate/$(ls -tr db/migrate | tail -1)
 }
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

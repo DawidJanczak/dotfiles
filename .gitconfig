@@ -13,7 +13,7 @@
 [include]
   path = /home/gat/themes.gitconfig
 [delta]
-  syntax-theme = Colddark-Dark
+  syntax-theme = Coldark-Dark
 [diff]
   colorMoved = default
 [diff "sopsdiffer"]
@@ -26,4 +26,8 @@
   email = dawid.janczak@gmail.com
   name = DawidJanczak
 [pull]
-	rebase = false
+  rebase = false
+[web]
+  browser = chrome
+[browser "chrome"]
+  path = /usr/bin/google-chrome-stable

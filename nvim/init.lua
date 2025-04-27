@@ -1,12 +1,36 @@
-vim.opt.runtimepath:prepend("~/.vim")
-vim.opt.packpath = vim.opt.runtimepath:get()
-vim.cmd("source ~/.vimrc")
-require('telescope').load_extension('yaml_schema')
+require("config.lazy")
+require("keymaps")
+require("options")
 
-local builtin = require('telescope.builtin')
+-- TODO
+-- ctrl + p
+-- surround plugin
+
+-- vim.opt.runtimepath:prepend("~/.vim")
+-- vim.opt.packpath = vim.opt.runtimepath:get()
+-- vim.cmd("source ~/.vimrc")
+-- require('telescope').load_extension('yaml_schema')
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "lua",
+  callback = function()
+    vim.opt_local.shiftwidth = 2
+    vim.opt_local.tabstop = 2
+    vim.opt_local.expandtab = true
+  end,
+})
+
 vim.keymap.set('n', '<leader>g', ":Telescope grep_string word_match=-w<cr>")
 vim.keymap.set('n', '<leader>ga', ":Telescope grep_string word_match=-w search_dirs=app<cr>")
 vim.keymap.set('n', '<leader>G', ":Telescope live_grep")
+
+local find_template_in_views = function()
+  local filename = vim.fn.expand("%:t:r:r"):gsub("^_", "")
+  local regex = "(render|partial:)[\\s(]?[\'\"][^\\s]*" .. filename .. "[\'\"]\\B"
+  require'telescope.builtin'.grep_string({search_dirs = { "app" }, search = regex, use_regex=true })
+end
+
+vim.keymap.set('n', '<leader>fv', find_template_in_views)
 
 local nvim_lsp = require('lspconfig')
 
@@ -55,7 +79,8 @@ end
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = { "elmls", "eslint", "gopls", "tsserver", "yamlls" }
+local servers = { "elmls", "stimulus_ls", "eslint", "gopls", "ts_ls", "yamlls" }
+vim.lsp.set_log_level(2)
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
     on_attach = on_attach,
@@ -63,7 +88,7 @@ for _, lsp in ipairs(servers) do
       debounce_text_changes = 150,
     },
     trace = {
-      server = 'verbose'
+      server = 'debug'
     }
   }
 end
@@ -75,11 +100,20 @@ nvim_lsp.diagnosticls.setup {
 require("conform").setup({
   format_on_save = {
     lsp_format = "fallback",
-    timeout_ms = 1000,
+    timeout_ms = 3000,
+  },
+  formatters = {
+    sqlfluff = {
+      command = "sqlfluff",
+      args = { "fix", "--disable-progress-bar", "-" },
+      stdin = true
+    }
   },
   formatters_by_ft = {
-    typescript = { "prettier" },
-    ruby = { "rubocop" }
+    ruby = { "rubocop" },
+    -- eruby = { "erb_format" },
+    sql = { "sqlfluff" },
+    typescript = { "prettier" }
   },
 })
 
@@ -125,6 +159,8 @@ local function setup_diagnostics(client, buffer)
     end,
   })
 end
+
+require("nvim-autopairs").setup {}
 
 require("lspconfig").ruby_lsp.setup({
   on_attach = function(client, buffer)
@@ -222,3 +258,32 @@ cmp.setup {
     { name = 'luasnip' },
   },
 }
+
+local file_gh_url_to_clipboard = function()
+  local file_name = vim.fn.expand("%")
+  local ln = vim.api.nvim_win_get_cursor(0)[1]
+  local hash_command = "git log -n 1 --pretty=format:'%H'"
+  local repo_command = "git remote -v"
+
+  local handle = io.popen(hash_command)
+  if handle == nil then return end
+
+  local hash = handle:read("*a")
+  handle:close()
+
+  handle = io.popen(repo_command)
+  if handle == nil then return end
+
+  local repo_out = handle:read("*a")
+  handle:close()
+
+  local repo = string.match(repo_out, "git@github.com:([^ ]+)")
+
+  local url = "https://github.com/" .. repo .. "/blob/" .. hash .. "/" .. file_name .. "#L" .. ln
+
+  vim.fn.setreg("+", url)
+end
+
+vim.keymap.set('n', '<leader>of', file_gh_url_to_clipboard)
+vim.keymap.set('n', ']q', ':cnext<CR>')
+vim.keymap.set('n', '[q', ':cprev<CR>')
