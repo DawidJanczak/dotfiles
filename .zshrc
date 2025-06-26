@@ -115,10 +115,13 @@ export MOZ_ENABLE_WAYLAND=1
 alias qiv='qiv -f -l -t -i $1'
 
 # Keychain activation.
-eval $(keychain --inherit any-once --eval --quiet --noask id_ed25519)
+eval $(keychain --eval --quiet --noask id_ed25519)
 
 # Initialize rbenv
 eval "$(rbenv init -)"
+
+# Initialize atuin
+eval "$(atuin init zsh --disable-up-arrow)"
 
 # Aliases for different ls commands
 alias ls='ls --color=auto'
@@ -213,3 +216,20 @@ source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+git_switch_create_ygt() {
+    if [ $# -lt 2 ]; then
+        echo "Need at least 2 arguments"
+        return
+    elif ! [[ $1 =~ ^[0-9]+$ ]]; then
+        echo "First argument must be a number"
+        return
+    fi
+
+    card_nr=$1
+    card_name=${@:2}
+
+    branch_name=$card_nr-$(echo $card_name | tr '[:upper:]' '[:lower:]' | tr ' ' '-')
+
+    git switch -c $branch_name
+}

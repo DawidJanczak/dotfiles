@@ -222,6 +222,9 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
+# Swap two windows
+bindsym $mod+shift+s mark swap, focus up, swap container with mark swap
+
 #
 # Status Bar:
 #
@@ -289,5 +292,6 @@ exec_always "pkill gammastep; gammastep-indicator"
 exec_always "blueman-applet"
 
 exec "systemctl --user start app-org.fcitx.Fcitx5@autostart.service"
+exec "lxpolkit &"
 
 include /etc/sway/config.d/*
