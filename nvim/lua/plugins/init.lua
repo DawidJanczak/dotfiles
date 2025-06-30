@@ -57,6 +57,12 @@ return {
 	},
 	{
 		"tpope/vim-rails",
+		branch = "master",
+		event = "BufReadPre",
+	},
+	{
+		"tpope/vim-ragtag",
+		branch = "master",
 		event = "BufReadPre",
 	},
 	{
