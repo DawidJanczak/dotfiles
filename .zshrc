@@ -110,6 +110,7 @@ export COMPOSE_DOCKER_CLI_BUILD=1
 export DOCKER_BUILDKIT=1
 export USE_GKE_GCLOUD_AUTH_PLUGIN=True
 export MOZ_ENABLE_WAYLAND=1
+export CLOUDSDK_PYTHON_SITEPACKAGES=1
 
 # Start qiv with: fulscreen, atorotate, scaling large images down and no status bar.
 alias qiv='qiv -f -l -t -i $1'
@@ -159,12 +160,16 @@ alias grhh="git reset --hard HEAD"
 alias gst='git status'
 alias gsta='git stash save'
 alias gstp='git stash pop'
+alias gprev='git rev-parse --abbrev-ref @{-1}'
 function github_pr_title() {
   IFS=- read jira1 jira2 branch <<< "$(git symbolic-ref --short HEAD)"
   echo "[${jira1}-${jira2}] $(echo $branch | tr '-' ' ')"
 }
 function gom() {
   vim $(git status --porcelain | awk '{print $2}')
+}
+function gmasmerge() {
+  git pull && git checkout master && git merge origin/master && git checkout - && git merge master
 }
 
 alias rs='bin/rails s'
