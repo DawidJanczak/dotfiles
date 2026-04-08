@@ -45,6 +45,16 @@ map("n", "<leader>dm", function()
 	end
 end, { desc = "Toggle diff with origin/master" })
 
+vim.keymap.set("n", "]f", function()
+	require("diffview.actions").next_entry()
+	require("diffview.actions").focus_entry()
+end, { desc = "Go to and focus the next file in Diffview" })
+
+vim.keymap.set("n", "[f", function()
+	require("diffview.actions").prev_entry()
+	require("diffview.actions").focus_entry()
+end, { desc = "Go to and focus the previous file in Diffview" })
+
 local opts = { noremap = true, silent = true }
 
 -- Move between splits using Ctrl-h/j/k/l
