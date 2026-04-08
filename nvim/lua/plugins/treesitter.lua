@@ -4,6 +4,7 @@ return {
 		build = ":TSUpdate",
 		dependencies = {
 			"nvim-treesitter/nvim-treesitter-textobjects",
+			"RRethy/nvim-treesitter-endwise",
 		},
 		config = function()
 			require("nvim-treesitter.configs").setup({
@@ -14,6 +15,7 @@ return {
 					"json",
 					"lua",
 					"ruby",
+					"terraform",
 					"typescript",
 					"yaml",
 				},
@@ -28,7 +30,9 @@ return {
 				},
 				indent = {
 					enable = true,
-					disable = { "ruby" },
+				},
+				endwise = {
+					enable = true,
 				},
 				textobjects = {
 					select = {

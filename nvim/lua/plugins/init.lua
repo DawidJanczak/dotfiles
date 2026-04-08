@@ -16,7 +16,12 @@ return {
 			require("better_escape").setup()
 		end,
 	},
-
+	{
+		"cbochs/grapple.nvim",
+		dependencies = {
+			{ "nvim-tree/nvim-web-devicons", lazy = true },
+		},
+	},
 	-- Catppuccin
 	{
 		"catppuccin/nvim",
@@ -38,11 +43,6 @@ return {
 
 			vim.keymap.set("n", "<leader>j", require("treesj").toggle, { desc = "Toggle split/join" })
 		end,
-	},
-	{
-		"RRethy/nvim-treesitter-endwise",
-		dependencies = { "nvim-treesitter/nvim-treesitter" },
-		event = "InsertEnter",
 	},
 	{
 		"kylechui/nvim-surround",
