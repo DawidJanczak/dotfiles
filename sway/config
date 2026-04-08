@@ -4,6 +4,9 @@
 #
 # Read `man 5 sway` for a complete reference.
 
+# Do not jump to the next monitor when changing focus
+focus_wrapping workspace
+
 ### Variables
 #
 # Logo key. Use Mod1 for Alt.
@@ -170,7 +173,7 @@ input type:touchpad {
     bindsym $mod+v splitv
 
     # Switch the current container between different layout styles
-    bindsym $mod+s layout stacking
+    # bindsym $mod+s layout stacking
     bindsym $mod+w layout tabbed
     bindsym $mod+e layout toggle split
 
@@ -235,8 +238,8 @@ bar {
 
 # Volume control
 
-bindsym Control+$mod+Down exec amixer set Master -q 5%-
-bindsym Control+$mod+Up exec amixer set Master -q 5%+
+bindsym Control+$mod+Down exec pactl set-sink-volume @DEFAULT_SINK@ -5% && pactl get-sink-volume @DEFAULT_SINK@ | head -n 1 | awk '{print substr($5, 1, length($5)-1)}' > $WOBSOCK
+bindsym Control+$mod+Up exec pactl set-sink-volume @DEFAULT_SINK@ +5% && pactl get-sink-volume @DEFAULT_SINK@ | head -n 1 | awk '{print substr($5, 1, length($5)-1)}' > $WOBSOCK
 
 # Move container to output
 
@@ -291,7 +294,7 @@ exec_always "pkill kanshi; kanshi"
 exec_always "pkill gammastep; gammastep-indicator"
 exec_always "blueman-applet"
 
-exec "systemctl --user start app-org.fcitx.Fcitx5@autostart.service"
+# exec "systemctl --user start app-org.fcitx.Fcitx5@autostart.service"
 exec "lxpolkit &"
 
 include /etc/sway/config.d/*
