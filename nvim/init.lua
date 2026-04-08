@@ -21,6 +21,7 @@ end
 vim.keymap.set("n", "<leader>fv", find_template_in_views)
 
 local nvim_lsp = require("lspconfig")
+vim.lsp.enable("herb_ls")
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
@@ -71,7 +72,9 @@ end
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = { "elmls", "stimulus_ls", "eslint", "gopls", "ts_ls", "yamlls" }
+-- TODO bring back yamls
+-- local servers = { "elmls", "stimulus_ls", "eslint", "gopls", "ts_ls", "yamlls" }
+local servers = { "elmls", "stimulus_ls", "eslint", "gopls", "ts_ls" }
 vim.lsp.set_log_level(2)
 for _, lsp in ipairs(servers) do
 	nvim_lsp[lsp].setup({
@@ -107,6 +110,14 @@ require("conform").setup({
 			args = { "--autocorrect", "$FILENAME" },
 			ignore_stderr = true,
 		},
+		terraform_fmt = {
+			command = "terraform",
+			args = { "fmt", "-" },
+			-- To avoid formatting on save for every file
+			stdin = true,
+			-- To run it only on specific filetypes or with specific names
+			filetypes = { "terraform", "hcl" },
+		},
 	},
 	formatters_by_ft = {
 		lua = { "stylua" },
@@ -114,6 +125,7 @@ require("conform").setup({
 		eruby = { "erb_lint" },
 		sql = { "sqlfluff" },
 		typescript = { "prettier" },
+		terraform = { "terraform_fmt" },
 	},
 })
 
