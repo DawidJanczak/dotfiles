@@ -66,3 +66,6 @@ map("n", "<C-l>", "<C-w>l", opts)
 local ts_utils = require("utils.telescope")
 
 vim.keymap.set("n", "<leader>fv", ts_utils.find_template_in_views)
+
+-- Close quicklist
+vim.keymap.set("n", "<leader>qc", "<cmd>cclose<CR>", { desc = "Close quickfix list" })

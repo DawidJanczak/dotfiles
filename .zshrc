@@ -139,14 +139,27 @@ alias expack='export | rg $1'
 alias lack='l | rg $1'
 alias nara="sudo shutdown -hP now"
 alias vim=nvim
-alias task=go-task
 
 # Git aliases
 alias g='git'
 alias ga='git add'
 alias gb='git branch'
 alias gc='git commit -v'
-alias gco='git checkout'
+gco() {
+  local out
+  if out=$(git checkout "$@" 2>&1); then
+    [[ -n $out ]] && print -r -- "$out"
+    return 0
+  fi
+
+  if [[ $out == "error: pathspec '"*"' did not match any file(s) known to git"* ]]; then
+    echo "Not found locally, fetching origin..."
+    git fetch origin && git checkout "$@"
+  else
+    print -r -- "$out" >&2
+    return 1
+  fi
+}
 alias gd='git diff'
 alias gdca='git diff --cached'
 alias gdne='git diff --no-ext-diff'
@@ -238,3 +251,16 @@ git_switch_create_ygt() {
 
     git switch -c $branch_name
 }
+
+# Setup task
+alias task='go-task'
+
+# 1. Force the task binary to target 'go-task' inside the completion script
+export TASK_EXE='go-task'
+
+# 2. Dynamically generate and load the completions on shell startup
+eval "$(go-task --completion zsh)"
+
+# 3. Bind the newly loaded completions to both command names
+compdef _task go-task
+compdef _task task
